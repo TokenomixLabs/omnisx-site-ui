@@ -37,62 +37,26 @@ const HeroVideo = () => {
     };
   }, []);
 
-  if (isMobile) {
-    return (
-      <div className="fixed inset-0 w-full h-full">
+  return (
+    <div className="relative w-full h-screen md:min-h-screen">
+      <div className="sticky top-0 w-full h-screen">
         <iframe
           src="https://player.vimeo.com/video/1052026972?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            border: 'none'
-          }}
+          className="absolute inset-0 w-full h-full object-cover"
           allow="autoplay; fullscreen"
           loading="eager"
           title="Background video"
         />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#1A1F2C]/90 pointer-events-none" />
         <Button
           variant="ghost"
           size="icon"
           onClick={toggleMute}
-          className="fixed z-50 bg-black/20 hover:bg-black/40 backdrop-blur-sm rounded-full w-12 h-12 flex items-center justify-center bottom-8 right-8"
+          className="absolute z-50 bg-black/20 hover:bg-black/40 backdrop-blur-sm rounded-full w-12 h-12 flex items-center justify-center bottom-8 right-8"
           aria-label={isMuted ? "Unmute video" : "Mute video"}
         >
           {isMuted ? <VolumeX className="h-6 w-6" /> : <Volume2 className="h-6 w-6" />}
         </Button>
-      </div>
-    );
-  }
-
-  return (
-    <div className="relative w-full h-screen">
-      <div className="absolute inset-0">
-        <iframe
-          src="https://player.vimeo.com/video/1052026972?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
-          className="w-full h-full"
-          allow="autoplay; fullscreen"
-          frameBorder="0"
-          loading="eager"
-          title="Background video"
-        />
-      </div>
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#1A1F2C] pointer-events-none" />
-      <Button
-        variant="ghost"
-        size="icon"
-        onClick={toggleMute}
-        className="fixed z-50 bg-black/20 hover:bg-black/40 backdrop-blur-sm rounded-full w-12 h-12 flex items-center justify-center bottom-8 right-8"
-        aria-label={isMuted ? "Unmute video" : "Mute video"}
-      >
-        {isMuted ? <VolumeX className="h-6 w-6" /> : <Volume2 className="h-6 w-6" />}
-      </Button>
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-8 h-8 border-2 border-white rounded-full flex items-center justify-center">
-          <div className="w-1 h-3 bg-white rounded-full" />
-        </div>
       </div>
     </div>
   );
