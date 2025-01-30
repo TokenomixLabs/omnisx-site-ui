@@ -29,7 +29,7 @@ const Index = () => {
   };
 
   return (
-    <div className="bg-[#1A1F2C] text-white min-h-screen">
+    <div className="bg-[#1A1F2C] text-white">
       {/* Navigation */}
       <nav className="fixed w-full z-50 glass-morphism">
         <div className="container mx-auto px-4 py-2 md:py-4 flex justify-between items-center">
@@ -63,19 +63,10 @@ const Index = () => {
       </nav>
 
       {/* Hero Video Section */}
-      <section className="fixed inset-0 w-full h-full">
+      <section className="relative w-full h-screen">
         <iframe
           src="https://player.vimeo.com/video/1052026972?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            border: 'none',
-            padding: 0,
-            margin: 0
-          }}
+          className="absolute inset-0 w-full h-full object-cover"
           allow="autoplay; fullscreen"
           frameBorder="0"
         ></iframe>
@@ -92,7 +83,7 @@ const Index = () => {
       </section>
 
       {/* Vision Section */}
-      <section className="relative z-10 mt-screen pt-screen">
+      <section className="relative bg-[#1A1F2C] py-20">
         <div className="container mx-auto px-4">
           <h2 className="font-orbitron text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16">
             Why <span className="text-neon-blue">OmnisX</span>?
