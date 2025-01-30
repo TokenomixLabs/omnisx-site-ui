@@ -31,12 +31,9 @@
   }
   
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground antialiased m-0 p-0 overflow-x-hidden;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
     background: #1A1F2C;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
   }
 
   html {
@@ -58,42 +55,9 @@
   }
 }
 
-/* Mobile-specific fixes */
+/* Mobile-specific styles */
 @media (max-width: 768px) {
-  .hero-section {
-    padding: 0;
-    margin: 0;
-    height: 100dvh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-
-  .hero-video-wrapper {
-    padding: 0;
-    margin: 0;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-
-  .hero-video-container {
-    padding: 0;
-    margin: 0;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-  
   body {
-    padding: 0;
-    margin: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
+    @apply overflow-x-hidden overflow-y-auto;
   }
 }
