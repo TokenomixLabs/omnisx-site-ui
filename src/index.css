@@ -75,34 +75,7 @@
 
 /* Mobile-specific fixes */
 @media (max-width: 768px) {
-  .hero-video-wrapper {
-    position: relative !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    overflow: hidden !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    background: black !important;
-  }
-
-  .hero-video-container {
-    position: absolute !important;
-    top: 0;
-    left: 0;
-    width: 100vw !important;
-    height: 100vh !important;
-  }
-
-  .hero-video-container video,
-  .hero-video-container iframe {
-    width: 100vw !important;
-    height: 100vh !important;
-    object-fit: cover !important;
-    position: absolute !important;
-    top: 0;
-    left: 0;
-  }
-
+  /* Ensure the hero section fills the viewport */
   .hero-section {
     width: 100vw !important;
     height: 100vh !important;
@@ -112,9 +85,37 @@
     align-items: center;
     justify-content: center;
     overflow: hidden !important;
+    position: relative !important;
   }
 
+  /* Make sure the video container fully fills the section */
+  .hero-video-wrapper {
+    width: 100vw !important;
+    height: 100vh !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    background: black !important;
+  }
+
+  /* Ensure the actual video or iframe covers everything */
+  .hero-video-container video,
+  .hero-video-container iframe {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    position: absolute !important;
+    top: 0;
+    left: 0;
+  }
+
+  /* Remove unwanted scrolling behavior */
   body {
     overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 }
