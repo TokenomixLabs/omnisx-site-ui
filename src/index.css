@@ -75,23 +75,23 @@
 
 /* Mobile-specific fixes */
 @media (max-width: 768px) {
-  /* Ensure the hero section fills the viewport */
   .hero-section {
     width: 100vw !important;
-    height: 100vh !important;
+    height: 100dvh !important; /* Dynamic viewport height for mobile */
     padding: 0 !important;
     margin: 0 !important;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden !important;
-    position: relative !important;
+    position: fixed !important; /* Fix it to the viewport */
+    top: 0;
+    left: 0;
   }
 
-  /* Make sure the video container fully fills the section */
   .hero-video-wrapper {
     width: 100vw !important;
-    height: 100vh !important;
+    height: 100dvh !important; /* Same fix here */
     padding: 0 !important;
     margin: 0 !important;
     overflow: hidden !important;
@@ -101,7 +101,6 @@
     background: black !important;
   }
 
-  /* Ensure the actual video or iframe covers everything */
   .hero-video-container video,
   .hero-video-container iframe {
     width: 100% !important;
@@ -112,10 +111,12 @@
     left: 0;
   }
 
-  /* Remove unwanted scrolling behavior */
   body {
     overflow-x: hidden !important;
+    overflow-y: auto !important;
     margin: 0 !important;
     padding: 0 !important;
   }
+}
+
 }
