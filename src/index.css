@@ -75,13 +75,28 @@
 
 /* Mobile-specific fixes */
 @media (max-width: 768px) {
+  .hero-video-wrapper {
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 100vh !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .hero-video-container {
     height: 100vh !important;
-    width: 100vw;
-    object-fit: cover;
+    width: 100vw !important;
     position: absolute;
     top: 0;
     left: 0;
+    overflow: hidden;
+  }
+
+  .hero-video-container video {
+    height: 100vh !important;
+    width: 100vw !important;
+    object-fit: cover;
   }
 
   .hero-section {
