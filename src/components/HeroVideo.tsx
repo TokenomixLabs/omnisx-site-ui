@@ -10,7 +10,6 @@ const HeroVideo = () => {
   const [player, setPlayer] = useState<any>(null);
   const isMobile = useIsMobile();
 
-  // Memoize the toggleMute function to prevent unnecessary re-renders
   const toggleMute = useCallback(async () => {
     if (player) {
       const newVolume = isMuted ? 1 : 0;
@@ -19,13 +18,11 @@ const HeroVideo = () => {
     }
   }, [player, isMuted]);
 
-  // Initialize Vimeo player once on mount
   useEffect(() => {
     const initializePlayer = async () => {
       const iframe = document.querySelector('iframe');
       if (iframe) {
         const vimeoPlayer = new Vimeo.Player(iframe);
-        // Set initial volume
         await vimeoPlayer.setVolume(0);
         setPlayer(vimeoPlayer);
       }
@@ -33,7 +30,6 @@ const HeroVideo = () => {
 
     initializePlayer();
 
-    // Cleanup on unmount
     return () => {
       if (player) {
         player.destroy();
@@ -42,9 +38,9 @@ const HeroVideo = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-[100dvh] md:h-[100vh] overflow-hidden">
-      <div className="absolute inset-0 w-full h-full bg-black/40 hero-video-wrapper">
-        <div className="absolute inset-0 hero-video-container">
+    <div className="relative w-full h-screen overflow-hidden">
+      <div className="absolute inset-0 w-full h-full bg-black/40">
+        <div className="w-full h-full">
           <iframe
             src="https://player.vimeo.com/video/1052026972?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
             className="w-full h-full object-cover"
