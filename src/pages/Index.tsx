@@ -118,7 +118,7 @@ const Index = () => {
               <CardContent className="p-6">
                 <h3 className="font-orbitron text-xl font-bold mb-3">Hypermesh</h3>
                 <p className="text-gray-300 mb-4">Neural coordination network enabling seamless agent collaboration.</p>
-                <Rocket className="text-neon-blue animate-pulse" />
+                <Satellite className="text-neon-blue animate-pulse" />
               </CardContent>
             </Card>
           </div>
