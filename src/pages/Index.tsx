@@ -10,7 +10,7 @@ const Index = () => {
     <div className="relative min-h-screen bg-[#1A1F2C] text-white">
       <Navigation />
       <HeroVideo />
-      <div className="relative mt-screen">
+      <div className="relative">
         <VisionSection />
 
         {/* Technology Section */}
