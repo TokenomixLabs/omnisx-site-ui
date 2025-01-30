@@ -11,8 +11,9 @@ const Index = () => {
       <Navigation />
       <main className="relative">
         <HeroVideo />
-        <div className="relative z-10">
+        <div className="relative">
           <VisionSection />
+
           {/* Technology Section */}
           <section className="py-20 relative bg-black/20">
             <div className="container mx-auto px-4">
@@ -45,32 +46,33 @@ const Index = () => {
             </div>
           </section>
 
-        <section className="py-20 relative">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="font-orbitron text-4xl font-bold mb-6">
-              Join the First True AI Ecosystem
-            </h2>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Be part of the future. Partner with OmnisX to shape the next era of artificial intelligence.
-            </p>
-            <Button 
-              size="lg" 
-              className="bg-gradient-to-r from-neon-blue to-neon-purple hover:opacity-90 animate-gradient-flow"
-            >
-              Join the Revolution <ArrowRight className="ml-2" />
-            </Button>
-          </div>
-        </section>
-
-        {/* Footer */}
-        <footer className="py-8 border-t border-white/10">
-          <div className="container mx-auto px-4">
-            <div className="flex justify-between items-center">
-              <div className="font-orbitron text-xl">OmnisX.ai</div>
-              <div className="text-sm text-gray-400">© 2024 OmnisX. All rights reserved.</div>
+          {/* CTA Section */}
+          <section className="py-20 relative">
+            <div className="container mx-auto px-4 text-center">
+              <h2 className="font-orbitron text-4xl font-bold mb-6">
+                Join the First True AI Ecosystem
+              </h2>
+              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                Be part of the future. Partner with OmnisX to shape the next era of artificial intelligence.
+              </p>
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-neon-blue to-neon-purple hover:opacity-90 animate-gradient-flow"
+              >
+                Join the Revolution <ArrowRight className="ml-2" />
+              </Button>
             </div>
-          </div>
-        </footer>
+          </section>
+
+          {/* Footer */}
+          <footer className="py-8 border-t border-white/10">
+            <div className="container mx-auto px-4">
+              <div className="flex justify-between items-center">
+                <div className="font-orbitron text-xl">OmnisX.ai</div>
+                <div className="text-sm text-gray-400">© 2024 OmnisX. All rights reserved.</div>
+              </div>
+            </div>
+          </footer>
         </div>
       </main>
     </div>

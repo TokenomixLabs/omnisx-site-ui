@@ -31,12 +31,18 @@
   }
   
   body {
-    @apply bg-[#1A1F2C] text-foreground antialiased m-0 p-0;
+    @apply bg-background text-foreground antialiased;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+    background: #1A1F2C;
   }
 
   html {
     @apply scroll-smooth;
+  }
+
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
   }
 }
 
@@ -52,11 +58,63 @@
   .text-gradient {
     @apply bg-gradient-to-br from-white via-white/90 to-white/70 bg-clip-text text-transparent;
   }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
 }
 
-/* Mobile-specific styles */
+/* Mobile-specific fixes */
 @media (max-width: 768px) {
+  .hero-section {
+    width: 100vw !important;
+    height: 100dvh !important; /* Dynamic viewport height for mobile */
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden !important;
+    position: fixed !important; /* Fix it to the viewport */
+    top: 0;
+    left: 0;
+  }
+
+  .hero-video-wrapper {
+    width: 100vw !important;
+    height: 100dvh !important; /* Same fix here */
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    background: black !important;
+  }
+
+  .hero-video-container video,
+  .hero-video-container iframe {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    position: absolute !important;
+    top: 0;
+    left: 0;
+  }
+
   body {
-    @apply overflow-x-hidden;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 }
