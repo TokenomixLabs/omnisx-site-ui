@@ -8,8 +8,12 @@ const Index = () => {
       {/* Navigation */}
       <nav className="fixed w-full z-50 bg-black/20 backdrop-blur-sm border-b border-white/10">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="font-orbitron text-2xl font-bold text-neon-blue">
-            OmnisX<span className="text-white">.ai</span>
+          <div className="flex items-center">
+            <img 
+              src="/lovable-uploads/5ea8ea83-505a-41ff-bbcc-c04e49adc761.png" 
+              alt="OmnisX.ai Logo" 
+              className="h-8 md:h-10"
+            />
           </div>
           <div className="hidden md:flex gap-6">
             <Button variant="ghost" className="text-white hover:text-neon-blue">Technology</Button>
@@ -24,7 +28,6 @@ const Index = () => {
         </div>
       </nav>
 
-      {/* Hero Section with Video Background */}
       <section className="relative min-h-screen flex items-center justify-center pt-20">
         <div className="absolute inset-0 overflow-hidden">
           <video
@@ -90,7 +93,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Technology Section */}
       <section className="py-20 relative bg-black/20">
         <div className="container mx-auto px-4">
           <h2 className="font-orbitron text-4xl font-bold text-center mb-16">
