@@ -111,14 +111,14 @@ const Index = () => {
               <CardContent className="p-6">
                 <h3 className="font-orbitron text-xl font-bold mb-3">OmnisX Agents</h3>
                 <p className="text-gray-300 mb-4">Autonomous AI workforce designed for complex problem-solving.</p>
-                <ExternalLink className="text-neon-purple animate-pulse" />
+                <CircuitBoard className="text-neon-purple animate-pulse" />
               </CardContent>
             </Card>
             <Card className="bg-card border border-white/10 backdrop-blur hover:border-neon-blue transition-all duration-300">
               <CardContent className="p-6">
                 <h3 className="font-orbitron text-xl font-bold mb-3">Hypermesh</h3>
                 <p className="text-gray-300 mb-4">Neural coordination network enabling seamless agent collaboration.</p>
-                <ExternalLink className="text-neon-blue animate-pulse" />
+                <Rocket className="text-neon-blue animate-pulse" />
               </CardContent>
             </Card>
           </div>
