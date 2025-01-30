@@ -9,11 +9,10 @@ const Index = () => {
   return (
     <div className="relative min-h-screen bg-[#1A1F2C] text-white">
       <Navigation />
-      <main className="relative pt-16">
+      <main className="relative">
         <HeroVideo />
         <div className="relative z-10">
           <VisionSection />
-
           {/* Technology Section */}
           <section className="py-20 relative bg-black/20">
             <div className="container mx-auto px-4">
