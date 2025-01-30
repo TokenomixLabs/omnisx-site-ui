@@ -30,7 +30,7 @@ const HeroVideo = () => {
   };
 
   return (
-    <div className="fixed inset-0 w-full h-full -z-10">
+    <div className="absolute inset-0 w-full h-full">
       <div className="absolute inset-0 w-full h-full bg-black">
         <div className="absolute inset-0">
           <iframe
