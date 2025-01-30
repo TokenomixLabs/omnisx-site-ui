@@ -3,6 +3,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Volume2, VolumeX, Atom, CircuitBoard, Satellite, ArrowRight } from "lucide-react";
 import { useState } from "react";
 
+declare const Vimeo: any; // Add type declaration for Vimeo
+
 const Index = () => {
   const [isMuted, setIsMuted] = useState(true);
 
@@ -50,20 +52,21 @@ const Index = () => {
           <iframe
             src={`https://player.vimeo.com/video/1052026972?background=1&autoplay=1&loop=1&byline=0&title=0${isMuted ? '&muted=1' : ''}`}
             className="absolute w-full h-full object-cover"
-            style={{ filter: 'blur(2px)' }}
             allow="autoplay; fullscreen"
             frameBorder="0"
           ></iframe>
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#1A1F2C]/50 to-[#1A1F2C]"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#1A1F2C]/30 to-[#1A1F2C]"></div>
+          
+          {/* Mute button positioned on video */}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleMute}
+            className="absolute bottom-8 right-8 z-50 bg-black/20 hover:bg-black/40 backdrop-blur-sm rounded-full w-12 h-12 flex items-center justify-center"
+          >
+            {isMuted ? <VolumeX className="h-6 w-6" /> : <Volume2 className="h-6 w-6" />}
+          </Button>
         </div>
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={toggleMute}
-          className="absolute top-4 right-4 z-50 bg-black/20 hover:bg-black/40"
-        >
-          {isMuted ? <VolumeX className="h-6 w-6" /> : <Volume2 className="h-6 w-6" />}
-        </Button>
       </section>
 
       {/* Vision Section */}
