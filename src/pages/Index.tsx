@@ -10,7 +10,6 @@ const Index = () => {
   const [player, setPlayer] = useState<any>(null);
 
   useEffect(() => {
-    // Initialize player once when component mounts
     const iframe = document.querySelector('iframe');
     if (iframe) {
       const vimeoPlayer = new Vimeo.Player(iframe);
@@ -64,17 +63,17 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen">
-        <div className="absolute inset-0 overflow-hidden">
+      <section className="relative h-screen w-full">
+        <div className="absolute inset-0">
           <iframe
             src="https://player.vimeo.com/video/1052026972?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
-            className="absolute w-full h-full object-cover"
+            className="w-full h-full object-cover"
             allow="autoplay; fullscreen"
             frameBorder="0"
           ></iframe>
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#1A1F2C]/30 to-[#1A1F2C]"></div>
           
-          {/* Mute button positioned on video */}
+          {/* Mute button */}
           <Button
             variant="ghost"
             size="icon"
@@ -83,6 +82,24 @@ const Index = () => {
           >
             {isMuted ? <VolumeX className="h-6 w-6" /> : <Volume2 className="h-6 w-6" />}
           </Button>
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative z-10 h-full flex items-center justify-center">
+          <div className="text-center px-4">
+            <h1 className="font-orbitron text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-gradient">
+              The Intelligence Layer for Autonomous Agents
+            </h1>
+            <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8">
+              Defining the future of agent superintelligence through advanced neural architectures
+            </p>
+            <Button 
+              size="lg"
+              className="bg-gradient-to-r from-neon-blue to-neon-purple hover:opacity-90 animate-gradient-flow"
+            >
+              Join the Revolution
+            </Button>
+          </div>
         </div>
       </section>
 
