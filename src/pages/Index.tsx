@@ -25,15 +25,15 @@ const Index = () => {
     <div className="min-h-screen bg-[#1A1F2C] text-white overflow-hidden">
       {/* Navigation */}
       <nav className="fixed w-full z-50 glass-morphism">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div className="container mx-auto px-4 py-2 md:py-4 flex justify-between items-center">
           <div className="flex items-center">
             <img 
               src="/lovable-uploads/bb7e3b6e-d831-4a9a-998c-c74c5ddcb00b.png" 
               alt="OmnisX.ai Logo" 
-              className="h-10 md:h-12"
+              className="h-8 md:h-10 lg:h-12"
             />
           </div>
-          <div className="hidden md:flex gap-6">
+          <div className="hidden md:flex gap-4 lg:gap-6">
             <Button variant="ghost" className="text-white hover:text-neon-blue">Technology</Button>
             <Button variant="ghost" className="text-white hover:text-neon-blue">Vision</Button>
             <Button variant="ghost" className="text-white hover:text-neon-blue">Partners</Button>
@@ -43,6 +43,15 @@ const Index = () => {
               Request Access
             </Button>
           </div>
+          {/* Mobile menu button */}
+          <Button 
+            variant="ghost" 
+            className="md:hidden text-white hover:text-neon-blue"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </Button>
         </div>
       </nav>
 
@@ -70,30 +79,30 @@ const Index = () => {
       </section>
 
       {/* Vision Section */}
-      <section className="py-20 relative">
+      <section className="py-12 md:py-20 relative">
         <div className="container mx-auto px-4">
-          <h2 className="font-orbitron text-4xl font-bold text-center mb-16">
+          <h2 className="font-orbitron text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16">
             Why <span className="text-neon-blue">OmnisX</span>?
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             <Card className="bg-card border border-white/10 backdrop-blur hover:border-neon-blue transition-all duration-300">
               <CardContent className="p-6">
-                <Atom className="w-12 h-12 text-neon-blue mb-4 animate-glow" />
-                <h3 className="font-orbitron text-xl font-bold mb-3">Quantum Intelligence</h3>
+                <Atom className="w-10 h-10 md:w-12 md:h-12 text-neon-blue mb-4 animate-glow" />
+                <h3 className="font-orbitron text-lg md:text-xl font-bold mb-3">Quantum Intelligence</h3>
                 <p className="text-gray-300">Advanced AI systems that harness quantum principles for unprecedented processing power.</p>
               </CardContent>
             </Card>
             <Card className="bg-card border border-white/10 backdrop-blur hover:border-neon-purple transition-all duration-300">
               <CardContent className="p-6">
-                <CircuitBoard className="w-12 h-12 text-neon-purple mb-4 animate-glow" />
-                <h3 className="font-orbitron text-xl font-bold mb-3">Neural Architecture</h3>
+                <CircuitBoard className="w-10 h-10 md:w-12 md:h-12 text-neon-purple mb-4 animate-glow" />
+                <h3 className="font-orbitron text-lg md:text-xl font-bold mb-3">Neural Architecture</h3>
                 <p className="text-gray-300">Breakthrough neural networks that adapt and evolve in real-time.</p>
               </CardContent>
             </Card>
             <Card className="bg-card border border-white/10 backdrop-blur hover:border-neon-blue transition-all duration-300">
               <CardContent className="p-6">
-                <Satellite className="w-12 h-12 text-neon-blue mb-4 animate-glow" />
-                <h3 className="font-orbitron text-xl font-bold mb-3">Accelerated Evolution</h3>
+                <Satellite className="w-10 h-10 md:w-12 md:h-12 text-neon-blue mb-4 animate-glow" />
+                <h3 className="font-orbitron text-lg md:text-xl font-bold mb-3">Accelerated Evolution</h3>
                 <p className="text-gray-300">Rapid advancement through self-improving AI systems.</p>
               </CardContent>
             </Card>
