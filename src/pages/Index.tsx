@@ -7,9 +7,14 @@ const Index = () => {
   const [isMuted, setIsMuted] = useState(true);
 
   const toggleMute = () => {
-    const video = document.querySelector('video');
-    if (video) {
-      video.muted = !video.muted;
+    const iframe = document.querySelector('iframe');
+    if (iframe) {
+      const player = new Vimeo.Player(iframe);
+      if (isMuted) {
+        player.setVolume(1);
+      } else {
+        player.setVolume(0);
+      }
       setIsMuted(!isMuted);
     }
   };
@@ -42,16 +47,13 @@ const Index = () => {
       {/* Hero Section */}
       <section className="relative min-h-screen">
         <div className="absolute inset-0 overflow-hidden">
-          <video
-            autoPlay
-            loop
-            muted={isMuted}
-            playsInline
+          <iframe
+            src={`https://player.vimeo.com/video/1052026972?background=1&autoplay=1&loop=1&byline=0&title=0${isMuted ? '&muted=1' : ''}`}
             className="absolute w-full h-full object-cover"
             style={{ filter: 'blur(2px)' }}
-          >
-            <source src="/neural-network.mp4" type="video/mp4" />
-          </video>
+            allow="autoplay; fullscreen"
+            frameBorder="0"
+          ></iframe>
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#1A1F2C]/50 to-[#1A1F2C]"></div>
         </div>
         <Button
