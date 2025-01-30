@@ -42,11 +42,6 @@ const HeroVideo = () => {
         </div>
       </div>
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#1A1F2C] pointer-events-none" />
-      <div className="absolute inset-0 flex items-center justify-center">
-        <h1 className="font-orbitron text-4xl md:text-6xl lg:text-7xl text-white text-center font-bold tracking-wider animate-fade-in">
-          AUTONOMOUS SUPERINTELLIGENCE
-        </h1>
-      </div>
       <Button
         variant="ghost"
         size="icon"
