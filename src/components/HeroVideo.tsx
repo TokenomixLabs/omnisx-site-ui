@@ -30,8 +30,8 @@ const HeroVideo = () => {
   };
 
   return (
-    <div className="relative w-full h-[100vh] overflow-hidden">
-      <div className="absolute inset-0 w-full h-full bg-black/40">
+    <div className="relative w-full h-screen overflow-hidden md:h-[100vh]">
+      <div className="absolute inset-0 w-full h-full bg-black/40 p-0 m-0">
         <div className="absolute inset-0">
           <iframe
             src="https://player.vimeo.com/video/1052026972?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"

@@ -9,8 +9,8 @@ const Index = () => {
   return (
     <div className="relative min-h-screen bg-[#1A1F2C] text-white">
       <Navigation />
-      <main>
-        <section className="relative">
+      <main className="p-0 m-0">
+        <section className="relative p-0 m-0">
           <HeroVideo />
         </section>
 
