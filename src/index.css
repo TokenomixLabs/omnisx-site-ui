@@ -31,9 +31,8 @@
   }
   
   body {
-    @apply bg-background text-foreground antialiased m-0 p-0 overflow-x-hidden;
+    @apply bg-[#1A1F2C] text-foreground antialiased m-0 p-0;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
-    background: #1A1F2C;
   }
 
   html {
@@ -58,6 +57,6 @@
 /* Mobile-specific styles */
 @media (max-width: 768px) {
   body {
-    @apply overflow-x-hidden overflow-y-auto;
+    @apply overflow-x-hidden;
   }
 }
