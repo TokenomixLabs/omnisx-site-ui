@@ -7,13 +7,17 @@ import { Satellite, CircuitBoard, Atom, ArrowRight } from "lucide-react";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-[#1A1F2C] text-white">
+    <div className="min-h-screen bg-[#1A1F2C] text-white overflow-x-hidden">
       <Navigation />
-      <HeroVideo />
-      <VisionSection />
+      <main className="relative w-full">
+        <section className="relative w-full h-screen">
+          <HeroVideo />
+        </section>
 
-      {/* Technology Section */}
-      <section className="py-20 relative bg-black/20">
+        <VisionSection />
+
+        {/* Technology Section */}
+        <section className="py-20 relative bg-black/20">
         <div className="container mx-auto px-4">
           <h2 className="font-orbitron text-4xl font-bold text-center mb-16">
             Our <span className="text-neon-purple">Technology</span>
@@ -42,10 +46,10 @@ const Index = () => {
             </Card>
           </div>
         </div>
-      </section>
+        </section>
 
-      {/* CTA Section */}
-      <section className="py-20 relative">
+        {/* CTA Section */}
+        <section className="py-20 relative">
         <div className="container mx-auto px-4 text-center">
           <h2 className="font-orbitron text-4xl font-bold mb-6">
             Join the First True AI Ecosystem
@@ -60,17 +64,18 @@ const Index = () => {
             Join the Revolution <ArrowRight className="ml-2" />
           </Button>
         </div>
-      </section>
+        </section>
 
-      {/* Footer */}
-      <footer className="py-8 border-t border-white/10">
+        {/* Footer */}
+        <footer className="py-8 border-t border-white/10">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center">
             <div className="font-orbitron text-xl">OmnisX.ai</div>
             <div className="text-sm text-gray-400">© 2024 OmnisX. All rights reserved.</div>
           </div>
         </div>
-      </footer>
+        </footer>
+      </main>
     </div>
   );
 };

@@ -1,12 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Volume2, VolumeX } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 declare const Vimeo: any;
 
 const HeroVideo = () => {
   const [isMuted, setIsMuted] = useState(true);
   const [player, setPlayer] = useState<any>(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const iframe = document.querySelector('iframe');
@@ -28,19 +30,11 @@ const HeroVideo = () => {
   };
 
   return (
-    <div className="relative w-full h-screen">
+    <div className="w-full h-screen relative overflow-hidden">
       <div className="absolute inset-0">
         <iframe
           src="https://player.vimeo.com/video/1052026972?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
-          style={{
-            width: '100%',
-            height: '100%',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-          }}
+          className="w-full h-full object-cover"
           allow="autoplay; fullscreen"
           frameBorder="0"
         />
@@ -49,7 +43,9 @@ const HeroVideo = () => {
         variant="ghost"
         size="icon"
         onClick={toggleMute}
-        className="absolute bottom-8 right-8 z-50 bg-black/20 hover:bg-black/40 backdrop-blur-sm rounded-full w-12 h-12 flex items-center justify-center"
+        className={`absolute z-50 bg-black/20 hover:bg-black/40 backdrop-blur-sm rounded-full w-12 h-12 flex items-center justify-center ${
+          isMobile ? 'bottom-4 right-4' : 'bottom-8 right-8'
+        }`}
       >
         {isMuted ? <VolumeX className="h-6 w-6" /> : <Volume2 className="h-6 w-6" />}
       </Button>
