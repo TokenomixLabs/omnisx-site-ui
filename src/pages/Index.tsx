@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, Brain, Network, Cpu, ExternalLink } from "lucide-react";
+import { ArrowRight, Atom, CircuitBoard, Rocket, Satellite } from "lucide-react";
 
 const Index = () => {
   return (
@@ -28,6 +28,7 @@ const Index = () => {
         </div>
       </nav>
 
+      {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center pt-20">
         <div className="absolute inset-0 overflow-hidden">
           <video
@@ -70,23 +71,23 @@ const Index = () => {
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="bg-card border border-white/10 backdrop-blur hover:border-neon-blue transition-all duration-300">
               <CardContent className="p-6">
-                <Brain className="w-12 h-12 text-neon-blue mb-4 animate-glow" />
-                <h3 className="font-orbitron text-xl font-bold mb-3">Meta-Learning AI</h3>
-                <p className="text-gray-300">Advanced AI systems that evolve and adapt through continuous learning.</p>
+                <Atom className="w-12 h-12 text-neon-blue mb-4 animate-glow" />
+                <h3 className="font-orbitron text-xl font-bold mb-3">Quantum Intelligence</h3>
+                <p className="text-gray-300">Advanced AI systems that harness quantum principles for unprecedented processing power.</p>
               </CardContent>
             </Card>
             <Card className="bg-card border border-white/10 backdrop-blur hover:border-neon-purple transition-all duration-300">
               <CardContent className="p-6">
-                <Cpu className="w-12 h-12 text-neon-purple mb-4 animate-glow" />
-                <h3 className="font-orbitron text-xl font-bold mb-3">Autonomous Decision Making</h3>
-                <p className="text-gray-300">Intelligent agents that make complex decisions independently.</p>
+                <CircuitBoard className="w-12 h-12 text-neon-purple mb-4 animate-glow" />
+                <h3 className="font-orbitron text-xl font-bold mb-3">Neural Architecture</h3>
+                <p className="text-gray-300">Breakthrough neural networks that adapt and evolve in real-time.</p>
               </CardContent>
             </Card>
             <Card className="bg-card border border-white/10 backdrop-blur hover:border-neon-blue transition-all duration-300">
               <CardContent className="p-6">
-                <Network className="w-12 h-12 text-neon-blue mb-4 animate-glow" />
-                <h3 className="font-orbitron text-xl font-bold mb-3">Decentralized Intelligence</h3>
-                <p className="text-gray-300">Distributed AI networks that collaborate and evolve together.</p>
+                <Rocket className="w-12 h-12 text-neon-blue mb-4 animate-glow" />
+                <h3 className="font-orbitron text-xl font-bold mb-3">Accelerated Evolution</h3>
+                <p className="text-gray-300">Rapid advancement through self-improving AI systems.</p>
               </CardContent>
             </Card>
           </div>
@@ -103,7 +104,7 @@ const Index = () => {
               <CardContent className="p-6">
                 <h3 className="font-orbitron text-xl font-bold mb-3">OmnisX Core</h3>
                 <p className="text-gray-300 mb-4">The foundational intelligence layer powering next-generation AI systems.</p>
-                <ExternalLink className="text-neon-blue animate-pulse" />
+                <Satellite className="text-neon-blue animate-pulse" />
               </CardContent>
             </Card>
             <Card className="bg-card border border-white/10 backdrop-blur hover:border-neon-purple transition-all duration-300">
