@@ -85,7 +85,7 @@ const Index = () => {
             </Card>
             <Card className="bg-card border border-white/10 backdrop-blur hover:border-neon-blue transition-all duration-300">
               <CardContent className="p-6">
-                <Rocket className="w-12 h-12 text-neon-blue mb-4 animate-glow" />
+                <Satellite className="w-12 h-12 text-neon-blue mb-4 animate-glow" />
                 <h3 className="font-orbitron text-xl font-bold mb-3">Accelerated Evolution</h3>
                 <p className="text-gray-300">Rapid advancement through self-improving AI systems.</p>
               </CardContent>
@@ -118,7 +118,7 @@ const Index = () => {
               <CardContent className="p-6">
                 <h3 className="font-orbitron text-xl font-bold mb-3">Hypermesh</h3>
                 <p className="text-gray-300 mb-4">Neural coordination network enabling seamless agent collaboration.</p>
-                <Satellite className="text-neon-blue animate-pulse" />
+                <Atom className="text-neon-blue animate-pulse" />
               </CardContent>
             </Card>
           </div>
