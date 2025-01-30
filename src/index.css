@@ -56,58 +56,44 @@
   .text-gradient {
     @apply bg-gradient-to-br from-white via-white/90 to-white/70 bg-clip-text text-transparent;
   }
-
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
 }
 
 /* Mobile-specific fixes */
 @media (max-width: 768px) {
   .hero-section {
-    padding: 0 !important;
-    margin: 0 !important;
-    height: 100dvh !important;
+    padding: 0;
+    margin: 0;
+    height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden !important;
+    overflow: hidden;
   }
 
   .hero-video-wrapper {
-    padding: 0 !important;
-    margin: 0 !important;
-    height: 100% !important;
+    padding: 0;
+    margin: 0;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden !important;
+    overflow: hidden;
   }
 
   .hero-video-container {
-    padding: 0 !important;
-    margin: 0 !important;
-    height: 100% !important;
+    padding: 0;
+    margin: 0;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden !important;
+    overflow: hidden;
   }
   
-  /* Remove unwanted spacing on body */
   body {
-    padding: 0 !important;
-    margin: 0 !important;
-    overflow-x: hidden !important;
-    overflow-y: auto !important;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 }
