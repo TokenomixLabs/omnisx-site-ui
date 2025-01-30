@@ -76,41 +76,39 @@
 /* Mobile-specific fixes */
 @media (max-width: 768px) {
   .hero-section {
-    width: 100vw !important;
-    height: 100dvh !important; /* Dynamic viewport height for mobile */
     padding: 0 !important;
     margin: 0 !important;
+    height: auto !important;
+    min-height: unset !important;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden !important;
-    position: fixed !important; /* Fix it to the viewport */
-    top: 0;
-    left: 0;
   }
 
   .hero-video-wrapper {
-    width: 100vw !important;
-    height: 100dvh !important; /* Same fix here */
     padding: 0 !important;
     margin: 0 !important;
+    height: auto !important;
+    min-height: unset !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden !important;
-    position: absolute !important;
-    top: 0;
-    left: 0;
-    background: black !important;
   }
 
-  .hero-video-container video,
-  .hero-video-container iframe {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    position: absolute !important;
-    top: 0;
-    left: 0;
+  .hero-video-container {
+    padding: 0 !important;
+    margin: 0 !important;
+    height: auto !important;
+    min-height: unset !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden !important;
   }
-
+  
+  /* Remove unwanted spacing on body */
   body {
     overflow-x: hidden !important;
     overflow-y: auto !important;
