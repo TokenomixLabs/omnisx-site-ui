@@ -16,6 +16,16 @@ const HeroVideo = () => {
       const vimeoPlayer = new Vimeo.Player(iframe);
       setPlayer(vimeoPlayer);
     }
+
+    // Prevent scrolling on mount
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+    
+    // Cleanup function to restore scrolling when component unmounts
+    return () => {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    };
   }, []);
 
   const toggleMute = async () => {
@@ -32,16 +42,22 @@ const HeroVideo = () => {
   return (
     <div className="fixed inset-0 w-full h-full">
       <div 
-        className="absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full bg-black"
         style={{
-          height: isMobile ? 'calc(100vh - env(safe-area-inset-top))' : '100vh',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          width: '100%',
+          height: '100%',
         }}
       >
         <div className="absolute inset-0">
           <iframe
             src="https://player.vimeo.com/video/1052026972?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
             style={{
-              position: 'absolute',
+              position: 'fixed',
               top: '0',
               left: '0',
               width: '100%',
