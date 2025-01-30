@@ -7,10 +7,10 @@ import { Satellite, CircuitBoard, Atom, ArrowRight } from "lucide-react";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-[#1A1F2C] text-white overflow-x-hidden">
+    <div className="min-h-screen bg-[#1A1F2C] text-white overflow-hidden">
       <Navigation />
       <main className="relative w-full">
-        <section className="relative w-full h-screen">
+        <section className="relative w-full h-[100vh] overflow-hidden">
           <HeroVideo />
         </section>
 
