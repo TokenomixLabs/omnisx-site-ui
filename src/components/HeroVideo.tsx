@@ -30,20 +30,24 @@ const HeroVideo = () => {
   };
 
   return (
-    <div className="absolute inset-0 w-full h-full overflow-hidden">
-      <div className="relative w-full h-full">
+    <div className="fixed inset-0 w-screen h-screen">
+      <div 
+        className="absolute inset-0" 
+        style={{ 
+          height: isMobile ? 'calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom))' : '100vh'
+        }}
+      >
         <iframe
           src="https://player.vimeo.com/video/1052026972?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
-          className="absolute w-full h-full object-cover"
           style={{
             position: 'absolute',
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            minWidth: '100%',
-            minHeight: '100%',
-            width: 'auto',
-            height: isMobile ? '100vh' : '100%'
+            width: '100vw',
+            height: '100vh',
+            objectFit: 'cover',
+            pointerEvents: 'none'
           }}
           allow="autoplay; fullscreen"
           frameBorder="0"
@@ -53,9 +57,7 @@ const HeroVideo = () => {
         variant="ghost"
         size="icon"
         onClick={toggleMute}
-        className={`absolute z-50 bg-black/20 hover:bg-black/40 backdrop-blur-sm rounded-full w-12 h-12 flex items-center justify-center ${
-          isMobile ? 'bottom-4 right-4' : 'bottom-8 right-8'
-        }`}
+        className="fixed z-50 bg-black/20 hover:bg-black/40 backdrop-blur-sm rounded-full w-12 h-12 flex items-center justify-center bottom-8 right-8"
       >
         {isMuted ? <VolumeX className="h-6 w-6" /> : <Volume2 className="h-6 w-6" />}
       </Button>

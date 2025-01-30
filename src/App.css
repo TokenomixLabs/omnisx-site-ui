@@ -3,14 +3,21 @@
   padding: 0;
   width: 100vw;
   min-height: 100vh;
-  overflow-x: hidden;
 }
 
-/* Remove any default margins that might affect video positioning */
 body, html {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+/* Prevent iOS Safari from showing the navigation bar */
+@supports (-webkit-touch-callout: none) {
+  .h-screen {
+    height: -webkit-fill-available;
+  }
 }
 
 .logo {
