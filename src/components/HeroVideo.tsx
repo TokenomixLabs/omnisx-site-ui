@@ -30,28 +30,29 @@ const HeroVideo = () => {
   };
 
   return (
-    <div className="fixed inset-0 w-screen h-screen">
+    <div className="fixed inset-0 w-full h-full">
       <div 
-        className="absolute inset-0" 
-        style={{ 
-          height: isMobile ? 'calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom))' : '100vh'
+        className="absolute inset-0 w-full h-full"
+        style={{
+          height: isMobile ? 'calc(100vh - env(safe-area-inset-top))' : '100vh',
         }}
       >
-        <iframe
-          src="https://player.vimeo.com/video/1052026972?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
-          style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: '100vw',
-            height: '100vh',
-            objectFit: 'cover',
-            pointerEvents: 'none'
-          }}
-          allow="autoplay; fullscreen"
-          frameBorder="0"
-        />
+        <div className="absolute inset-0">
+          <iframe
+            src="https://player.vimeo.com/video/1052026972?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
+            style={{
+              position: 'absolute',
+              top: '0',
+              left: '0',
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              pointerEvents: 'none'
+            }}
+            allow="autoplay; fullscreen"
+            frameBorder="0"
+          />
+        </div>
       </div>
       <Button
         variant="ghost"
