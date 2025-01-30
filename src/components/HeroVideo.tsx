@@ -38,18 +38,17 @@ const HeroVideo = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="fixed inset-0 w-full h-full">
       <div className="absolute inset-0 w-full h-full bg-black/40">
-        <div className="w-full h-full">
-          <iframe
-            src="https://player.vimeo.com/video/1052026972?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
-            className="w-full h-full object-cover"
-            allow="autoplay; fullscreen"
-            frameBorder="0"
-            loading="eager"
-            title="Background video"
-          />
-        </div>
+        <iframe
+          src="https://player.vimeo.com/video/1052026972?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
+          className="w-full h-full"
+          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+          allow="autoplay; fullscreen"
+          frameBorder="0"
+          loading="eager"
+          title="Background video"
+        />
       </div>
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#1A1F2C] pointer-events-none" />
       <Button
