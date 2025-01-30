@@ -72,3 +72,18 @@
     }
   }
 }
+
+/* Mobile-specific fixes */
+@media (max-width: 768px) {
+  .hero-video-container {
+    height: 100dvh !important;
+    max-height: 100vh;
+    object-fit: cover;
+  }
+  
+  .hero-section {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden;
+  }
+}
