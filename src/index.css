@@ -79,9 +79,15 @@
     padding: 0 !important;
     margin: 0 !important;
     height: 100vh !important;
+    width: 100vw !important;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    overflow: hidden !important;
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: -1;
   }
 
   .hero-video-container {
@@ -93,10 +99,11 @@
     overflow: hidden;
   }
 
-  .hero-video-container video {
+  .hero-video-container video,
+  .hero-video-container iframe {
     height: 100vh !important;
     width: 100vw !important;
-    object-fit: cover;
+    object-fit: cover !important;
   }
 
   .hero-section {
