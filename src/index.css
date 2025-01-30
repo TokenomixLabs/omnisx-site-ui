@@ -76,35 +76,28 @@
 /* Mobile-specific fixes */
 @media (max-width: 768px) {
   .hero-video-wrapper {
-    padding: 0 !important;
-    margin: 0 !important;
     height: 100vh !important;
     width: 100vw !important;
-    position: relative !important;
-    overflow: hidden !important;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden !important;
     background: black !important;
   }
 
   .hero-video-container {
-    height: 100vh !important;
-    width: 100vw !important;
-    position: absolute;
+    position: absolute !important;
     top: 0;
     left: 0;
-    overflow: hidden;
+    width: 100% !important;
+    height: 100% !important;
   }
 
   .hero-video-container video,
   .hero-video-container iframe {
+    width: 100% !important;
     height: 100vh !important;
-    width: 100vw !important;
     object-fit: cover !important;
-    position: absolute !important;
-    top: 0;
-    left: 0;
   }
 
   .hero-section {
