@@ -30,24 +30,22 @@ const HeroVideo = () => {
   };
 
   return (
-    <div className="absolute inset-0 w-full h-full">
-      <div className="absolute inset-0 w-full h-full bg-black">
+    <div className="relative h-screen w-full overflow-hidden">
+      <div className="absolute inset-0 w-full h-full bg-black/40">
         <div className="absolute inset-0">
           <iframe
             src="https://player.vimeo.com/video/1052026972?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
-            style={{
-              position: 'absolute',
-              top: '0',
-              left: '0',
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              pointerEvents: 'none'
-            }}
+            className="w-full h-full object-cover"
             allow="autoplay; fullscreen"
             frameBorder="0"
           />
         </div>
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#1A1F2C] pointer-events-none" />
+      <div className="absolute inset-0 flex items-center justify-center">
+        <h1 className="font-orbitron text-4xl md:text-6xl lg:text-7xl text-white text-center font-bold tracking-wider animate-fade-in">
+          AUTONOMOUS SUPERINTELLIGENCE
+        </h1>
       </div>
       <Button
         variant="ghost"
@@ -57,6 +55,11 @@ const HeroVideo = () => {
       >
         {isMuted ? <VolumeX className="h-6 w-6" /> : <Volume2 className="h-6 w-6" />}
       </Button>
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="w-8 h-8 border-2 border-white rounded-full flex items-center justify-center">
+          <div className="w-1 h-3 bg-white rounded-full" />
+        </div>
+      </div>
     </div>
   );
 };
