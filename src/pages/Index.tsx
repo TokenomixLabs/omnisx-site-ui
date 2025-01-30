@@ -29,7 +29,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#1A1F2C] text-white">
+    <div className="bg-[#1A1F2C] text-white">
       {/* Navigation */}
       <nav className="fixed w-full z-50 glass-morphism">
         <div className="container mx-auto px-4 py-2 md:py-4 flex justify-between items-center">
@@ -62,18 +62,11 @@ const Index = () => {
         </div>
       </nav>
 
-      {/* Hero Section - Optimized for all devices */}
-      <div className="fixed inset-0 w-full h-full">
+      {/* Hero Video Section */}
+      <section className="h-screen w-full relative">
         <iframe
           src="https://player.vimeo.com/video/1052026972?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
-          style={{
-            position: 'absolute',
-            top: '0',
-            left: '0',
-            width: '100%',
-            height: '100%',
-            pointerEvents: 'none'
-          }}
+          className="w-full h-full object-cover"
           allow="autoplay; fullscreen"
           frameBorder="0"
         ></iframe>
@@ -83,16 +76,14 @@ const Index = () => {
           variant="ghost"
           size="icon"
           onClick={toggleMute}
-          className="fixed bottom-8 right-8 z-50 bg-black/20 hover:bg-black/40 backdrop-blur-sm rounded-full w-12 h-12 flex items-center justify-center"
+          className="absolute bottom-8 right-8 z-50 bg-black/20 hover:bg-black/40 backdrop-blur-sm rounded-full w-12 h-12 flex items-center justify-center"
         >
           {isMuted ? <VolumeX className="h-6 w-6" /> : <Volume2 className="h-6 w-6" />}
         </Button>
-      </div>
+      </section>
 
-      {/* Content sections - Start after viewport height */}
-      <div className="relative mt-screen">
-        {/* Vision Section */}
-        <section className="py-12 md:py-20 relative">
+      {/* Vision Section */}
+      <section className="py-12 md:py-20 relative">
         <div className="container mx-auto px-4">
           <h2 className="font-orbitron text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16">
             Why <span className="text-neon-blue">OmnisX</span>?
@@ -121,10 +112,10 @@ const Index = () => {
             </Card>
           </div>
         </div>
-        </section>
+      </section>
 
-        {/* Technology Section */}
-        <section className="py-20 relative bg-black/20">
+      {/* Technology Section */}
+      <section className="py-20 relative bg-black/20">
         <div className="container mx-auto px-4">
           <h2 className="font-orbitron text-4xl font-bold text-center mb-16">
             Our <span className="text-neon-purple">Technology</span>
@@ -153,10 +144,10 @@ const Index = () => {
             </Card>
           </div>
         </div>
-        </section>
+      </section>
 
-        {/* CTA Section */}
-        <section className="py-20 relative">
+      {/* CTA Section */}
+      <section className="py-20 relative">
         <div className="container mx-auto px-4 text-center">
           <h2 className="font-orbitron text-4xl font-bold mb-6">
             Join the First True AI Ecosystem
@@ -171,18 +162,17 @@ const Index = () => {
             Join the Revolution <ArrowRight className="ml-2" />
           </Button>
         </div>
-        </section>
+      </section>
 
-        {/* Footer */}
-        <footer className="py-8 border-t border-white/10">
+      {/* Footer */}
+      <footer className="py-8 border-t border-white/10">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center">
             <div className="font-orbitron text-xl">OmnisX.ai</div>
             <div className="text-sm text-gray-400">© 2024 OmnisX. All rights reserved.</div>
           </div>
         </div>
-        </footer>
-      </div>
+      </footer>
     </div>
   );
 };
