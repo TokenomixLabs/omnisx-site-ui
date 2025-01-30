@@ -29,7 +29,7 @@ const Index = () => {
   };
 
   return (
-    <div className="bg-[#1A1F2C] text-white">
+    <div className="bg-[#1A1F2C] text-white w-full">
       {/* Navigation */}
       <nav className="fixed w-full z-50 glass-morphism">
         <div className="container mx-auto px-4 py-2 md:py-4 flex justify-between items-center">
@@ -63,10 +63,19 @@ const Index = () => {
       </nav>
 
       {/* Hero Video Section */}
-      <section className="relative w-full h-screen">
+      <div className="w-full h-screen overflow-hidden">
         <iframe
           src="https://player.vimeo.com/video/1052026972?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="w-full h-full object-cover"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            width: '100vw',
+            height: '100vh'
+          }}
           allow="autoplay; fullscreen"
           frameBorder="0"
         ></iframe>
@@ -80,7 +89,7 @@ const Index = () => {
         >
           {isMuted ? <VolumeX className="h-6 w-6" /> : <Volume2 className="h-6 w-6" />}
         </Button>
-      </section>
+      </div>
 
       {/* Vision Section */}
       <section className="relative bg-[#1A1F2C] py-20">
