@@ -80,14 +80,12 @@
     margin: 0 !important;
     height: 100vh !important;
     width: 100vw !important;
-    position: fixed !important;
-    top: 0;
-    left: 0;
+    position: relative !important;
     overflow: hidden !important;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: -1;
+    background: black !important;
   }
 
   .hero-video-container {
@@ -104,6 +102,9 @@
     height: 100vh !important;
     width: 100vw !important;
     object-fit: cover !important;
+    position: absolute !important;
+    top: 0;
+    left: 0;
   }
 
   .hero-section {
