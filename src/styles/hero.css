@@ -1,32 +1,38 @@
 /* Mobile-specific styles */
 @media (max-width: 768px) {
   .hero-section {
-    width: 100vw !important;
-    height: 100svh !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    position: relative !important;
-  }
-
-  .hero-video-wrapper {
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100vw;
+    height: auto;
     padding: 0 !important;
     margin: 0 !important;
     overflow: hidden !important;
+    position: relative !important;
+    background: black !important;
+  }
+
+  .hero-video-wrapper {
+    width: 100vw !important;
+    height: auto !important;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    background: black !important;
   }
 
   .hero-video-container video,
   .hero-video-container iframe {
     width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
+    height: auto !important;
+    object-fit: contain !important;
+    position: relative !important;
+    top: 0;
   }
 
   body {
