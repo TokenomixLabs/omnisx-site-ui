@@ -24,11 +24,11 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-[#1A1F2C] text-white overflow-hidden">
       {/* Navigation */}
-      <nav className="fixed w-full z-50 bg-[#161537] backdrop-blur-sm border-b border-white/10">
+      <nav className="fixed w-full z-50 glass-morphism">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center">
             <img 
-              src="/lovable-uploads/5ea8ea83-505a-41ff-bbcc-c04e49adc761.png" 
+              src="/lovable-uploads/bb7e3b6e-d831-4a9a-998c-c74c5ddcb00b.png" 
               alt="OmnisX.ai Logo" 
               className="h-10 md:h-12"
             />
