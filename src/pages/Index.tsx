@@ -1,8 +1,19 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, Atom, CircuitBoard, Rocket, Satellite } from "lucide-react";
+import { Volume2, VolumeX, Atom, CircuitBoard, Satellite, ArrowRight } from "lucide-react";
+import { useState } from "react";
 
 const Index = () => {
+  const [isMuted, setIsMuted] = useState(true);
+
+  const toggleMute = () => {
+    const video = document.querySelector('video');
+    if (video) {
+      video.muted = !video.muted;
+      setIsMuted(!isMuted);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#1A1F2C] text-white overflow-hidden">
       {/* Navigation */}
@@ -29,37 +40,28 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center pt-20">
+      <section className="relative min-h-screen">
         <div className="absolute inset-0 overflow-hidden">
           <video
             autoPlay
             loop
-            muted
+            muted={isMuted}
             playsInline
-            className="absolute w-full h-full object-cover opacity-30"
+            className="absolute w-full h-full object-cover"
             style={{ filter: 'blur(2px)' }}
           >
             <source src="/neural-network.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#1A1F2C]/50 to-[#1A1F2C]"></div>
         </div>
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <h1 className="font-orbitron text-5xl md:text-7xl font-bold mb-6 animate-float">
-            Powering the
-            <span className="bg-gradient-to-r from-neon-blue to-neon-purple bg-clip-text text-transparent block mt-2">
-              Autonomous Intelligence Revolution
-            </span>
-          </h1>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            The Core Infrastructure for Intelligent Agents
-          </p>
-          <Button 
-            size="lg" 
-            className="bg-gradient-to-r from-neon-blue to-neon-purple hover:opacity-90 animate-gradient-flow"
-          >
-            Shape the Future of Intelligence <ArrowRight className="ml-2" />
-          </Button>
-        </div>
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={toggleMute}
+          className="absolute top-4 right-4 z-50 bg-black/20 hover:bg-black/40"
+        >
+          {isMuted ? <VolumeX className="h-6 w-6" /> : <Volume2 className="h-6 w-6" />}
+        </Button>
       </section>
 
       {/* Vision Section */}
@@ -94,6 +96,7 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Technology Section */}
       <section className="py-20 relative bg-black/20">
         <div className="container mx-auto px-4">
           <h2 className="font-orbitron text-4xl font-bold text-center mb-16">
