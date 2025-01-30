@@ -34,15 +34,13 @@
     @apply bg-background text-foreground antialiased;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
     background: #1A1F2C;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
   }
 
   html {
     @apply scroll-smooth;
-  }
-
-  /* Smooth scroll behavior */
-  html {
-    scroll-behavior: smooth;
   }
 }
 
@@ -78,8 +76,7 @@
   .hero-section {
     padding: 0 !important;
     margin: 0 !important;
-    height: auto !important;
-    min-height: unset !important;
+    height: 100dvh !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -89,8 +86,7 @@
   .hero-video-wrapper {
     padding: 0 !important;
     margin: 0 !important;
-    height: auto !important;
-    min-height: unset !important;
+    height: 100% !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -100,8 +96,7 @@
   .hero-video-container {
     padding: 0 !important;
     margin: 0 !important;
-    height: auto !important;
-    min-height: unset !important;
+    height: 100% !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -110,9 +105,9 @@
   
   /* Remove unwanted spacing on body */
   body {
+    padding: 0 !important;
+    margin: 0 !important;
     overflow-x: hidden !important;
     overflow-y: auto !important;
-    margin: 0 !important;
-    padding: 0 !important;
   }
 }
