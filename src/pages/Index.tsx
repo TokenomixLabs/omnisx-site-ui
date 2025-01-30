@@ -1,21 +1,29 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Volume2, VolumeX, Atom, CircuitBoard, Satellite, ArrowRight } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-declare const Vimeo: any; // Add type declaration for Vimeo
+declare const Vimeo: any;
 
 const Index = () => {
   const [isMuted, setIsMuted] = useState(true);
+  const [player, setPlayer] = useState<any>(null);
 
-  const toggleMute = () => {
+  useEffect(() => {
+    // Initialize player once when component mounts
     const iframe = document.querySelector('iframe');
     if (iframe) {
-      const player = new Vimeo.Player(iframe);
+      const vimeoPlayer = new Vimeo.Player(iframe);
+      setPlayer(vimeoPlayer);
+    }
+  }, []);
+
+  const toggleMute = async () => {
+    if (player) {
       if (isMuted) {
-        player.setVolume(1);
+        await player.setVolume(1);
       } else {
-        player.setVolume(0);
+        await player.setVolume(0);
       }
       setIsMuted(!isMuted);
     }
@@ -59,7 +67,7 @@ const Index = () => {
       <section className="relative min-h-screen">
         <div className="absolute inset-0 overflow-hidden">
           <iframe
-            src={`https://player.vimeo.com/video/1052026972?background=1&autoplay=1&loop=1&byline=0&title=0${isMuted ? '&muted=1' : ''}`}
+            src="https://player.vimeo.com/video/1052026972?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
             className="absolute w-full h-full object-cover"
             allow="autoplay; fullscreen"
             frameBorder="0"
