@@ -50,7 +50,7 @@ const Index = () => {
           <section className="py-20 relative">
             <div className="container mx-auto px-4 text-center">
               <h2 className="font-orbitron text-4xl font-bold mb-6">
-                Join the First True AI Ecosystem
+                Join The First AI Agent Ecosystem
               </h2>
               <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
                 Be part of the future. Partner with OmnisX to shape the next era of artificial intelligence.
