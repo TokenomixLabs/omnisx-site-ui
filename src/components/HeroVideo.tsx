@@ -7,26 +7,40 @@ import ErrorBoundary from "./ErrorBoundary";
 
 const VideoPlayer = () => {
   const [isMuted, setIsMuted] = useState(true);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
   const isMobile = useIsMobile();
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.muted = isMuted;
+    const iframe = iframeRef.current;
+    if (iframe) {
+      // Post message to Vimeo player
+      iframe.contentWindow?.postMessage({
+        method: 'setVolume',
+        value: isMuted ? 0 : 1
+      }, '*');
     }
   }, [isMuted]);
 
   return (
     <div className="relative w-full overflow-hidden bg-black pt-6 md:pt-12">
       <AspectRatio ratio={16/9}>
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          playsInline
-          muted={isMuted}
-          className="w-full h-full object-cover"
-          src="/omnisx-hero.mp4"
+        <iframe
+          ref={iframeRef}
+          src="https://player.vimeo.com/video/1052026972?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&controls=0&quality=1080p"
+          className="w-full h-full"
+          loading="lazy"
+          title="Background video"
+          frameBorder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '100%',
+            height: '100%'
+          }}
         />
       </AspectRatio>
       <Button
