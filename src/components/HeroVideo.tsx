@@ -26,12 +26,10 @@ const VideoPlayer = () => {
       <AspectRatio ratio={16/9}>
         <iframe
           ref={iframeRef}
-          src="https://player.vimeo.com/video/1052026972?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&controls=0&quality=1080p"
+          src="https://player.vimeo.com/video/1052026972?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&controls=0"
           className="w-full h-full"
-          loading="lazy"
-          title="Background video"
           frameBorder="0"
-          allow="autoplay; fullscreen; picture-in-picture"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
           allowFullScreen
           style={{
             position: 'absolute',
