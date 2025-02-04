@@ -6,7 +6,7 @@ const VisionSection = () => (
     <div className="absolute inset-0 bg-cyber-grid bg-[size:50px_50px] opacity-10" />
     <div className="container mx-auto px-4 relative">
       <h2 className="font-orbitron text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16">
-        Why <span className="bg-gradient-to-r from-neon-blue to-neon-purple bg-clip-text text-transparent">OmnisX</span>?
+        Unleash <span className="bg-gradient-to-r from-neon-blue to-neon-purple bg-clip-text text-transparent">Agent Superintelligence</span>
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
         <Card className="group bg-card border border-white/10 backdrop-blur hover:border-neon-blue transition-all duration-500 hover:scale-105">
