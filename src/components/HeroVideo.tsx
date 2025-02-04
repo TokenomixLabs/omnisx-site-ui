@@ -2,13 +2,11 @@ import { Button } from "../components/ui/button";
 import { Volume2, VolumeX } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { AspectRatio } from "../components/ui/aspect-ratio";
-import { useIsMobile } from "../hooks/use-mobile";
 import ErrorBoundary from "./ErrorBoundary";
 
 const VideoPlayer = () => {
   const [isMuted, setIsMuted] = useState(true);
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const isMobile = useIsMobile();
 
   useEffect(() => {
     const iframe = iframeRef.current;
@@ -26,7 +24,7 @@ const VideoPlayer = () => {
       <AspectRatio ratio={16/9}>
         <iframe
           ref={iframeRef}
-          src="https://player.vimeo.com/video/1052026972?badge=0&autopause=0&player_id=0&app_id=58479&loop=1&controls=0"
+          src="https://player.vimeo.com/video/1052026972?badge=0&autopause=0&player_id=0&app_id=58479&background=1"
           className="w-full h-full"
           title="OMNISX. Hero Video"
           frameBorder="0"
