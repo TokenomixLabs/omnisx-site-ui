@@ -32,12 +32,12 @@ const capabilities = [
 
 const VisionSection = () => {
   return (
-    <section className="relative py-section-lg overflow-hidden" id="vision">
+    <section className="relative py-16 md:py-20 overflow-hidden" id="vision">
       <AmbientBackground variant="dots" intensity="subtle" />
       
       <div className="container relative z-10 mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-16 md:mb-20">
+        <div className="text-center mb-12 md:mb-16">
           <p className="font-mono text-caption text-secondary/80 tracking-widest uppercase mb-4">
             Capabilities
           </p>
