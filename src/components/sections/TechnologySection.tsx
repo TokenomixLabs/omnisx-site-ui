@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/premium-card";
 import { CoreIcon, AgentIcon, MeshIcon } from "@/components/icons/TechIcons";
 import { AmbientBackground, SectionGlow } from "@/components/backgrounds/AmbientBackground";
+import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/animations/ScrollReveal";
 
 const technologies = [
   {
@@ -32,46 +33,43 @@ const technologies = [
 
 const TechnologySection = () => {
   return (
-    <section className="relative py-16 md:py-20 overflow-hidden section-divider">
+    <section className="relative py-16 md:py-20 overflow-hidden section-divider" id="technology">
       <AmbientBackground variant="grid" intensity="subtle" />
       <SectionGlow />
       
       <div className="container relative z-10 mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-12 md:mb-16">
-          <p className="font-mono text-caption text-primary/80 tracking-widest uppercase mb-4">
+        <ScrollReveal className="text-center mb-12 md:mb-14">
+          <p className="font-mono text-xs text-primary/80 tracking-widest uppercase mb-3">
             Infrastructure
           </p>
-          <h2 className="font-display text-display-md md:text-display-lg text-foreground mb-4">
+          <h2 className="font-orbitron text-3xl md:text-4xl font-bold text-foreground mb-4">
             Our <span className="text-gradient">Technology</span>
           </h2>
-          <p className="text-body-lg text-muted-foreground">
+          <p className="text-base md:text-lg text-muted-foreground">
             Three foundational pillars engineered to define the next era of autonomous intelligence.
           </p>
-        </div>
+        </ScrollReveal>
         
         {/* Technology Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {technologies.map((tech, index) => (
-            <PremiumCard 
-              key={tech.title}
-              variant="default"
-              className="animate-fade-up"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <PremiumCardContent>
-                <PremiumCardIcon>
-                  <tech.icon 
-                    size={48} 
-                    className={tech.accentColor === "secondary" ? "text-secondary group-hover:text-secondary-glow" : ""} 
-                  />
-                </PremiumCardIcon>
-                <PremiumCardTitle>{tech.title}</PremiumCardTitle>
-                <PremiumCardDescription>{tech.description}</PremiumCardDescription>
-              </PremiumCardContent>
-            </PremiumCard>
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {technologies.map((tech) => (
+            <StaggerItem key={tech.title}>
+              <PremiumCard variant="default">
+                <PremiumCardContent>
+                  <PremiumCardIcon>
+                    <tech.icon 
+                      size={44} 
+                      className={tech.accentColor === "secondary" ? "text-secondary group-hover:text-secondary-glow" : ""} 
+                    />
+                  </PremiumCardIcon>
+                  <PremiumCardTitle>{tech.title}</PremiumCardTitle>
+                  <PremiumCardDescription>{tech.description}</PremiumCardDescription>
+                </PremiumCardContent>
+              </PremiumCard>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

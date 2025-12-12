@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/premium-card";
 import { QuantumIcon, NeuralIcon, EvolutionIcon } from "@/components/icons/TechIcons";
 import { AmbientBackground } from "@/components/backgrounds/AmbientBackground";
+import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/animations/ScrollReveal";
 
 const capabilities = [
   {
@@ -37,41 +38,38 @@ const VisionSection = () => {
       
       <div className="container relative z-10 mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-12 md:mb-16">
-          <p className="font-mono text-caption text-secondary/80 tracking-widest uppercase mb-4">
+        <ScrollReveal className="text-center mb-12 md:mb-14">
+          <p className="font-mono text-xs text-secondary/80 tracking-widest uppercase mb-3">
             Capabilities
           </p>
-          <h2 className="font-display text-display-md md:text-display-lg text-foreground mb-6">
+          <h2 className="font-orbitron text-3xl md:text-4xl font-bold text-foreground mb-4">
             Unleash{" "}
             <span className="text-gradient">Agent Superintelligence</span>
           </h2>
-          <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto">
             Purpose-built capabilities that transcend conventional AI limitations.
           </p>
-        </div>
+        </ScrollReveal>
         
         {/* Capability Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {capabilities.map((cap, index) => (
-            <PremiumCard 
-              key={cap.title}
-              variant="default"
-              className="animate-fade-up"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <PremiumCardContent>
-                <PremiumCardIcon>
-                  <cap.icon 
-                    size={48} 
-                    className={cap.accentColor === "secondary" ? "text-secondary group-hover:text-secondary-glow" : ""} 
-                  />
-                </PremiumCardIcon>
-                <PremiumCardTitle>{cap.title}</PremiumCardTitle>
-                <PremiumCardDescription>{cap.description}</PremiumCardDescription>
-              </PremiumCardContent>
-            </PremiumCard>
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {capabilities.map((cap) => (
+            <StaggerItem key={cap.title}>
+              <PremiumCard variant="default">
+                <PremiumCardContent>
+                  <PremiumCardIcon>
+                    <cap.icon 
+                      size={44} 
+                      className={cap.accentColor === "secondary" ? "text-secondary group-hover:text-secondary-glow" : ""} 
+                    />
+                  </PremiumCardIcon>
+                  <PremiumCardTitle>{cap.title}</PremiumCardTitle>
+                  <PremiumCardDescription>{cap.description}</PremiumCardDescription>
+                </PremiumCardContent>
+              </PremiumCard>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );
