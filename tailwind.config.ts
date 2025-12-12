@@ -63,7 +63,7 @@ export default {
       },
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
-        display: ["Space Grotesk", "Orbitron", "system-ui", "sans-serif"],
+        display: ["Orbitron", "system-ui", "sans-serif"],
         orbitron: ["Orbitron", "sans-serif"],
         mono: ["JetBrains Mono", "SF Mono", "monospace"],
       },
