@@ -1,124 +1,107 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
-interface PremiumCardProps extends React.HTMLAttributes<HTMLDivElement> {
+interface PremiumCardProps {
   variant?: "default" | "elevated" | "glow";
   hoverEffect?: boolean;
+  children: React.ReactNode;
+  className?: string;
 }
 
-const PremiumCard = React.forwardRef<HTMLDivElement, PremiumCardProps>(
-  ({ className, variant = "default", hoverEffect = true, children, ...props }, ref) => {
-    const baseStyles = cn(
-      "relative overflow-hidden rounded-lg transition-all duration-500 ease-out-expo",
-      "border border-white/[0.06]",
-      // Inner highlight
-      "before:absolute before:inset-0 before:rounded-lg before:pointer-events-none",
-      "before:bg-gradient-to-b before:from-white/[0.03] before:to-transparent before:opacity-100",
-      // Ambient glow layer
-      "after:absolute after:inset-0 after:rounded-lg after:pointer-events-none",
-      "after:bg-gradient-radial after:from-primary/[0.03] after:to-transparent after:opacity-0 after:transition-opacity after:duration-500"
-    );
-
-    const variantStyles = {
-      default: cn(
-        "bg-gradient-to-b from-card to-card/80",
-        "shadow-card"
-      ),
-      elevated: cn(
-        "bg-gradient-to-b from-card-elevated to-card",
-        "shadow-lg"
-      ),
-      glow: cn(
+const PremiumCard = ({ 
+  className, 
+  variant = "default", 
+  hoverEffect = true, 
+  children 
+}: PremiumCardProps) => {
+  return (
+    <motion.div
+      whileHover={hoverEffect ? { y: -4, scale: 1.01 } : undefined}
+      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+      className={cn(
+        "relative overflow-hidden rounded-lg",
         "bg-gradient-to-b from-card to-card/90",
-        "shadow-glow-sm"
-      ),
-    };
+        "border border-white/[0.06]",
+        "shadow-[0_1px_0_0_rgba(255,255,255,0.02)_inset,0_8px_24px_-8px_rgba(10,12,20,0.6)]",
+        "transition-all duration-300",
+        hoverEffect && "hover:border-white/[0.12] hover:shadow-[0_1px_0_0_rgba(255,255,255,0.04)_inset,0_16px_48px_-12px_rgba(10,12,20,0.7),0_0_30px_-10px_hsl(var(--primary)/0.15)]",
+        "group",
+        className
+      )}
+    >
+      {/* Subtle top highlight */}
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
+      
+      {/* Hover glow effect */}
+      <div className="absolute inset-0 bg-gradient-radial from-primary/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      
+      <div className="relative z-10">{children}</div>
+    </motion.div>
+  );
+};
 
-    const hoverStyles = hoverEffect
-      ? cn(
-          "hover:-translate-y-1 hover:border-white/[0.1]",
-          "hover:shadow-card-hover",
-          "hover:after:opacity-100",
-          "group"
-        )
-      : "";
-
-    return (
-      <div
-        ref={ref}
-        className={cn(baseStyles, variantStyles[variant], hoverStyles, className)}
-        {...props}
-      >
-        <div className="relative z-10">{children}</div>
-      </div>
-    );
-  }
+const PremiumCardContent = ({ 
+  className, 
+  children,
+  ...props 
+}: React.HTMLAttributes<HTMLDivElement>) => (
+  <div className={cn("p-6", className)} {...props}>
+    {children}
+  </div>
 );
-PremiumCard.displayName = "PremiumCard";
 
-const PremiumCardContent = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
+const PremiumCardIcon = ({ 
+  className, 
+  children 
+}: { 
+  className?: string; 
+  children: React.ReactNode; 
+}) => (
   <div
-    ref={ref}
-    className={cn("p-6 md:p-8", className)}
-    {...props}
-  />
-));
-PremiumCardContent.displayName = "PremiumCardContent";
-
-const PremiumCardIcon = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, children, ...props }, ref) => (
-  <div
-    ref={ref}
     className={cn(
-      "mb-5 text-primary transition-all duration-500",
-      "group-hover:text-primary-glow group-hover:drop-shadow-[0_0_12px_hsl(var(--primary)/0.5)]",
+      "mb-4 text-primary transition-all duration-300",
+      "group-hover:text-primary group-hover:drop-shadow-[0_0_10px_hsl(var(--primary)/0.4)]",
       className
     )}
-    {...props}
   >
     {children}
   </div>
-));
-PremiumCardIcon.displayName = "PremiumCardIcon";
+);
 
-const PremiumCardTitle = React.forwardRef<
-  HTMLHeadingElement,
-  React.HTMLAttributes<HTMLHeadingElement>
->(({ className, ...props }, ref) => (
+const PremiumCardTitle = ({ 
+  className, 
+  children,
+  ...props 
+}: React.HTMLAttributes<HTMLHeadingElement>) => (
   <h3
-    ref={ref}
     className={cn(
-      "font-display text-heading font-semibold text-foreground mb-3",
+      "font-orbitron text-lg font-semibold text-foreground mb-2",
       "transition-colors duration-300",
       "group-hover:text-white",
       className
     )}
     {...props}
-  />
-));
-PremiumCardTitle.displayName = "PremiumCardTitle";
+  >
+    {children}
+  </h3>
+);
 
-const PremiumCardDescription = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement>
->(({ className, ...props }, ref) => (
+const PremiumCardDescription = ({ 
+  className, 
+  children,
+  ...props 
+}: React.HTMLAttributes<HTMLParagraphElement>) => (
   <p
-    ref={ref}
     className={cn(
-      "text-body text-muted-foreground leading-relaxed",
-      "transition-colors duration-300",
-      "group-hover:text-muted-foreground/90",
+      "text-sm text-muted-foreground leading-relaxed",
       className
     )}
     {...props}
-  />
-));
-PremiumCardDescription.displayName = "PremiumCardDescription";
+  >
+    {children}
+  </p>
+);
 
 export {
   PremiumCard,
