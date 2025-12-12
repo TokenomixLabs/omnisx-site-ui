@@ -32,20 +32,20 @@ const technologies = [
 
 const TechnologySection = () => {
   return (
-    <section className="relative py-section-lg overflow-hidden section-divider">
+    <section className="relative py-16 md:py-20 overflow-hidden section-divider">
       <AmbientBackground variant="grid" intensity="subtle" />
       <SectionGlow />
       
       <div className="container relative z-10 mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-16 md:mb-20">
+        <div className="text-center mb-12 md:mb-16">
           <p className="font-mono text-caption text-primary/80 tracking-widest uppercase mb-4">
             Infrastructure
           </p>
-          <h2 className="font-display text-display-md md:text-display-lg text-foreground mb-6">
+          <h2 className="font-display text-display-md md:text-display-lg text-foreground mb-4">
             Our <span className="text-gradient">Technology</span>
           </h2>
-          <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-body-lg text-muted-foreground">
             Three foundational pillars engineered to define the next era of autonomous intelligence.
           </p>
         </div>
