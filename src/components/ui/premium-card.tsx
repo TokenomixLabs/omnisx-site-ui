@@ -1,6 +1,5 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
 
 interface PremiumCardProps {
   variant?: "default" | "elevated" | "glow";
@@ -16,16 +15,14 @@ const PremiumCard = ({
   children 
 }: PremiumCardProps) => {
   return (
-    <motion.div
-      whileHover={hoverEffect ? { y: -4, scale: 1.01 } : undefined}
-      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+    <div
       className={cn(
         "relative overflow-hidden rounded-lg",
         "bg-gradient-to-b from-card to-card/90",
         "border border-white/[0.06]",
         "shadow-[0_1px_0_0_rgba(255,255,255,0.02)_inset,0_8px_24px_-8px_rgba(10,12,20,0.6)]",
-        "transition-all duration-300",
-        hoverEffect && "hover:border-white/[0.12] hover:shadow-[0_1px_0_0_rgba(255,255,255,0.04)_inset,0_16px_48px_-12px_rgba(10,12,20,0.7),0_0_30px_-10px_hsl(var(--primary)/0.15)]",
+        "transition-all duration-300 ease-out",
+        hoverEffect && "hover:-translate-y-1 hover:border-white/[0.12] hover:shadow-[0_1px_0_0_rgba(255,255,255,0.04)_inset,0_16px_48px_-12px_rgba(10,12,20,0.7),0_0_30px_-10px_hsl(var(--primary)/0.15)]",
         "group",
         className
       )}
@@ -37,7 +34,7 @@ const PremiumCard = ({
       <div className="absolute inset-0 bg-gradient-radial from-primary/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
       
       <div className="relative z-10">{children}</div>
-    </motion.div>
+    </div>
   );
 };
 
