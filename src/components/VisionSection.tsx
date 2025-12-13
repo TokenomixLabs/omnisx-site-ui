@@ -46,7 +46,7 @@ const VisionSection = () => {
             Unleash{" "}
             <span className="text-gradient">Agent Superintelligence</span>
           </h2>
-          <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto">
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
             Purpose-built capabilities that transcend conventional AI limitations.
           </p>
         </ScrollReveal>
