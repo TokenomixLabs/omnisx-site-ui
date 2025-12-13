@@ -67,7 +67,7 @@ const ArchitectureSection = () => {
       <div className="container relative z-10 mx-auto px-6">
         {/* Header */}
         <ScrollReveal>
-          <div className="text-center mb-20">
+          <div className="text-center mb-16">
             <h2 className="text-display-sm font-display font-bold text-foreground mb-4 tracking-tight">
               SYSTEM ARCHITECTURE
             </h2>
@@ -78,46 +78,42 @@ const ArchitectureSection = () => {
         </ScrollReveal>
         
         {/* Architecture Diagram - Desktop */}
-        <ScrollReveal delay={200}>
-          <div className="hidden lg:flex items-center justify-center gap-0 max-w-5xl mx-auto">
-            {architectureNodes.map((node, index) => (
-              <React.Fragment key={node.id}>
-                <ArchitectureNode 
-                  label={node.label} 
-                  sublabel={node.sublabel}
-                  isFirst={index === 0}
-                  isLast={index === architectureNodes.length - 1}
-                />
-                {index < architectureNodes.length - 1 && <FlowConnector />}
-              </React.Fragment>
-            ))}
-          </div>
-        </ScrollReveal>
+        <div className="hidden lg:flex items-center justify-center gap-2 max-w-5xl mx-auto">
+          {architectureNodes.map((node, index) => (
+            <React.Fragment key={node.id}>
+              <ArchitectureNode 
+                label={node.label} 
+                sublabel={node.sublabel}
+                isFirst={index === 0}
+                isLast={index === architectureNodes.length - 1}
+              />
+              {index < architectureNodes.length - 1 && <FlowConnector />}
+            </React.Fragment>
+          ))}
+        </div>
         
         {/* Architecture Diagram - Mobile (Vertical) */}
-        <ScrollReveal delay={200}>
-          <div className="lg:hidden flex flex-col items-center gap-0 max-w-xs mx-auto">
-            {architectureNodes.map((node, index) => (
-              <React.Fragment key={node.id}>
-                <ArchitectureNode 
-                  label={node.label} 
-                  sublabel={node.sublabel}
-                  isFirst={index === 0}
-                  isLast={index === architectureNodes.length - 1}
-                />
-                {index < architectureNodes.length - 1 && (
-                  <div className="relative h-10 flex items-center justify-center">
-                    <div className="absolute w-px h-full bg-border/30" />
-                    <div className="absolute w-px h-full overflow-hidden">
-                      <div className="w-full h-1/3 bg-gradient-to-b from-transparent via-primary/40 to-transparent animate-[flowVertical_4s_ease-in-out_infinite]" />
-                    </div>
-                    <div className="absolute bottom-0 w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-t-[6px] border-t-border/50" />
+        <div className="lg:hidden flex flex-col items-center gap-0 max-w-xs mx-auto">
+          {architectureNodes.map((node, index) => (
+            <React.Fragment key={node.id}>
+              <ArchitectureNode 
+                label={node.label} 
+                sublabel={node.sublabel}
+                isFirst={index === 0}
+                isLast={index === architectureNodes.length - 1}
+              />
+              {index < architectureNodes.length - 1 && (
+                <div className="relative h-8 flex items-center justify-center w-px">
+                  <div className="absolute w-px h-full bg-border/40" />
+                  <div className="absolute w-px h-full overflow-hidden">
+                    <div className="w-full h-1/3 bg-gradient-to-b from-transparent via-primary/40 to-transparent animate-[flowVertical_4s_ease-in-out_infinite]" />
                   </div>
-                )}
-              </React.Fragment>
-            ))}
-          </div>
-        </ScrollReveal>
+                  <div className="absolute bottom-0 w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-t-[6px] border-t-border/50" />
+                </div>
+              )}
+            </React.Fragment>
+          ))}
+        </div>
       </div>
     </section>
   );
