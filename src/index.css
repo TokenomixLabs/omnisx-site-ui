@@ -188,4 +188,14 @@
   100% { transform: translateX(100%); }
 }
 
+@keyframes flow {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(400%); }
+}
+
+@keyframes flowVertical {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(400%); }
+}
+
 @import './styles/hero.css';

@@ -3,6 +3,7 @@ import Navigation from "@/components/Navigation";
 import HeroVideo from "@/components/HeroVideo";
 import VisionSection from "@/components/VisionSection";
 import TechnologySection from "@/components/sections/TechnologySection";
+import ArchitectureSection from "@/components/sections/ArchitectureSection";
 import CTASection from "@/components/sections/CTASection";
 import Footer from "@/components/sections/Footer";
 
@@ -22,6 +23,9 @@ const Index = () => {
           
           {/* Technology Section */}
           <TechnologySection />
+          
+          {/* Architecture Section */}
+          <ArchitectureSection />
           
           {/* CTA Section */}
           <CTASection />
