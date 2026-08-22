@@ -21,7 +21,7 @@ const loop = [
   {
     id: "commission",
     title: "Or commission a new one",
-    body: "When nothing fits, the need becomes a specification for a new agent — routed back into the same creation pipeline, under the same approvals.",
+    body: "When nothing fits, the need becomes a specification for a new agent — routed back into the same creation pipeline — built and proven in isolation before any authority is granted.",
   },
   {
     id: "grow",
@@ -89,7 +89,7 @@ const HiringLoop = () => (
         <ScrollReveal delay={0.24}>
           <div className="mt-6 text-center">
             <DirectionNote>
-              Commissioning follows the same approval gates as every other capability created in the
+              Commissioning follows the same authority boundary as every other capability created in the
               system.
             </DirectionNote>
           </div>

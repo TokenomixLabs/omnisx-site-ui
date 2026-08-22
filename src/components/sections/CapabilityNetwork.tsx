@@ -18,13 +18,13 @@ const properties = [
   {
     id: "provenance",
     title: "Provenance is recorded",
-    body: "Where a capability came from, why it was proposed and who approved it stays attached to it.",
+    body: "Where a capability came from, what it claims, what proved it and under what authority it runs stays attached to it.",
     span: "lg:col-span-2",
   },
   {
     id: "repair",
     title: "Repairable and replaceable",
-    body: "Underperforming capabilities can be revised or swapped under the same approval process that created them.",
+    body: "Underperforming capabilities can be revised or revised or withdrawn without rebuilding the agents that hold them.",
     span: "lg:col-span-2",
   },
   {
