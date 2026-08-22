@@ -9,6 +9,10 @@ type Stage = {
   title: string;
   summary: string;
   detail: string;
+  /** What the evolving object has gained by the end of this stage. */
+  gains: string;
+  /** How the object identifies itself at this stage. */
+  form: string;
 };
 
 const stages: Stage[] = [
