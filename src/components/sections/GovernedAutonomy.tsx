@@ -53,6 +53,10 @@ const GovernedAutonomy = () => (
         </ScrollReveal>
 
 
+        <ScrollReveal delay={0.2}>
+          <AuthorityTopology />
+        </ScrollReveal>
+
         <ScrollReveal delay={0.22}>
           <Hairline className="mt-12" />
         </ScrollReveal>
