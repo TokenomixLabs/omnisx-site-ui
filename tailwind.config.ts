@@ -65,6 +65,7 @@ export default {
         sans: ["Inter", "system-ui", "sans-serif"],
         display: ["Orbitron", "system-ui", "sans-serif"],
         orbitron: ["Orbitron", "sans-serif"],
+        grotesk: ["Space Grotesk", "Inter", "system-ui", "sans-serif"],
         mono: ["JetBrains Mono", "SF Mono", "monospace"],
       },
       fontSize: {
