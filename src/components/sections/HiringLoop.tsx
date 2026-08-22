@@ -56,24 +56,39 @@ const HiringLoop = () => (
       </div>
 
       <div className="relative mx-auto mt-14 max-w-5xl md:mt-20">
-        <div className="grid gap-4 md:grid-cols-5 md:gap-3">
+        <ol className="relative">
+          <span
+            className="pointer-events-none absolute left-[7px] top-2 bottom-2 w-px bg-gradient-to-b from-primary/50 via-border to-secondary/40 md:left-1/2 md:-translate-x-1/2"
+            aria-hidden="true"
+          />
           {loop.map((s, i) => (
             <ScrollReveal key={s.id} delay={i * 0.06}>
-              <div className="group relative h-full rounded-xl border border-white/[0.06] bg-card/50 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-[0_18px_50px_-24px_hsl(var(--primary)/0.6)]">
-                <span className="font-mono text-[0.625rem] tracking-[0.2em] text-primary/70">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="mt-3 text-sm font-semibold leading-snug text-foreground">
-                  {s.title}
-                </h3>
-                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{s.body}</p>
-                {i < loop.length - 1 && (
-                  <span className="pointer-events-none absolute -right-[7px] top-1/2 hidden h-2 w-2 -translate-y-1/2 rotate-45 border-r border-t border-primary/40 bg-background md:block" />
-                )}
-              </div>
+              <li
+                className={`relative grid grid-cols-[24px_minmax(0,1fr)] gap-4 pb-8 md:grid-cols-2 md:gap-12 ${
+                  i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
+                }`}
+              >
+                <div className="md:hidden">
+                  <span className="relative z-10 mt-2 block h-[9px] w-[9px] rounded-full bg-primary shadow-[0_0_14px_hsl(var(--primary)/0.7)]" />
+                </div>
+                <div className={i % 2 === 1 ? "md:pl-12 md:text-left" : "md:pr-12 md:text-right"}>
+                  <span className="font-mono text-[0.625rem] tracking-[0.2em] text-primary/70">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="mt-2 text-sm font-semibold leading-snug text-foreground">
+                    {s.title}
+                  </h3>
+                  <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{s.body}</p>
+                </div>
+                <div className="hidden md:block" aria-hidden="true" />
+                <span
+                  className="pointer-events-none absolute left-1/2 top-3 z-10 hidden h-[9px] w-[9px] -translate-x-1/2 rounded-full bg-primary shadow-[0_0_14px_hsl(var(--primary)/0.7)] md:block"
+                  aria-hidden="true"
+                />
+              </li>
             </ScrollReveal>
           ))}
-        </div>
+        </ol>
 
         {/* return arc */}
         <ScrollReveal delay={0.2}>
