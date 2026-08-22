@@ -4,16 +4,20 @@ import { Section, Eyebrow, SectionTitle, Lede, Hairline } from "@/components/bod
 
 const guarantees = [
   {
-    k: "Explicit authority",
-    v: "Every agent operates inside permissions it was granted — never permissions it assumed.",
+    k: "Creation ≠ permission",
+    v: "An agent may author and prove a capability without thereby earning the right to run it against live systems.",
   },
   {
-    k: "Approval before change",
-    v: "New capabilities require a human decision to build and a second to deploy.",
+    k: "Authority is granted",
+    v: "Execution rights come from lifecycle and permission rules — policy-governed, delegated, or explicitly approved by a person, scaled to consequence.",
   },
   {
     k: "Isolation before trust",
-    v: "Untested work is exercised away from live operations and promoted only on proof.",
+    v: "Untested work is exercised away from live operations and promoted only on evidence.",
+  },
+  {
+    k: "Provenance travels",
+    v: "What produced a capability, what it claims, and what proved it stay attached to the version.",
   },
   {
     k: "Attributable action",
@@ -21,7 +25,7 @@ const guarantees = [
   },
   {
     k: "Reversibility",
-    v: "Capability versions can be rolled back without rebuilding the agent that holds them.",
+    v: "Capability versions can be withdrawn or rolled back without rebuilding the agent that holds them.",
   },
 ];
 
@@ -41,11 +45,13 @@ const GovernedAutonomy = () => (
         </ScrollReveal>
         <ScrollReveal delay={0.16}>
           <Lede className="mt-6">
-            The point of persistent, evolving agents is leverage — and leverage without control is a
-            liability. Governance is not a settings page in OmnisX; it is where the architecture
-            starts.
+            Self-extending agents are the point — and unbounded authority is the liability. OmnisX
+            separates the two: agents extend themselves freely inside isolation, and every step
+            toward live execution passes through governance. It is not a settings page; it is where
+            the architecture starts.
           </Lede>
         </ScrollReveal>
+
 
         <ScrollReveal delay={0.22}>
           <Hairline className="mt-12" />
