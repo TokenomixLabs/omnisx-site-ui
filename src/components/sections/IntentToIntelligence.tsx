@@ -266,9 +266,9 @@ const IntentToIntelligence = () => {
                       Nothing is discarded between stages — the same object carries everything it
                       has gained forward.
                     </p>
-                  </div>
               </div>
             </div>
+
 
             <div className="mt-5">
               <DirectionNote>
