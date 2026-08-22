@@ -221,6 +221,8 @@ const IntentToIntelligence = () => {
                 <div className="md:w-2/3">
                   <p className="text-base leading-relaxed text-foreground/80">{stage.detail}</p>
 
+                </div>
+              </div>
                   {/* One evolving intelligence object */}
                   <div className="mt-8 rounded-lg border border-white/[0.06] bg-background/40 p-5">
                     <div className="flex flex-wrap items-center justify-between gap-3">
@@ -265,7 +267,6 @@ const IntentToIntelligence = () => {
                       has gained forward.
                     </p>
                   </div>
-                </div>
               </div>
             </div>
 
