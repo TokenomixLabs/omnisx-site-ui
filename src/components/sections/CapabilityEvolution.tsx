@@ -1,126 +1,65 @@
 import React from "react";
-import { ScrollReveal } from "@/components/animations/ScrollReveal";
-import { Section, Eyebrow, SectionTitle, Lede, StateChip, DirectionNote } from "@/components/body/primitives";
+import { ScrollReveal, Accumulate, Promote } from "@/components/animations/ScrollReveal";
+import {
+  Section,
+  Eyebrow,
+  SectionTitle,
+  Lede,
+  StateChip,
+  DirectionNote,
+  Doctrine,
+  PanelTitle,
+} from "@/components/body/primitives";
 import { cn } from "@/lib/utils";
 
-type Stage = {
-  id: string;
-  index: string;
-  title: string;
-  body: string;
-};
+type Node = { index: string; title: string; line: string };
 
-type Phase = {
-  id: string;
-  label: string;
-  claim: string;
-  tone: "isolated" | "boundary" | "operational";
-  stages: Stage[];
-};
-
-const phases: Phase[] = [
-  {
-    id: "creation",
-    label: "Phase 01 · Isolated creation",
-    claim: "An agent can create and prove new capability here — without gaining any new authority.",
-    tone: "isolated",
-    stages: [
-      {
-        id: "limit",
-        index: "01",
-        title: "Limit detected",
-        body: "During real work an agent reaches something its current capabilities cannot do, or cannot do well enough.",
-      },
-      {
-        id: "requirement",
-        index: "02",
-        title: "Requirement formed",
-        body: "The shortfall is expressed as a specific requirement: the inputs, the results, and the measure that would count as success.",
-      },
-      {
-        id: "reuse",
-        index: "03",
-        title: "Search and reuse",
-        body: "The network is checked first. An existing proven capability is preferred over authoring another one.",
-      },
-      {
-        id: "author",
-        index: "04",
-        title: "Author and build",
-        body: "When nothing fits, the agent authors the capability itself — inside an isolated environment, with no reach into live systems.",
-      },
-      {
-        id: "tests",
-        index: "05",
-        title: "Generate checks",
-        body: "Checks are derived from the original requirement, so the capability is judged against the outcome it was created for.",
-      },
-      {
-        id: "proof",
-        index: "06",
-        title: "Isolated proof",
-        body: "The capability is exercised until it either demonstrates the required behaviour or fails harmlessly, contained.",
-      },
-    ],
-  },
-  {
-    id: "boundary",
-    label: "Phase 02 · Authority boundary",
-    claim: "Creation is not permission. Existing is not the same as being cleared to run.",
-    tone: "boundary",
-    stages: [
-      {
-        id: "register",
-        index: "07",
-        title: "Register version and provenance",
-        body: "The proven artefact is versioned and bound to its origin: what limit produced it, what it claims, and what evidence backs the claim.",
-      },
-      {
-        id: "gate",
-        index: "08",
-        title: "Lifecycle and authority gate",
-        body: "Execution authority is granted separately, under lifecycle and permission rules. Low-consequence promotions may be policy-governed or delegated; consequential ones require explicit human approval.",
-      },
-    ],
-  },
-  {
-    id: "operation",
-    label: "Phase 03 · Operational life",
-    claim: "Authority granted is authority observed — and revocable.",
-    tone: "operational",
-    stages: [
-      {
-        id: "use",
-        index: "09",
-        title: "Operational use",
-        body: "The capability becomes part of the agent and available to the network, within the scope it was authorised for — nothing wider.",
-      },
-      {
-        id: "monitor",
-        index: "10",
-        title: "Monitored in service",
-        body: "Behaviour in live work is measured against the claim the capability was promoted on.",
-      },
-      {
-        id: "repair",
-        index: "11",
-        title: "Repair, replace, roll back",
-        body: "Versions can be revised, superseded or withdrawn without rebuilding the agent that holds them.",
-      },
-    ],
-  },
+/** Upper plane — isolated creation. Nothing here reaches live systems. */
+const isolatedNodes: Node[] = [
+  { index: "01", title: "Limit", line: "Real work meets something current capability cannot do." },
+  { index: "02", title: "Requirement", line: "The shortfall becomes inputs, results and a measure of success." },
+  { index: "03", title: "Search & reuse", line: "The network is checked first; proven capability beats a new one." },
+  { index: "04", title: "Author & build", line: "When nothing fits, the agent authors it inside an isolated environment." },
+  { index: "05", title: "Generate checks", line: "Checks are derived from the requirement that caused the work." },
+  { index: "06", title: "Isolated proof", line: "It demonstrates the behaviour — or fails harmlessly, contained." },
 ];
 
-const toneRing: Record<Phase["tone"], string> = {
-  isolated: "border-primary/70 shadow-[0_0_14px_hsl(var(--primary)/0.45)]",
-  boundary: "border-secondary shadow-[0_0_18px_hsl(var(--secondary)/0.6)]",
-  operational: "border-foreground/40 shadow-[0_0_12px_hsl(0_0%_100%/0.14)]",
-};
+/** Lower plane — operational life, after governed promotion. */
+const operationalNodes: Node[] = [
+  { index: "09", title: "Operational use", line: "Available to the agent and the network within the authorised scope — nothing wider." },
+  { index: "10", title: "Monitored in service", line: "Live behaviour is measured against the claim it was promoted on." },
+  { index: "11", title: "Repair, replace, roll back", line: "Versions are revised, superseded or withdrawn without rebuilding the agent." },
+];
+
+const provenance = [
+  { k: "Version", v: "immutable revision" },
+  { k: "Origin", v: "the requirement that caused it" },
+  { k: "Claim", v: "what it asserts it can do" },
+  { k: "Evidence", v: "the proof behind the claim" },
+];
+
+const NodeCell = ({ n, tone }: { n: Node; tone: "isolated" | "operational" }) => (
+  <div
+    className={cn(
+      "group relative h-full rounded-lg border px-4 py-4 transition-colors duration-500",
+      tone === "isolated"
+        ? "border-primary/15 bg-primary/[0.03] hover:border-primary/35"
+        : "border-foreground/10 bg-white/[0.02] hover:border-primary/25"
+    )}
+  >
+    <span className="font-mono text-[0.5625rem] tracking-[0.22em] text-muted-foreground/50">
+      {n.index}
+    </span>
+    <PanelTitle className="mt-1.5 text-[0.9375rem] leading-snug">{n.title}</PanelTitle>
+    <p className="mt-2 text-[0.8125rem] leading-relaxed text-muted-foreground">{n.line}</p>
+  </div>
+);
 
 const CapabilityEvolution = () => (
-  <Section id="evolution" tone="deep" className="py-20 md:py-32">
-    <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.02]" />
-    <div className="pointer-events-none absolute left-1/2 top-1/3 h-[520px] w-[900px] max-w-[130vw] -translate-x-1/2 rounded-full bg-secondary/[0.05] blur-[130px]" />
+  <Section id="evolution" tone="void" tier="showpiece">
+    <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.025]" />
+    <div className="pointer-events-none absolute left-1/2 top-[18%] h-[560px] w-[1100px] max-w-[140vw] -translate-x-1/2 rounded-full bg-primary/[0.06] blur-[150px]" />
+    <div className="pointer-events-none absolute left-1/2 top-[52%] h-[420px] w-[1200px] max-w-[150vw] -translate-x-1/2 rounded-full bg-secondary/[0.06] blur-[150px]" />
 
     <div className="container relative z-10 mx-auto px-4">
       <div className="mx-auto max-w-3xl text-center">
@@ -128,124 +67,176 @@ const CapabilityEvolution = () => (
           <Eyebrow tone="secondary">Signature capability</Eyebrow>
         </ScrollReveal>
         <ScrollReveal delay={0.08}>
-          <SectionTitle className="mt-5">
-            Agents are deployed with a baseline.
+          <SectionTitle variant="display" className="mt-6">
+            Deployed with a baseline.
             <br />
-            <span className="text-gradient">Not a ceiling.</span>
+            <span className="text-gradient">Never with a ceiling.</span>
           </SectionTitle>
         </ScrollReveal>
         <ScrollReveal delay={0.16}>
           <Lede className="mt-6">
-            When an OmnisX agent meets a limit, it can author the missing capability, generate its
-            own checks and prove it in isolation. What it cannot do is hand itself the right to
-            run it against live systems.
+            An OmnisX agent that meets a limit can author the missing capability, generate its own
+            checks and prove it — in isolation. What it cannot do is hand itself the right to run it.
           </Lede>
-        </ScrollReveal>
-        <ScrollReveal delay={0.22}>
-          <div className="mt-8 flex flex-wrap justify-center gap-2">
-            <StateChip tone="active">Build in isolation</StateChip>
-            <StateChip tone="active">Prove it</StateChip>
-            <StateChip tone="gate">Then promote it</StateChip>
-          </div>
         </ScrollReveal>
       </div>
 
-      {/* Lifecycle rail */}
-      <div className="relative mx-auto mt-14 max-w-3xl md:mt-20">
-        {phases.map((phase) => (
-          <div
-            key={phase.id}
-            className={cn(
-              "relative mt-8 first:mt-0",
-              phase.tone === "boundary" && "my-10 md:my-12"
-            )}
-          >
-            {/* phase header */}
-            <ScrollReveal>
-              <div
-                className={cn(
-                  "relative flex flex-col gap-2 border-l-2 pl-6 md:pl-8",
-                  phase.tone === "isolated" && "border-primary/40",
-                  phase.tone === "boundary" && "border-secondary/70",
-                  phase.tone === "operational" && "border-foreground/25"
-                )}
-              >
-                <p
-                  className={cn(
-                    "font-mono text-[0.6875rem] uppercase tracking-[0.24em]",
-                    phase.tone === "isolated" && "text-primary/80",
-                    phase.tone === "boundary" && "text-secondary",
-                    phase.tone === "operational" && "text-foreground/70"
-                  )}
-                >
-                  {phase.label}
-                </p>
-                <p className="max-w-xl font-orbitron text-sm leading-relaxed text-foreground/90 md:text-base">
-                  {phase.claim}
-                </p>
-              </div>
-            </ScrollReveal>
+      {/* ================= TWO-PLANE SYSTEM ================= */}
+      <div className="relative mx-auto mt-14 max-w-5xl md:mt-20">
+        {/* ---------- UPPER PLANE: ISOLATED CREATION ---------- */}
+        <div className="relative rounded-2xl border border-dashed border-primary/30 bg-primary/[0.02] p-5 md:p-8">
+          <div className="pointer-events-none absolute inset-0 rounded-2xl bg-grid opacity-[0.05]" />
 
-            {/* stages */}
-            <ol
-              className={cn(
-                "relative mt-6 border-l-2 pl-6 md:pl-8",
-                phase.tone === "isolated" && "border-primary/15",
-                phase.tone === "boundary" && "border-secondary/40",
-                phase.tone === "operational" && "border-foreground/10"
-              )}
-            >
-              {phase.stages.map((s) => (
-                <li key={s.id} className="relative pb-7 last:pb-0">
-                  <ScrollReveal delay={0.04}>
-                    <span
-                      className={cn(
-                        "absolute -left-[calc(1.5rem+7px)] top-[6px] h-[11px] w-[11px] rounded-full border-2 bg-background md:-left-[calc(2rem+7px)]",
-                        toneRing[phase.tone]
-                      )}
-                      aria-hidden="true"
-                    />
-                    <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                      <span className="font-mono text-[0.625rem] tracking-[0.2em] text-muted-foreground/60">
-                        {s.index}
-                      </span>
-                      <h3 className="font-orbitron text-base font-semibold text-foreground">
-                        {s.title}
-                      </h3>
-                    </div>
-                    <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">
-                      {s.body}
-                    </p>
-                  </ScrollReveal>
-                </li>
-              ))}
-            </ol>
-
-            {/* the boundary itself */}
-            {phase.tone === "boundary" && (
-              <ScrollReveal delay={0.08}>
-                <div className="relative mt-8 overflow-hidden rounded-xl border border-secondary/30 bg-secondary/[0.05] px-6 py-6 text-center">
-                  <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-secondary/70 to-transparent" />
-                  <p className="font-orbitron text-lg font-bold tracking-tight text-foreground md:text-xl">
-                    Creation is not permission.
-                  </p>
-                  <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
-                    A capability may exist, be versioned and be fully proven before it is authorised
-                    for operational use. Crossing this line is a separate decision with its own rules.
-                  </p>
-                </div>
-              </ScrollReveal>
-            )}
+          <div className="relative flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <p className="font-mono text-[0.625rem] uppercase tracking-[0.24em] text-primary/80">
+                Plane 01 · Isolated creation
+              </p>
+              <PanelTitle className="mt-2 text-base md:text-lg">
+                New capability is built and proven here — with no reach into live systems.
+              </PanelTitle>
+            </div>
+            <StateChip tone="active">Contained</StateChip>
           </div>
-        ))}
+
+          <Accumulate className="relative mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {isolatedNodes.map((n) => (
+              <NodeCell key={n.index} n={n} tone="isolated" />
+            ))}
+          </Accumulate>
+
+          {/* the single artefact, forming as it advances */}
+          <div className="relative mt-7 rounded-xl border border-white/[0.06] bg-background/50 p-5">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <span className="font-mono text-[0.625rem] uppercase tracking-[0.2em] text-muted-foreground/60">
+                One artefact · forming
+              </span>
+              <StateChip tone="neutral">Unauthorised</StateChip>
+            </div>
+            <Accumulate className="mt-4 flex items-center gap-1.5" step={0.12}>
+              {isolatedNodes.map((n, i) => (
+                <div key={n.index} className="flex-1">
+                  <span
+                    className="block rounded-full bg-gradient-to-r from-primary/70 to-secondary/50 shadow-[0_0_12px_-2px_hsl(var(--primary)/0.6)]"
+                    style={{ height: `${3 + i}px` }}
+                  />
+                </div>
+              ))}
+            </Accumulate>
+            <p className="mt-3 font-mono text-[0.625rem] leading-relaxed text-muted-foreground/50">
+              Nothing is discarded between stages — the same artefact carries everything it has
+              gained forward.
+            </p>
+          </div>
+
+          {/* version / provenance record */}
+          <div className="relative mt-4 rounded-xl border border-primary/20 bg-card/50 p-5">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <span className="font-mono text-[0.625rem] uppercase tracking-[0.2em] text-primary/80">
+                Version &amp; provenance record
+              </span>
+              <StateChip tone="evolved">Proven · not promoted</StateChip>
+            </div>
+            <dl className="mt-4 grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2">
+              {provenance.map((p) => (
+                <div key={p.k} className="flex items-baseline justify-between gap-4 border-b border-white/[0.05] pb-2">
+                  <dt className="font-mono text-[0.625rem] uppercase tracking-[0.16em] text-muted-foreground/70">
+                    {p.k}
+                  </dt>
+                  <dd className="text-right text-[0.8125rem] text-foreground/80">{p.v}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          <p className="relative mt-4 text-center font-mono text-[0.625rem] uppercase tracking-[0.2em] text-primary/50">
+            ↓ no path from this plane reaches live systems ↓
+          </p>
+        </div>
+
+        {/* ---------- AUTHORITY SEAM ---------- */}
+        <div className="relative my-8 md:my-10">
+          <div className="relative overflow-hidden rounded-2xl border border-secondary/40 bg-secondary/[0.06] px-5 py-8 text-center md:px-10">
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-secondary to-transparent" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-transparent via-secondary/50 to-transparent" />
+
+            <p className="font-mono text-[0.625rem] uppercase tracking-[0.24em] text-secondary">
+              Authority seam · lifecycle &amp; permission gate
+            </p>
+            <Doctrine className="mx-auto mt-4 max-w-2xl text-[clamp(1.4rem,3.4vw,2.25rem)]">
+              Creation is not permission.
+            </Doctrine>
+            <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+              Execution authority is granted separately. Low-consequence promotions may be
+              policy-governed or delegated; consequential ones require explicit human approval. A
+              capability may exist, be versioned and be fully proven before it is ever authorised
+              to run.
+            </p>
+          </div>
+        </div>
+
+        {/* ---------- LOWER PLANE: OPERATIONAL LIFE ---------- */}
+        <Promote>
+          <div className="relative rounded-2xl border border-foreground/15 bg-white/[0.015] p-5 md:p-8">
+            <div className="relative flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <p className="font-mono text-[0.625rem] uppercase tracking-[0.24em] text-foreground/70">
+                  Plane 02 · Operational life
+                </p>
+                <PanelTitle className="mt-2 text-base md:text-lg">
+                  The same artefact, now running under an authority granted to it.
+                </PanelTitle>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <StateChip tone="evolved">v · scoped</StateChip>
+                <StateChip tone="gate">Revocable</StateChip>
+              </div>
+            </div>
+
+            <div className="relative mt-6 rounded-xl border border-white/[0.06] bg-background/40 p-4">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <span className="font-mono text-[0.625rem] uppercase tracking-[0.2em] text-muted-foreground/60">
+                  Capability
+                </span>
+                <span className="font-mono text-[0.625rem] uppercase tracking-[0.2em] text-secondary/80">
+                  Authority · granted separately
+                </span>
+              </div>
+              <div className="mt-3 grid grid-cols-2 gap-3">
+                <span className="h-[6px] rounded-full bg-gradient-to-r from-primary/70 to-primary/30" />
+                <span className="h-[6px] rounded-full bg-gradient-to-r from-secondary/60 to-secondary/20" />
+              </div>
+              <p className="mt-3 font-mono text-[0.625rem] leading-relaxed text-muted-foreground/50">
+                Two separate records. Withdrawing authority does not delete the capability;
+                improving the capability does not widen the authority.
+              </p>
+            </div>
+
+            <Accumulate className="relative mt-4 grid grid-cols-1 gap-3 lg:grid-cols-3">
+              {operationalNodes.map((n) => (
+                <NodeCell key={n.index} n={n} tone="operational" />
+              ))}
+            </Accumulate>
+
+            {/* reverse / withdraw path */}
+            <div className="relative mt-6 flex items-center gap-3 rounded-lg border border-secondary/25 bg-secondary/[0.04] px-4 py-3">
+              <span className="font-mono text-base leading-none text-secondary" aria-hidden="true">
+                ↑
+              </span>
+              <p className="font-mono text-[0.625rem] uppercase leading-relaxed tracking-[0.16em] text-secondary/80">
+                Roll back · supersede · withdraw authority — back across the seam at any time
+              </p>
+            </div>
+          </div>
+        </Promote>
       </div>
 
       <ScrollReveal delay={0.1}>
-        <div className="mx-auto mt-14 max-w-2xl rounded-xl border border-white/[0.06] bg-card/40 p-6 text-center md:p-8">
-          <p className="font-orbitron text-base text-foreground md:text-lg">
+        <div className="mx-auto mt-14 max-w-2xl text-center">
+          <Doctrine className="text-[clamp(1.1rem,2.2vw,1.5rem)]">
             Self-extension is real. Self-authorisation is not.
-          </p>
-          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+          </Doctrine>
+          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
             The boundary OmnisX enforces is between what an agent can construct and what it is
             permitted to run. Authority is granted by lifecycle and permission rules — scaled to
             consequence — never assumed by the agent that built the capability.
