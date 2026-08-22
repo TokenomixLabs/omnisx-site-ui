@@ -13,7 +13,7 @@ const persistentLayer = [
 const cognitionLayer = ["reasoning model", "tool set", "capability version", "runtime"];
 
 const PersistentBeings = () => (
-  <Section id="persistence" tone="raised" className="py-20 md:py-28">
+  <Section id="persistence" tone="raised" tier="argument">
     <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
     <div className="container relative z-10 mx-auto px-4">
@@ -41,7 +41,7 @@ const PersistentBeings = () => (
             <p className="font-mono text-[0.625rem] uppercase tracking-[0.22em] text-muted-foreground/60">
               Conventional automation
             </p>
-            <h3 className="mt-4 font-orbitron text-lg text-muted-foreground">Run → result → gone</h3>
+            <h3 className="mt-4 font-grotesk text-lg font-semibold text-muted-foreground">Run → result → gone</h3>
             <ol className="mt-8 space-y-4">
               {["trigger", "execute", "return output", "discard state"].map((step, i) => (
                 <li key={step} className="flex items-center gap-4">
@@ -65,7 +65,7 @@ const PersistentBeings = () => (
             <p className="font-mono text-[0.625rem] uppercase tracking-[0.22em] text-primary/80">
               The OmnisX model
             </p>
-            <h3 className="mt-4 font-orbitron text-lg text-foreground">
+            <h3 className="mt-4 font-grotesk text-lg font-semibold text-foreground">
               Exist → work → remember → become more capable
             </h3>
 

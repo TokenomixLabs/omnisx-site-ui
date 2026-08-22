@@ -12,6 +12,7 @@ import CapabilityNetwork from "@/components/sections/CapabilityNetwork";
 import GovernedAutonomy from "@/components/sections/GovernedAutonomy";
 import FinalStatement from "@/components/sections/FinalStatement";
 import Footer from "@/components/sections/Footer";
+import { BreathBand } from "@/components/body/primitives";
 
 const Index = () => {
   return (
@@ -26,7 +27,12 @@ const Index = () => {
           <CategoryStatement />
           <IntentToIntelligence />
           <PersistentBeings />
+
+          {/* Showpiece framing — dark breathing bands isolate the centrepiece */}
+          <BreathBand label="The boundary" />
           <CapabilityEvolution />
+          <BreathBand />
+
           <AgentServices />
           <Workforces />
           <HiringLoop />

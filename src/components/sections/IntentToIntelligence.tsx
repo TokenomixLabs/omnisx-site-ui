@@ -113,7 +113,7 @@ const IntentToIntelligence = () => {
   const stage = stages[active];
 
   return (
-    <Section id="pipeline" className="py-20 md:py-28">
+    <Section id="pipeline" tier="argument">
       <div className="pointer-events-none absolute inset-0 bg-grid bg-grid-fade opacity-[0.025]" />
 
       <div className="container relative z-10 mx-auto px-4">
@@ -213,7 +213,7 @@ const IntentToIntelligence = () => {
                   <p className="font-mono text-[0.625rem] uppercase tracking-[0.22em] text-primary/80">
                     Stage {stage.index}
                   </p>
-                  <h3 className="mt-3 font-orbitron text-xl font-semibold text-foreground">
+                  <h3 className="mt-3 font-grotesk text-xl font-semibold text-foreground">
                     {stage.title}
                   </h3>
                   <p className="mt-2 text-sm text-muted-foreground">{stage.summary}</p>

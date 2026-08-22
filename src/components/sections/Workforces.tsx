@@ -111,7 +111,7 @@ const WorkforceFormation = () => (
 );
 
 const Workforces = () => (
-  <Section id="workforces" tone="raised" className="py-20 md:py-28">
+  <Section id="workforces" tone="raised" tier="argument">
     <div className="container relative z-10 mx-auto px-4">
       <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
         <ScrollReveal>
@@ -126,9 +126,7 @@ const Workforces = () => (
           </ScrollReveal>
           <ScrollReveal delay={0.08}>
             <SectionTitle className="mt-5">
-              Single agents solve tasks.
-              <br />
-              <span className="text-gradient">Coordinated workforces run operations.</span>
+              Single agents solve tasks. Coordinated workforces run operations.
             </SectionTitle>
           </ScrollReveal>
           <ScrollReveal delay={0.16}>
