@@ -18,32 +18,32 @@ const Footer = () => {
                 OmnisX<span className="text-primary">.ai</span>
               </div>
               <p className="text-sm text-muted-foreground/70 max-w-xs text-center md:text-left">
-                Defining the infrastructure for autonomous intelligence.
+                The intelligence layer for persistent, governed, evolving agents.
               </p>
             </div>
             
             {/* Navigation Links */}
             <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2">
               <a 
-                href="#technology" 
+                href="#pipeline" 
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
               >
                 Technology
               </a>
               <a 
-                href="#vision" 
+                href="#evolution" 
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
               >
                 Vision
               </a>
               <a 
-                href="#partners" 
+                href="#governance" 
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
               >
                 Partners
               </a>
               <a 
-                href="#contact" 
+                href="#access" 
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
               >
                 Contact
