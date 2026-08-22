@@ -113,13 +113,16 @@ const CapabilityEvolution = () => (
               </span>
               <StateChip tone="neutral">Unauthorised</StateChip>
             </div>
-            <Accumulate className="mt-4 flex items-center gap-1.5" step={0.12}>
+            <Accumulate className="mt-4 grid grid-cols-6 items-end gap-1.5" step={0.12}>
               {isolatedNodes.map((n, i) => (
-                <div key={n.index} className="flex-1">
+                <div key={n.index}>
                   <span
-                    className="block rounded-full bg-gradient-to-r from-primary/70 to-secondary/50 shadow-[0_0_12px_-2px_hsl(var(--primary)/0.6)]"
-                    style={{ height: `${3 + i}px` }}
+                    className="block w-full rounded-full bg-gradient-to-r from-primary/70 to-secondary/50 shadow-[0_0_12px_-2px_hsl(var(--primary)/0.6)]"
+                    style={{ height: `${4 + i * 2}px` }}
                   />
+                  <span className="mt-2 block text-center font-mono text-[0.5rem] tracking-[0.14em] text-muted-foreground/45">
+                    {n.index}
+                  </span>
                 </div>
               ))}
             </Accumulate>
