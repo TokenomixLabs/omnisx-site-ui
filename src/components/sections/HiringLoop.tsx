@@ -1,111 +1,86 @@
 import React from "react";
-import { ScrollReveal } from "@/components/animations/ScrollReveal";
-import { Section, Eyebrow, SectionTitle, Lede, DirectionNote } from "@/components/body/primitives";
+import { ScrollReveal, Accumulate } from "@/components/animations/ScrollReveal";
+import { Section, Eyebrow, SectionTitle, DirectionNote, PanelTitle } from "@/components/body/primitives";
 
 const loop = [
   {
     id: "need",
     title: "A need appears mid-mission",
-    body: "An operating agent identifies work it cannot complete alone — a capability, a specialisation or a volume beyond its role.",
+    body: "An operating agent identifies work it cannot complete alone.",
   },
   {
     id: "search",
     title: "Search the network",
-    body: "Declared services across the network are searched for a match against the need, its inputs and its required standard.",
+    body: "Declared services are searched against the need, its inputs and its required standard.",
   },
   {
     id: "engage",
     title: "Engage an existing agent",
-    body: "When a suitable agent exists, it is engaged under its published contract. The work happens without duplicating intelligence that already exists.",
+    body: "Where a match exists it is engaged under its published contract — nothing is duplicated.",
   },
   {
     id: "commission",
     title: "Or commission a new one",
-    body: "When nothing fits, the need becomes a specification for a new agent — routed back into the same creation pipeline — built and proven in isolation before any authority is granted.",
+    body: "When nothing fits, the need becomes a specification routed back into the same creation pipeline — built and proven in isolation before any authority is granted.",
   },
   {
     id: "grow",
     title: "The network grows from real demand",
-    body: "Every commissioned agent enters the network permanently, so the next mission with the same need starts with an answer already in place.",
+    body: "Commissioned agents stay, so the next mission with the same need starts with an answer in place.",
   },
 ];
 
 const HiringLoop = () => (
-  <Section id="hiring" className="py-20 md:py-28">
-    <div className="pointer-events-none absolute inset-0 bg-dots opacity-[0.35]" />
+  <Section id="hiring" tier="exhibit">
+    <div className="pointer-events-none absolute inset-0 bg-dots opacity-[0.3]" />
     <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
     <div className="container relative z-10 mx-auto px-4">
-      <div className="mx-auto max-w-2xl text-center">
-        <ScrollReveal>
-          <Eyebrow>Intelligent hiring</Eyebrow>
-        </ScrollReveal>
-        <ScrollReveal delay={0.08}>
-          <SectionTitle className="mt-5">
-            Agents hire agents.
-            <br />
-            <span className="text-muted-foreground">And commission the ones that don't exist yet.</span>
+      <ScrollReveal>
+        <div className="flex flex-col gap-2 md:flex-row md:items-baseline md:gap-5">
+          <Eyebrow className="shrink-0">Exhibit · Commissioning</Eyebrow>
+          <SectionTitle variant="exhibit">
+            Agents hire agents — and commission the ones that don't exist yet.
           </SectionTitle>
-        </ScrollReveal>
-        <ScrollReveal delay={0.16}>
-          <Lede className="mt-6">
-            The network is not a static catalogue. It expands in response to work that actually
-            happened.
-          </Lede>
-        </ScrollReveal>
-      </div>
+        </div>
+      </ScrollReveal>
 
-      <div className="relative mx-auto mt-14 max-w-5xl md:mt-20">
-        <ol className="relative">
-          <span
-            className="pointer-events-none absolute bottom-2 left-[4px] top-2 w-px bg-gradient-to-b from-primary/50 via-border to-secondary/40 md:left-1/2 md:-translate-x-1/2"
-            aria-hidden="true"
-          />
+      <div className="relative mt-8 max-w-3xl">
+        <span
+          className="pointer-events-none absolute bottom-3 left-[4px] top-3 w-px bg-gradient-to-b from-primary/50 via-border to-secondary/40"
+          aria-hidden="true"
+        />
+        <Accumulate step={0.07}>
           {loop.map((s, i) => (
-            <li
-              key={s.id}
-              className="relative grid grid-cols-1 gap-2 pb-9 pl-7 md:grid-cols-2 md:gap-12 md:pl-0"
-            >
+            <div key={s.id} className="relative pb-6 pl-7 text-left last:pb-0">
               <span
-                className="absolute left-0 top-2 z-10 h-[9px] w-[9px] rounded-full bg-primary shadow-[0_0_14px_hsl(var(--primary)/0.7)] md:left-1/2 md:-translate-x-1/2"
+                className="absolute left-0 top-[7px] h-[9px] w-[9px] rounded-full bg-primary shadow-[0_0_12px_hsl(var(--primary)/0.7)]"
                 aria-hidden="true"
               />
-              <ScrollReveal
-                delay={i * 0.06}
-                className={
-                  i % 2 === 1
-                    ? "md:col-start-2 md:pl-12 md:text-left"
-                    : "md:col-start-1 md:pr-12 md:text-right"
-                }
-              >
-                <span className="font-mono text-[0.625rem] tracking-[0.2em] text-primary/70">
+              <div className="flex flex-wrap items-baseline gap-x-3">
+                <span className="font-mono text-[0.5625rem] tracking-[0.22em] text-primary/70">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="mt-2 text-sm font-semibold leading-snug text-foreground">
-                  {s.title}
-                </h3>
-                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{s.body}</p>
-              </ScrollReveal>
-            </li>
+                <PanelTitle className="text-[0.9375rem] leading-snug">{s.title}</PanelTitle>
+              </div>
+              <p className="mt-1.5 text-[0.8125rem] leading-relaxed text-muted-foreground">
+                {s.body}
+              </p>
+            </div>
           ))}
-        </ol>
+        </Accumulate>
 
-        {/* return arc */}
-        <ScrollReveal delay={0.2}>
-          <div className="relative mt-6 flex items-center gap-4">
-            <span className="h-px flex-1 bg-gradient-to-r from-primary/30 via-secondary/30 to-primary/30" />
-            <span className="whitespace-nowrap font-mono text-[0.625rem] uppercase tracking-[0.2em] text-muted-foreground/70">
+        <ScrollReveal delay={0.16}>
+          <div className="mt-6 flex items-center gap-3">
+            <span className="h-px flex-1 bg-gradient-to-r from-primary/30 to-secondary/30" />
+            <span className="whitespace-nowrap font-mono text-[0.5625rem] uppercase tracking-[0.2em] text-muted-foreground/70">
               new capacity returns to the network
             </span>
-            <span className="h-px flex-1 bg-gradient-to-r from-primary/30 via-secondary/30 to-primary/30" />
           </div>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.24}>
-          <div className="mt-6 text-center">
+          <div className="mt-4">
             <DirectionNote>
-              Commissioning follows the same authority boundary as every other capability created in the
-              system.
+              Commissioning follows the same authority boundary as every other capability created
+              in the system.
             </DirectionNote>
           </div>
         </ScrollReveal>
