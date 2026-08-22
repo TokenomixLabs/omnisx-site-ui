@@ -17,17 +17,16 @@ const FinalStatement = () => (
 
         <ScrollReveal delay={0.08}>
           <h2 className="mt-6 font-orbitron text-[clamp(1.85rem,5vw,3.25rem)] font-bold leading-[1.08] tracking-tight text-foreground">
-            Build the workforce that
+            Persistent. Self-extending.
             <br />
-            <span className="text-gradient">gets better at its job.</span>
+            <span className="text-gradient">Never self-authorising.</span>
           </h2>
         </ScrollReveal>
 
         <ScrollReveal delay={0.16}>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
             OmnisX is building the intelligence layer for persistent, governed, evolving agents.
-            We're working with a small group of partners defining what the first real agent
-            workforces look like.
+            If that is the kind of system you need, we would like to hear what you are building.
           </p>
         </ScrollReveal>
 
@@ -38,16 +37,17 @@ const FinalStatement = () => (
               <ArrowRight className="ml-2 h-4 w-4" />
             </PremiumButton>
             <PremiumButton variant="secondary" size="lg" className="min-w-[190px]">
-              Partner With Us
+              Contact the Team
             </PremiumButton>
           </div>
         </ScrollReveal>
 
         <ScrollReveal delay={0.32}>
           <p className="mt-8 font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-muted-foreground/50">
-            Limited beta · Founding partners program
+            Persistent, not disposable · Baseline, not ceiling · Creation is not permission
           </p>
         </ScrollReveal>
+
       </div>
     </div>
   </Section>
