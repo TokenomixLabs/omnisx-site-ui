@@ -208,7 +208,7 @@ const IntentToIntelligence = () => {
               aria-labelledby={`stage-tab-${stage.key}`}
               className="mt-6 rounded-xl border border-white/[0.06] bg-card/50 p-6 backdrop-blur-sm md:mt-8 md:p-10"
             >
-              <div className="flex flex-col gap-6 md:flex-row md:items-start md:gap-12">
+              <div className="flex flex-col gap-8 md:flex-row md:items-start md:gap-12">
                 <div className="md:w-1/3">
                   <p className="font-mono text-[0.625rem] uppercase tracking-[0.22em] text-primary/80">
                     Stage {stage.index}
@@ -218,9 +218,54 @@ const IntentToIntelligence = () => {
                   </h3>
                   <p className="mt-2 text-sm text-muted-foreground">{stage.summary}</p>
                 </div>
-                <p className="text-base leading-relaxed text-foreground/80 md:w-2/3">
-                  {stage.detail}
-                </p>
+                <div className="md:w-2/3">
+                  <p className="text-base leading-relaxed text-foreground/80">{stage.detail}</p>
+
+                  {/* One evolving intelligence object */}
+                  <div className="mt-8 rounded-lg border border-white/[0.06] bg-background/40 p-5">
+                    <div className="flex flex-wrap items-center justify-between gap-3">
+                      <span
+                        key={stage.form}
+                        className="font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-primary motion-safe:animate-fade-in"
+                      >
+                        {stage.form}
+                      </span>
+                      <span className="font-mono text-[0.625rem] uppercase tracking-[0.16em] text-muted-foreground/60">
+                        + {stage.gains}
+                      </span>
+                    </div>
+
+                    {/* Accumulated layers — the same object, thicker each stage */}
+                    <div className="mt-4 space-y-1.5" aria-hidden="true">
+                      {stages.map((s, i) => (
+                        <div key={s.key} className="flex items-center gap-3">
+                          <span
+                            className={cn(
+                              "h-[3px] rounded-full transition-all duration-700 ease-out",
+                              i <= active
+                                ? "bg-gradient-to-r from-primary/80 to-secondary/50 shadow-[0_0_14px_-2px_hsl(var(--primary)/0.6)]"
+                                : "bg-white/[0.06]"
+                            )}
+                            style={{ width: `${28 + i * 7}%` }}
+                          />
+                          <span
+                            className={cn(
+                              "font-mono text-[0.5625rem] uppercase tracking-[0.14em] transition-colors duration-500",
+                              i <= active ? "text-muted-foreground/75" : "text-muted-foreground/25"
+                            )}
+                          >
+                            {s.gains}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <p className="mt-4 font-mono text-[0.625rem] leading-relaxed text-muted-foreground/50">
+                      Nothing is discarded between stages — the same object carries everything it
+                      has gained forward.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
