@@ -126,7 +126,7 @@ const AuthorityTopology = () => (
 );
 
 const GovernedAutonomy = () => (
-  <Section id="governance" className="py-20 md:py-28">
+  <Section id="governance" tier="argument">
     <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
     <div className="container relative z-10 mx-auto px-4">
