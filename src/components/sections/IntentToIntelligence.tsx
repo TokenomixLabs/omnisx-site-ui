@@ -9,6 +9,10 @@ type Stage = {
   title: string;
   summary: string;
   detail: string;
+  /** What the evolving object has gained by the end of this stage. */
+  gains: string;
+  /** How the object identifies itself at this stage. */
+  form: string;
 };
 
 const stages: Stage[] = [
@@ -19,6 +23,8 @@ const stages: Stage[] = [
     summary: "A requirement stated in ordinary language.",
     detail:
       "Work starts the way people actually describe it — an outcome, a constraint, a deadline — not a flowchart of nodes someone has to draw first.",
+      gains: "stated outcome",
+    form: "REQUIREMENT",
   },
   {
     key: "clarify",
@@ -27,6 +33,8 @@ const stages: Stage[] = [
     summary: "Ambiguity is resolved before anything is built.",
     detail:
       "Missing inputs, authority boundaries, success conditions and edge cases are surfaced as questions instead of being silently assumed.",
+      gains: "resolved ambiguity",
+    form: "REQUIREMENT+",
   },
   {
     key: "specify",
@@ -35,6 +43,8 @@ const stages: Stage[] = [
     summary: "Intent becomes a formal agent specification.",
     detail:
       "Mission, scope, expected inputs and results, required knowledge and the limits of independent action are written down precisely enough to build and evaluate against.",
+      gains: "formal specification",
+    form: "SPECIFICATION",
   },
   {
     key: "match",
@@ -43,6 +53,8 @@ const stages: Stage[] = [
     summary: "Reuse existing intelligence, or design new intelligence.",
     detail:
       "If an agent already exists that can carry the mission, it is proposed. If not, a new one is architected for it — rather than duplicating near-identical automation forever.",
+      gains: "identity decision",
+    form: "CANDIDATE",
   },
   {
     key: "plan",
@@ -51,6 +63,8 @@ const stages: Stage[] = [
     summary: "Capabilities, cognition and tools are planned.",
     detail:
       "The specification determines what the agent must be able to do, what reasoning it needs, what tools and data access it requires, and what is missing today.",
+      gains: "capability plan",
+    form: "ARCHITECTURE",
   },
   {
     key: "build",
@@ -59,6 +73,8 @@ const stages: Stage[] = [
     summary: "The agent and any missing capabilities are constructed.",
     detail:
       "Construction produces a versioned agent and versioned capabilities with recorded provenance — not an opaque bundle that no one can inspect later.",
+      gains: "versioned artefacts",
+    form: "BUILD v0.1",
   },
   {
     key: "prove",
@@ -67,6 +83,8 @@ const stages: Stage[] = [
     summary: "Isolated testing before anything is trusted.",
     detail:
       "New work is exercised in isolation against generated checks. Passing proof is what earns promotion; nothing is promoted because it merely exists.",
+      gains: "evidence of correctness",
+    form: "PROVEN v1.0",
   },
   {
     key: "deploy",
@@ -75,6 +93,8 @@ const stages: Stage[] = [
     summary: "Permissions granted, the being goes into service.",
     detail:
       "Deployment attaches explicit authority. What an agent may do on its own — and where a human decision is required — is set here, not improvised at runtime.",
+      gains: "scoped authority",
+    form: "COMMISSIONED",
   },
   {
     key: "operate",
@@ -83,6 +103,8 @@ const stages: Stage[] = [
     summary: "Work, memory, monitoring, repair, improvement.",
     detail:
       "Operation is the beginning of the agent's life, not the end of the project. Experience accumulates, performance is observed, and capabilities can be repaired or replaced under governance.",
+      gains: "memory, history, reputation",
+    form: "LIVING AGENT",
   },
 ];
 
@@ -186,7 +208,7 @@ const IntentToIntelligence = () => {
               aria-labelledby={`stage-tab-${stage.key}`}
               className="mt-6 rounded-xl border border-white/[0.06] bg-card/50 p-6 backdrop-blur-sm md:mt-8 md:p-10"
             >
-              <div className="flex flex-col gap-6 md:flex-row md:items-start md:gap-12">
+              <div className="flex flex-col gap-8 md:flex-row md:items-start md:gap-12">
                 <div className="md:w-1/3">
                   <p className="font-mono text-[0.625rem] uppercase tracking-[0.22em] text-primary/80">
                     Stage {stage.index}
@@ -196,11 +218,57 @@ const IntentToIntelligence = () => {
                   </h3>
                   <p className="mt-2 text-sm text-muted-foreground">{stage.summary}</p>
                 </div>
-                <p className="text-base leading-relaxed text-foreground/80 md:w-2/3">
-                  {stage.detail}
-                </p>
+                <div className="md:w-2/3">
+                  <p className="text-base leading-relaxed text-foreground/80">{stage.detail}</p>
+
+                </div>
+              </div>
+                  {/* One evolving intelligence object */}
+                  <div className="mt-8 rounded-lg border border-white/[0.06] bg-background/40 p-5">
+                    <div className="flex flex-wrap items-center justify-between gap-3">
+                      <span
+                        key={stage.form}
+                        className="font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-primary motion-safe:animate-fade-in"
+                      >
+                        {stage.form}
+                      </span>
+                      <span className="font-mono text-[0.625rem] uppercase tracking-[0.16em] text-muted-foreground/60">
+                        + {stage.gains}
+                      </span>
+                    </div>
+
+                    {/* Accumulated layers — the same object, thicker each stage */}
+                    <div className="mt-4 space-y-1.5" aria-hidden="true">
+                      {stages.map((s, i) => (
+                        <div key={s.key} className="flex items-center gap-3">
+                          <span
+                            className={cn(
+                              "h-[3px] rounded-full transition-all duration-700 ease-out",
+                              i <= active
+                                ? "bg-gradient-to-r from-primary/80 to-secondary/50 shadow-[0_0_14px_-2px_hsl(var(--primary)/0.6)]"
+                                : "bg-white/[0.06]"
+                            )}
+                            style={{ width: `${28 + i * 7}%` }}
+                          />
+                          <span
+                            className={cn(
+                              "font-mono text-[0.5625rem] uppercase tracking-[0.14em] transition-colors duration-500",
+                              i <= active ? "text-muted-foreground/75" : "text-muted-foreground/25"
+                            )}
+                          >
+                            {s.gains}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <p className="mt-4 font-mono text-[0.625rem] leading-relaxed text-muted-foreground/50">
+                      Nothing is discarded between stages — the same object carries everything it
+                      has gained forward.
+                    </p>
               </div>
             </div>
+
 
             <div className="mt-5">
               <DirectionNote>
