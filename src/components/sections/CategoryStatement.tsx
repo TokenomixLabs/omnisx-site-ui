@@ -58,11 +58,19 @@ const PersistenceTrail = () => (
 );
 
 const CategoryStatement = () => (
-  <Section id="category" tone="deep" className="py-20 md:py-28">
+  <Section id="category" tone="deep" className="pb-20 pt-28 md:pb-28 md:pt-36">
+    {/* Hero descent: the video dissolves into the network below it */}
+    <div className="pointer-events-none absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-black via-black/60 to-transparent" />
+    <div className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-grid bg-grid-fade opacity-[0.05]" />
+    <div
+      className="pointer-events-none absolute left-1/2 top-0 h-32 w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-primary/60 to-transparent motion-safe:animate-pulse-subtle"
+      aria-hidden="true"
+    />
     <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent" />
     <div className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[820px] max-w-[130vw] -translate-x-1/2 rounded-full bg-primary/[0.05] blur-[110px]" />
 
     <div className="container relative z-10 mx-auto px-4">
+
       <div className="grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)] lg:items-center lg:gap-20">
         <div>
           <ScrollReveal>
