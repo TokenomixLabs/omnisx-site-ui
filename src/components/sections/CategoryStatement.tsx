@@ -78,7 +78,7 @@ const CategoryStatement = () => (
           </ScrollReveal>
 
           <ScrollReveal delay={0.08}>
-            <SectionTitle className="mt-5">
+            <SectionTitle as="h1" className="mt-5">
               Not another agent builder.
               <br />
               <span className="text-gradient">A living system for creating, operating and evolving intelligence.</span>

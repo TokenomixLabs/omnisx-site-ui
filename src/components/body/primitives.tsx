@@ -109,7 +109,7 @@ export const SectionTitle = ({
 }: {
   children: React.ReactNode;
   className?: string;
-  as?: "h2" | "h3";
+  as?: "h1" | "h2" | "h3";
   variant?: "display" | "argument" | "exhibit";
 }) => (
   <Tag
