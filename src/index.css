@@ -80,6 +80,13 @@
 
   html {
     @apply scroll-smooth;
+    scroll-padding-top: 6rem;
+  }
+
+  /* Fixed navigation must never cover an anchored section heading. */
+  section[id],
+  [id="access-channel"] {
+    scroll-margin-top: 6rem;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -220,6 +227,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
   *,
   *::before,
   *::after {

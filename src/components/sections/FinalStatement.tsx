@@ -32,15 +32,34 @@ const FinalStatement = () => (
 
         <ScrollReveal delay={0.24}>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <PremiumButton size="lg" className="min-w-[190px]">
-              Request Access
-              <ArrowRight className="ml-2 h-4 w-4" />
+            <PremiumButton asChild size="lg" className="min-w-[190px]">
+              <a href="#access-channel">
+                Request Access
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
             </PremiumButton>
-            <PremiumButton variant="secondary" size="lg" className="min-w-[190px]">
-              Contact the Team
+            <PremiumButton asChild variant="secondary" size="lg" className="min-w-[190px]">
+              <a href="#access-channel">How to reach us</a>
             </PremiumButton>
           </div>
         </ScrollReveal>
+
+        <ScrollReveal delay={0.28}>
+          <div
+            id="access-channel"
+            className="mx-auto mt-10 max-w-xl rounded-xl border border-white/[0.07] bg-card/40 p-6 text-left backdrop-blur-sm"
+          >
+            <p className="font-mono text-[0.625rem] uppercase tracking-[0.2em] text-primary/80">
+              Access channel
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              Access requests are handled directly by the OmnisX team. The public intake channel is
+              being connected — the contact address will be published here. Nothing is submitted or
+              stored from this page today.
+            </p>
+          </div>
+        </ScrollReveal>
+
 
         <ScrollReveal delay={0.32}>
           <p className="mt-8 font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-muted-foreground/50">
