@@ -24,47 +24,32 @@ const Footer = () => {
             
             {/* Navigation Links */}
             <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2">
-              <a 
-                href="#pipeline" 
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
-              >
-                Technology
-              </a>
-              <a 
-                href="#evolution" 
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
-              >
-                Vision
-              </a>
-              <a 
-                href="#governance" 
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
-              >
-                Partners
-              </a>
-              <a 
-                href="#access" 
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
-              >
-                Contact
-              </a>
+              {[
+                { label: "Technology", href: "#pipeline" },
+                { label: "Evolution", href: "#evolution" },
+                { label: "Governance", href: "#governance" },
+                { label: "Access", href: "#access" },
+              ].map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+                >
+                  {link.label}
+                </a>
+              ))}
             </nav>
             
             {/* Legal */}
             <div className="flex flex-col items-center md:items-end gap-1">
-              <div className="flex items-center gap-3 text-xs text-muted-foreground/50">
-                <a href="#privacy" className="hover:text-muted-foreground transition-colors">
-                  Privacy
-                </a>
-                <span className="w-1 h-1 rounded-full bg-muted-foreground/30" />
-                <a href="#terms" className="hover:text-muted-foreground transition-colors">
-                  Terms
-                </a>
-              </div>
+              <p className="text-xs text-muted-foreground/50">
+                Privacy and terms forthcoming
+              </p>
               <p className="text-xs text-muted-foreground/40">
                 © {currentYear} OmnisX. All rights reserved.
               </p>
             </div>
+
           </div>
         </ScrollReveal>
         
