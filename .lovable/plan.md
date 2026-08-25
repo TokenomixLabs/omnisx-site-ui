@@ -1,62 +1,63 @@
-# OmnisX — Release Readiness Audit (read-only)
+# OmnisX — Full-Page Visual Release Audit (read-only)
 
-Verified against source + live browser runs at 1700 / 1440 / 1280 / 1024 / 768 / 390, plus a reduced-motion pass at 390. Build log: `build OK`. No code was changed.
+Method: rendered the live page at 1700 / 1440 / 1280 / 1024 / 768 / 390, scrolled top-to-bottom to trigger all reveals, captured tiled screenshots, measured every section's top offset and height, checked horizontal overflow and console output. No code was changed.
 
-Frozen files confirmed unchanged this turn: `src/components/Navigation.tsx`, `src/components/HeroVideo.tsx`, `src/styles/hero.css`. Findings against them are reported, not fixed.
+**OVERALL VERDICT: AMBER — not GREEN.** 0 blockers, 5 material findings, 5 minor, 1 unverified (hero video on production domain). The crescendo still lands and nothing is broken, but four spacing/ordering defects make specific bands read as empty or out of sequence.
 
-## BLOCKER
+Counts: BLOCKER 0 · MATERIAL 5 · MINOR 5 · CLEAR 7
 
-1. **Every call-to-action is a dead button.** `FinalStatement.tsx` renders "Request Access" and "Contact the Team" as bare `<PremiumButton>` with no `href`, `onClick`, `mailto:` or form. Navigation's "Request Access" is likewise inert (frozen file). The site's single conversion path does nothing on click.
-2. **Primary nav items do nothing.** `Navigation.tsx` renders Technology / Vision / Partners as buttons with no target, and the mobile hamburger (`aria-label="Open menu"`) opens nothing — on 390px there is no navigation at all. Frozen file: needs your approval to touch.
+---
 
-## HIGH
+## MATERIAL
 
-3. **No `<h1>` on the page.** Browser check returns `h1: []` with 10 `<h2>`s. Document outline starts at h2; bad for SEO and screen-reader orientation.
-4. **Footer link labels do not match their targets.** "Vision" → `#evolution` (Capability Evolution), "Partners" → `#governance` (Governed Autonomy). "Partners" also implies partners content that does not exist.
-5. **Dead legal links.** `#privacy` and `#terms` resolve to nothing — jump-to-top on click; commonly required at launch.
-6. **Anchor jumps land under the fixed nav.** No `scroll-margin-top` / `scroll-padding-top` and no `scroll-behavior: smooth` anywhere in `src/index.css`; the fixed glass header covers the first ~64–72px of every anchored section.
-7. **React ref warning floods the console.** Dozens of `Function components cannot be given refs … Did you mean to use React.forwardRef()?` errors on every breakpoint — `PremiumButton` is a plain function component receiving refs (asChild/Slot usage). Non-fatal, but a console full of red on a flagship site.
+**M1 — Hero → body handoff has a dead band (all widths, worst at 390)**
+The hero is a fixed 16:9 frame; below it sits the descent gradient plus the top padding of Category Statement. At 1440 that is roughly 190px of pure black between the video edge and the first eyebrow; at 390 the video is only ~220px tall and is followed by ~120px of nothing before "AGENT SUPERINTELLIGENCE". Why it matters: the first scroll gesture after the hero returns no content, which reads as a loading gap rather than a cinematic beat.
+Smallest safe fix concept: reduce Category Statement's top padding only (hero component untouched) and let the existing descent line carry the transition.
 
-## MEDIUM
+**M2 — Workforces renders the diagram before its own headline below 1024**
+The text column carries `lg:order-first`, so at 768 and 390 the mission/agent panel appears first and the headline "Single agents solve tasks…" arrives after it. Why it matters: on mobile the section opens with an unexplained diagram — the one place the page loses narrative order.
+Smallest safe fix concept: make the text column first by default and let the visual follow (`order-first` on the copy at all widths, or drop the reversal entirely).
 
-8. **Vimeo hero returns HTTP 401 in this environment** for `player.vimeo.com/video/1052026972` on every load (localhost is not in the video's allowed-domains list). Expected to pass on `omnisx.ai`, but **must be re-verified on the published domain**, and there is no poster/fallback frame — if the embed is ever blocked the hero is a black box.
-9. **Metadata does not match the deployment.** `index.html` canonical is `https://omnisx.ai` while the current preview/publish target is `omnisx-site-ui.lovable.app`; `og:image` is a relative `/lovable-uploads/…png` (crawlers require an absolute https URL) even though `public/og-image.png` exists. No `og:url`, no `twitter:image`, no `twitter:description`.
-10. **No `robots.txt` and no `sitemap.xml`** in `public/`.
-11. **Off-canvas decorative glows extend past the viewport edge** at 1440/1280/1024 (`-right-20 -top-20 h-56 w-56 rounded-full …` and the two showpiece blur fields). No horizontal scroll is produced (`scrollWidth === clientWidth` at all six widths), so this is cosmetic containment hygiene only.
+**M3 — Intent → Intelligence accumulation rails read as a failed load (≥1280)**
+Inside the Stage 01 panel the nine accumulation rows render as near-black hairlines with labels at very low opacity; only the top row has colour. On a large display the panel looks like content that failed to paint.
+Smallest safe fix concept: raise the rail and label opacity floor a step so inactive rows are legibly present, keeping the active row dominant.
 
-## LOW
+**M4 — Oversized negative space framing the showpiece**
+Between Persistent Beings and the Capability Evolution headline there is the breath band plus `py-44` showpiece padding — about 700px of empty canvas at 1440 before the first word. The same stack repeats on exit: ~380px of void plus a second breath band before Agent Services. Why it matters: the pause is meant to build tension but currently overshoots into two dead screens on a 1440 laptop.
+Smallest safe fix concept: shorten the breath bands, or trim the showpiece's top/bottom padding — not both surfaces at once.
 
-12. **Page length on mobile**: 15,002px at 390 (12,419 at 768; ~11.1–11.4k desktop). Within the range you accepted after the elevation pass, but there is still no in-page way to skip ahead because the mobile menu is inert (see 2).
-13. **`public/` is 868KB**, dominated by `og-image.png` at 233KB — fine, but the OG image is heavier than it needs to be for a 1200×630 preview.
-14. Nine stage tiles in Intent→Intelligence are `<button>`s with no `aria-pressed`/`aria-selected` state; they work with keyboard but do not announce selection.
+**M5 — Persistent Beings left column stretches to a hollow card (≥1024)**
+The "Conventional automation" card uses `h-full`, so it matches the taller OmnisX card and ends with roughly 250px of empty interior below its last line at 1440. Why it matters: an intentionally empty panel next to a dense one reads as missing content, not as contrast.
+Smallest safe fix concept: drop `h-full` on that column (align to top) or add the one closing line the panel is missing.
 
-## CLEAN (verified, no action)
+---
 
-- **No page/runtime errors** at any breakpoint (`pageerror: []` everywhere); no 4xx/5xx other than the Vimeo 401 and its Cloudflare challenge companion.
-- **No horizontal overflow** at 1700 / 1440 / 1280 / 1024 / 768 / 390.
-- **Two-plane Capability Evolution survives mobile** — isolated plane, authority seam and operational plane all render distinctly at 390 with the doctrine line intact.
-- **Reduced motion** honoured: 390 renders identically with `prefers-reduced-motion: reduce`, all content at final state, nothing stuck at `opacity: 0`.
-- **All images carry alt text** (`imgsNoAlt: 0`). Focus rings present via `focus-visible:ring-2` on the shared button.
-- **Doctrine integrity holds.** Copy consistently states creation is not permission, isolated build/proof precedes authority, and authority is scaled to consequence ("policy-governed, delegated, or explicitly approved by a person, scaled to consequence"). No universal human pre-build approval anywhere.
-- **No unsupported claims.** No customer names, metrics, integrations, availability dates, or production hiring-marketplace language. Zero mentions of HyperCommand or Societi, and no "execution fabric"/"plumbing" framing.
+## MINOR
 
-## RELEASE VERDICT: NOT READY
+- **Exhibit tier silhouette repeats.** Agent Services, Commissioning and Capability Network all open eyebrow → compact title → panel/grid at nearly identical heights (490 / 526 / 446px at 1440). Fix concept: vary one of the three (e.g. give Commissioning a full-width rail) rather than restyling the tier.
+- **Capability Network strip clips without affordance on mobile.** Card 02 is cut by the viewport edge with no gradient or scroll hint. Fix concept: add a right-edge fade or a small "scroll" cue.
+- **Visual anchor inconsistency at 1440.** Governed Autonomy is left-aligned in a ~770px column with a wide empty right margin, while the two sections around it are centred. Fix concept: centre the Governed Autonomy header block to match its neighbours.
+- **Access section closing anchor is soft.** The final card states the intake channel "is being connected" with no address; the page ends on an absence. Fix concept: publish one real contact address when available — copy only.
+- **Console noise.** Repeated `Function components cannot be given refs` warnings from the dev tagger. Dev-only, absent in production builds; no action.
 
-Not because of design or doctrine — both hold — but because the site cannot be acted on: no working CTA and no working navigation.
+---
 
-## Smallest exact fix set
+## CLEAR
 
-Blocking (must ship):
-1. Give both `FinalStatement` CTAs a real destination — simplest is `mailto:` on an OmnisX address, wrapping each `PremiumButton` with `asChild` around an `<a>`.
-2. **Requires unfreezing `Navigation.tsx`**: point Technology/Vision/Partners at real section ids (or drop "Partners"), give "Request Access" the same destination as the CTA, and make the hamburger open a simple anchor sheet. Confirm before I touch it.
-3. Add a single `<h1>` — promote the `CategoryStatement` headline.
-4. Relabel footer links to their real targets and remove or resolve `#privacy` / `#terms`.
-5. Add `scroll-margin-top: 6rem` on `section[id]` plus `scroll-behavior: smooth` in `src/index.css`.
+- No horizontal overflow at any of the six widths.
+- No clipped or truncated typography found at any width, including the Orbitron display lines at 390.
+- Section order and anchor ids are intact and match the nav (`pipeline`, `evolution`, `governance`, `access`).
+- Capability Evolution still reads as the centrepiece: two labelled planes, the authority seam, and the return path are all legible at every width including 390.
+- Mobile completeness: every section present at 390, all copy readable, no cut content, page height 15,233px.
+- Doctrine consistent throughout — persistent beings, self-extension, "creation is not permission", isolated proof preceding authority.
+- Footer, nav and mobile menu render correctly at all widths.
 
-Recommended before publish:
-6. Wrap `PremiumButton` in `React.forwardRef` to clear the console warnings.
-7. Fix metadata: canonical + `og:url` to the real domain, absolute `og:image`, add `twitter:image`/`twitter:description`.
-8. Add `public/robots.txt` and `public/sitemap.xml` (single URL, no fabricated `lastmod`).
-9. Re-verify the Vimeo embed on the published domain and add a poster fallback behind the iframe.
+---
 
-Say the word and I will implement items 1, 3, 4, 5 (nothing frozen), and separately items 6–9. Item 2 waits on your go-ahead to edit the frozen nav.
+## UNVERIFIED
+
+**Hero video playback on the production domain.** In this sandbox the Vimeo embed returns a connection-verification interstitial, so the hero renders as a text error panel at every width. This is an environment/network artefact, not evidence of a site defect — but it means the hero cannot be visually cleared here. Requires a smoke check on omnisx.ai after deploy before any GREEN verdict.
+
+---
+
+No code changes were made. Approving this plan does not authorise edits — the fix concepts above are scoped for a separate, explicit fix pass.
