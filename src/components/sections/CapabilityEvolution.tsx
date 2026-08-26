@@ -62,7 +62,7 @@ const CapabilityEvolution = () => (
     <div className="pointer-events-none absolute left-1/2 top-[52%] h-[420px] w-[1200px] max-w-[150vw] -translate-x-1/2 rounded-full bg-secondary/[0.06] blur-[150px]" />
 
     <div className="container relative z-10 mx-auto px-4">
-      <div className="mx-auto max-w-3xl text-center">
+      <div className="mx-auto max-w-3xl text-center xl:max-w-4xl 2xl:max-w-5xl">
         <ScrollReveal>
           <Eyebrow tone="secondary">Signature capability</Eyebrow>
         </ScrollReveal>
