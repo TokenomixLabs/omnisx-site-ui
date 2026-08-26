@@ -35,9 +35,10 @@ const PersistentBeings = () => (
       </div>
 
       {/* Contrast */}
-      <div className="mt-12 grid gap-6 md:mt-16 lg:grid-cols-2 lg:gap-8">
+      <div className="mt-12 grid items-start gap-6 md:mt-16 lg:grid-cols-2 lg:gap-8">
         <ScrollReveal>
-          <div className="h-full rounded-xl border border-white/[0.05] bg-background/40 p-6 md:p-8">
+          <div className="rounded-xl border border-white/[0.05] bg-background/40 p-6 md:p-8">
+
             <p className="font-mono text-[0.625rem] uppercase tracking-[0.22em] text-muted-foreground/60">
               Conventional automation
             </p>
