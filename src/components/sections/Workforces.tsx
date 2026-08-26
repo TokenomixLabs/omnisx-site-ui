@@ -154,6 +154,13 @@ const Workforces = () => (
             </ul>
           </ScrollReveal>
         </div>
+
+        <ScrollReveal>
+          <div className="rounded-2xl border border-white/[0.06] bg-background/40 p-6 md:p-8">
+            <WorkforceFormation />
+          </div>
+        </ScrollReveal>
+
       </div>
     </div>
   </Section>
