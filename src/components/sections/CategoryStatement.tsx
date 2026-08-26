@@ -106,7 +106,7 @@ const CategoryStatement = () => (
         </div>
 
         <ScrollReveal delay={0.12}>
-          <div className="rounded-2xl border border-white/[0.06] bg-card/40 p-6 backdrop-blur-sm md:p-10">
+          <div className="rounded-2xl border border-white/[0.06] bg-card/40 p-6 backdrop-blur-sm md:p-8">
             <PersistenceTrail />
           </div>
         </ScrollReveal>
