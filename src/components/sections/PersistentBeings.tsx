@@ -35,26 +35,26 @@ const PersistentBeings = () => (
       </div>
 
       {/* Contrast */}
-      <div className="mt-12 grid items-start gap-6 md:mt-16 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-8 2xl:gap-12">
+      <div className="mt-12 grid items-stretch gap-6 md:mt-16 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-8 2xl:gap-12">
         <ScrollReveal>
-          <div className="rounded-xl border border-white/[0.05] bg-background/40 p-6 md:p-7">
+          <div className="flex h-full flex-col rounded-xl border border-white/[0.08] bg-background/40 p-6 md:p-7">
 
             <p className="font-mono text-[0.6875rem] uppercase tracking-[0.22em] text-muted-foreground/80 2xl:text-xs">
               Conventional automation
             </p>
             <h3 className="mt-3 font-grotesk text-lg font-semibold text-muted-foreground 2xl:text-xl">Run → result → gone</h3>
-            <ol className="mt-5 space-y-3">
+            <ol className="mt-6 flex-1 space-y-5">
               {["trigger", "execute", "return output", "discard state"].map((step, i) => (
                 <li key={step} className="flex items-center gap-4">
-                  <span className="font-mono text-[0.6875rem] text-muted-foreground/70 2xl:text-xs">
+                  <span className="font-mono text-[0.6875rem] text-muted-foreground/90 2xl:text-xs">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="h-px flex-1 bg-border/40" />
-                  <span className="w-32 text-right text-sm text-foreground/70 2xl:text-[0.9375rem]">{step}</span>
+                  <span className="h-px flex-1 bg-border/80" />
+                  <span className="w-32 text-right text-sm text-foreground/90 2xl:text-[0.9375rem]">{step}</span>
                 </li>
               ))}
             </ol>
-            <p className="mt-5 border-t border-white/[0.05] pt-4 text-sm leading-relaxed text-muted-foreground 2xl:text-base">
+            <p className="mt-6 border-t border-white/[0.07] pt-4 text-sm leading-relaxed text-muted-foreground 2xl:text-base">
               Every improvement has to be made by a human editing the workflow.
             </p>
           </div>

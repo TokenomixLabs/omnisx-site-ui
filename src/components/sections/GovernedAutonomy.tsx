@@ -165,7 +165,7 @@ const GovernedAutonomy = () => (
         {guarantees.map((g, i) => (
           <ScrollReveal key={g.k} delay={i * 0.05}>
             <div className="grid grid-cols-1 gap-1 border-b border-white/[0.05] py-5 transition-colors duration-300 hover:bg-white/[0.015] sm:grid-cols-[220px_minmax(0,1fr)] sm:gap-8">
-              <dt className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-primary/75 2xl:text-xs">
+              <dt className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-primary/85 2xl:text-xs [@media(min-width:1800px)]:text-[0.8125rem]">
                 {g.k}
               </dt>
               <dd className="text-sm leading-relaxed text-foreground/80 2xl:text-base">{g.v}</dd>
@@ -173,6 +173,10 @@ const GovernedAutonomy = () => (
           </ScrollReveal>
         ))}
       </dl>
+
+      <ScrollReveal delay={0.1}>
+        <Hairline className="mt-0" />
+      </ScrollReveal>
     </div>
   </Section>
 );
