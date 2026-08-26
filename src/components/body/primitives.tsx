@@ -118,7 +118,7 @@ export const SectionTitle = ({
     className={cn(
       "text-foreground text-balance-hard",
       variant === "display" &&
-        "font-orbitron font-bold text-[clamp(2rem,4.6vw,3.9rem)] leading-[1.06] tracking-tight [@media(min-width:1800px)]:text-[4.4rem] [@media(min-width:2200px)]:text-[4.9rem]",
+        "font-orbitron font-bold text-[clamp(2rem,4.6vw,3.9rem)] leading-[1.06] tracking-tight [@media(min-width:1800px)]:text-[4.4rem]",
       variant === "argument" &&
         "font-orbitron font-bold text-[clamp(1.6rem,3.4vw,3rem)] leading-[1.12] tracking-tight [@media(min-width:1800px)]:text-[3.35rem] [@media(min-width:2200px)]:text-[3.7rem]",
       variant === "exhibit" &&
