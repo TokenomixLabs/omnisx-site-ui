@@ -13,9 +13,10 @@ const missions = [
 const PersistenceTrail = () => (
   <div className="relative">
     {/* Being */}
-    <div className="relative mx-auto mb-10 w-fit">
+    <div className="relative mx-auto mb-7 w-fit md:mb-8">
       <div className="absolute -inset-6 rounded-full bg-primary/[0.07] blur-2xl motion-safe:animate-pulse-subtle" />
-      <div className="relative flex h-24 w-24 items-center justify-center rounded-full border border-primary/30 bg-card/80 backdrop-blur-sm">
+      <div className="relative flex h-20 w-20 items-center justify-center rounded-full border border-primary/30 bg-card/80 backdrop-blur-sm md:h-24 md:w-24">
+
         <div className="absolute inset-2 rounded-full border border-primary/15" />
         <div className="absolute inset-5 rounded-full border border-secondary/20" />
         <span className="font-mono text-[0.625rem] uppercase tracking-[0.2em] text-primary">
