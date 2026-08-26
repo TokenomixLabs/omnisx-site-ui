@@ -116,8 +116,8 @@ const Workforces = () => (
       <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
         <div>
           <ScrollReveal>
-
             <Eyebrow tone="secondary">Workforces</Eyebrow>
+
           </ScrollReveal>
           <ScrollReveal delay={0.08}>
             <SectionTitle className="mt-5">
