@@ -85,7 +85,7 @@ export const Eyebrow = ({
 }) => (
   <p
     className={cn(
-      "font-mono text-[0.6875rem] uppercase tracking-[0.28em]",
+      "font-mono text-[0.6875rem] uppercase tracking-[0.28em] 2xl:text-xs",
       tone === "primary" && "text-primary/80",
       tone === "secondary" && "text-secondary/80",
       tone === "muted" && "text-muted-foreground/70",
@@ -116,13 +116,13 @@ export const SectionTitle = ({
 }) => (
   <Tag
     className={cn(
-      "text-foreground",
+      "text-foreground text-balance-hard",
       variant === "display" &&
-        "font-orbitron font-bold text-[clamp(2rem,5.4vw,3.4rem)] leading-[1.06] tracking-tight",
+        "font-orbitron font-bold text-[clamp(2rem,4.6vw,3.9rem)] leading-[1.06] tracking-tight",
       variant === "argument" &&
-        "font-orbitron font-bold text-[clamp(1.6rem,4vw,2.5rem)] leading-[1.12] tracking-tight",
+        "font-orbitron font-bold text-[clamp(1.6rem,3.4vw,3rem)] leading-[1.12] tracking-tight",
       variant === "exhibit" &&
-        "font-grotesk font-semibold text-[clamp(1.35rem,2.6vw,1.85rem)] leading-[1.18] tracking-[-0.015em]",
+        "font-grotesk font-semibold text-[clamp(1.35rem,2.4vw,2.15rem)] leading-[1.18] tracking-[-0.015em]",
       className
     )}
   >
@@ -175,7 +175,7 @@ export const Lede = ({
   children: React.ReactNode;
   className?: string;
 }) => (
-  <p className={cn("text-base md:text-lg text-muted-foreground leading-relaxed", className)}>
+  <p className={cn("text-base md:text-lg 2xl:text-xl text-muted-foreground leading-relaxed text-pretty-hard", className)}>
     {children}
   </p>
 );
@@ -216,7 +216,7 @@ export const Hairline = ({ className }: { className?: string }) => (
 
 /** A "note" for product-direction language — keeps claims honest. */
 export const DirectionNote = ({ children }: { children: React.ReactNode }) => (
-  <p className="font-mono text-[0.6875rem] leading-relaxed text-muted-foreground/60">
+  <p className="font-mono text-xs leading-relaxed text-muted-foreground/75 2xl:text-[0.8125rem]">
     {children}
   </p>
 );
