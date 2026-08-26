@@ -1,63 +1,65 @@
-# OmnisX — Full-Page Visual Release Audit (read-only)
+# OmnisX — Production Readiness Census (read-only findings + smallest safe fix set)
 
-Method: rendered the live page at 1700 / 1440 / 1280 / 1024 / 768 / 390, scrolled top-to-bottom to trigger all reveals, captured tiled screenshots, measured every section's top offset and height, checked horizontal overflow and console output. No code was changed.
+No code was edited. Hero, header, logo, doctrine, visuals and copy untouched.
 
-**OVERALL VERDICT: AMBER — not GREEN.** 0 blockers, 5 material findings, 5 minor, 1 unverified (hero video on production domain). The crescendo still lands and nothing is broken, but four spacing/ordering defects make specific bands read as empty or out of sequence.
+## Census
 
-Counts: BLOCKER 0 · MATERIAL 5 · MINOR 5 · CLEAR 7
+| Item | State | Evidence |
+| --- | --- | --- |
+| `<title>` | READY | index.html:6 — "OmnisX.ai - The Intelligence Layer for Autonomous Agents" (66 chars, slightly over 60) |
+| Meta description | WRONG (overclaiming) | index.html:7 — "The world's first AI agent ecosystem powering autonomous intelligence at scale." Conflicts with the no-operational-claims doctrine used across the body copy |
+| Canonical | WRONG vs stated target | index.html:18 — `https://omnisx.ai/` (apex), target is `https://www.omnisx.ai/` |
+| og:title / og:description | WRONG (overclaiming) | index.html:9-10 — same "world's first…at scale" wording |
+| og:url | WRONG vs target | index.html:12 — apex, not www |
+| og:type | READY | index.html:13 — `website` |
+| og:image | WRONG (asset unsuitable) | index.html:11 points at `/lovable-uploads/5ea8ea83….png`, which is 1920x522 (a wordmark strip, ~3.7:1). Social crawlers crop/letterbox this badly. A correct 1200x629 `public/og-image.png` already exists and is unreferenced |
+| twitter:card / title / description / image | card READY (index.html:14); title/description WRONG (overclaiming, :15-16); image WRONG (:17, same 1920x522 asset) | |
+| Favicon | READY | `public/favicon.ico` exists (15 KB), but no `<link rel="icon">` in index.html — browsers only pick it up by root convention |
+| apple-touch-icon | MISSING | no 180x180 PNG, no `<link rel="apple-touch-icon">` |
+| robots.txt | READY (incomplete) | public/robots.txt — allow-all, but no `Sitemap:` line |
+| sitemap.xml | WRONG vs target | public/sitemap.xml:4 — `https://omnisx.ai/` apex; no `<lastmod>` |
+| Web manifest | MISSING | no `site.webmanifest` / `manifest.json` |
+| theme-color | MISSING | not in index.html (brand value `#161537` is established) |
+| JSON-LD / schema | MISSING | no `application/ld+json` anywhere |
+| lovable.app / preview / localhost hardcodes | READY (none) | only omnisx.ai references in index.html and sitemap.xml |
+| Build config | READY | package.json `build: vite build`; netlify.toml publish `dist`, NODE_VERSION 18.19.0 |
+| SPA routing fallback | MISSING (deployment-dependent) | App.tsx uses BrowserRouter with a `*` NotFound route, but there is no `public/_redirects` and no `[[redirects]]` in netlify.toml. Any deep link other than `/` 404s on Netlify. Not an issue on Lovable hosting, which handles SPA fallback |
+| Vimeo hero embed | UNVERIFIED | index.html:25 loads player.js; HeroVideo.tsx embeds 1052026972. Sandbox returns a connection-verification interstitial — not evidence of breakage. Production concern: Vimeo privacy settings must whitelist the final production domain, or the iframe fails there too |
+| Deployed-domain parity (DNS, www vs apex redirect, HTTPS, live head tags) | UNVERIFIED | cannot be inferred from source; requires a live check |
 
----
+## Code-fixable vs infrastructure
 
-## MATERIAL
+Code-fixable (all in `index.html`, `public/robots.txt`, `public/sitemap.xml`):
+canonical/og:url/sitemap host, og+twitter image target, overclaiming copy, favicon/apple-touch links, theme-color, manifest, JSON-LD, robots Sitemap line, `_redirects`.
 
-**M1 — Hero → body handoff has a dead band (all widths, worst at 390)**
-The hero is a fixed 16:9 frame; below it sits the descent gradient plus the top padding of Category Statement. At 1440 that is roughly 190px of pure black between the video edge and the first eyebrow; at 390 the video is only ~220px tall and is followed by ~120px of nothing before "AGENT SUPERINTELLIGENCE". Why it matters: the first scroll gesture after the hero returns no content, which reads as a loading gap rather than a cinematic beat.
-Smallest safe fix concept: reduce Category Statement's top padding only (hero component untouched) and let the existing descent line carry the transition.
+Infrastructure / domain binding (not code):
+1. Decide www vs apex as the one canonical host and configure a 301 from the other.
+2. DNS + HTTPS certificate for the chosen host.
+3. Vimeo video privacy → domain whitelist for the production domain.
+4. Netlify vs Lovable hosting decision (netlify.toml is currently present and unused if publishing via Lovable).
 
-**M2 — Workforces renders the diagram before its own headline below 1024**
-The text column carries `lg:order-first`, so at 768 and 390 the mission/agent panel appears first and the headline "Single agents solve tasks…" arrives after it. Why it matters: on mobile the section opens with an unexplained diagram — the one place the page loses narrative order.
-Smallest safe fix concept: make the text column first by default and let the visual follow (`order-first` on the copy at all widths, or drop the reversal entirely).
+## Smallest safe fix set (on approval)
 
-**M3 — Intent → Intelligence accumulation rails read as a failed load (≥1280)**
-Inside the Stage 01 panel the nine accumulation rows render as near-black hairlines with labels at very low opacity; only the top row has colour. On a large display the panel looks like content that failed to paint.
-Smallest safe fix concept: raise the rail and label opacity floor a step so inactive rows are legibly present, keeping the active row dominant.
+1. `index.html:11,12,17,18` — repoint canonical, og:url to the chosen canonical host; repoint og:image and twitter:image to `<host>/og-image.png` (the existing 1200x629 asset).
+2. `index.html:7,10,16` — replace "The world's first AI agent ecosystem powering autonomous intelligence at scale." with doctrine-safe wording, e.g. "The intelligence layer for persistent, governed, evolving agents." (matches the existing footer line, no new claims).
+3. `index.html:9,15` — leave og/twitter titles as-is apart from the description swap.
+4. `index.html` head — add `<link rel="icon" href="/favicon.ico" sizes="any">`, `<link rel="apple-touch-icon" href="/apple-touch-icon.png">` (generate a 180x180 from the existing mark), `<meta name="theme-color" content="#161537">`, `<link rel="manifest" href="/site.webmanifest">`.
+5. `index.html` head — add one Organization JSON-LD block (name, url, logo). No FAQ/Product schema.
+6. `public/robots.txt` — append `Sitemap: <host>/sitemap.xml`.
+7. `public/sitemap.xml:4` — update `<loc>` to the canonical host, add `<lastmod>`.
+8. New `public/site.webmanifest` (name, short_name, theme/background `#161537`, icons) and new `public/_redirects` containing `/*  /index.html  200` for the Netlify path.
 
-**M4 — Oversized negative space framing the showpiece**
-Between Persistent Beings and the Capability Evolution headline there is the breath band plus `py-44` showpiece padding — about 700px of empty canvas at 1440 before the first word. The same stack repeats on exit: ~380px of void plus a second breath band before Agent Services. Why it matters: the pause is meant to build tension but currently overshoots into two dead screens on a 1440 laptop.
-Smallest safe fix concept: shorten the breath bands, or trim the showpiece's top/bottom padding — not both surfaces at once.
+Nothing in `src/` needs to change. Hero, Navigation, and all section components stay frozen.
 
-**M5 — Persistent Beings left column stretches to a hollow card (≥1024)**
-The "Conventional automation" card uses `h-full`, so it matches the taller OmnisX card and ends with roughly 250px of empty interior below its last line at 1440. Why it matters: an intentionally empty panel next to a dense one reads as missing content, not as contrast.
-Smallest safe fix concept: drop `h-full` on that column (align to top) or add the one closing line the panel is missing.
+## Production-domain smoke checks required after deploy
 
----
+- `https://www.omnisx.ai/` and `https://omnisx.ai/` both resolve, one 301s to the other, valid HTTPS.
+- View-source head on the live domain matches the source head (no host injection surprises).
+- Hero Vimeo iframe actually plays on the live domain; mute/unmute toggle works.
+- Social debugger scrape (LinkedIn/X/Facebook) renders the 1200x629 image, not the wordmark strip.
+- `/sitemap.xml` and `/robots.txt` return 200; a deep link like `/anything` returns the SPA, not a host 404.
+- Fonts and `player.vimeo.com` load with no mixed-content or CSP errors in console.
 
-## MINOR
+## Open question before implementing
 
-- **Exhibit tier silhouette repeats.** Agent Services, Commissioning and Capability Network all open eyebrow → compact title → panel/grid at nearly identical heights (490 / 526 / 446px at 1440). Fix concept: vary one of the three (e.g. give Commissioning a full-width rail) rather than restyling the tier.
-- **Capability Network strip clips without affordance on mobile.** Card 02 is cut by the viewport edge with no gradient or scroll hint. Fix concept: add a right-edge fade or a small "scroll" cue.
-- **Visual anchor inconsistency at 1440.** Governed Autonomy is left-aligned in a ~770px column with a wide empty right margin, while the two sections around it are centred. Fix concept: centre the Governed Autonomy header block to match its neighbours.
-- **Access section closing anchor is soft.** The final card states the intake channel "is being connected" with no address; the page ends on an absence. Fix concept: publish one real contact address when available — copy only.
-- **Console noise.** Repeated `Function components cannot be given refs` warnings from the dev tagger. Dev-only, absent in production builds; no action.
-
----
-
-## CLEAR
-
-- No horizontal overflow at any of the six widths.
-- No clipped or truncated typography found at any width, including the Orbitron display lines at 390.
-- Section order and anchor ids are intact and match the nav (`pipeline`, `evolution`, `governance`, `access`).
-- Capability Evolution still reads as the centrepiece: two labelled planes, the authority seam, and the return path are all legible at every width including 390.
-- Mobile completeness: every section present at 390, all copy readable, no cut content, page height 15,233px.
-- Doctrine consistent throughout — persistent beings, self-extension, "creation is not permission", isolated proof preceding authority.
-- Footer, nav and mobile menu render correctly at all widths.
-
----
-
-## UNVERIFIED
-
-**Hero video playback on the production domain.** In this sandbox the Vimeo embed returns a connection-verification interstitial, so the hero renders as a text error panel at every width. This is an environment/network artefact, not evidence of a site defect — but it means the hero cannot be visually cleared here. Requires a smoke check on omnisx.ai after deploy before any GREEN verdict.
-
----
-
-No code changes were made. Approving this plan does not authorise edits — the fix concepts above are scoped for a separate, explicit fix pass.
+Which host is canonical in production — `https://www.omnisx.ai/` or the apex `https://omnisx.ai/`? Every canonical/og:url/sitemap/robots edit above depends on that single answer. Default if unspecified: use `https://www.omnisx.ai/` as stated in the request.
