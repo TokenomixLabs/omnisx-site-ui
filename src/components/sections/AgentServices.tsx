@@ -57,7 +57,16 @@ const ContractWires = () => {
   const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.2 });
 
   return (
-    <div ref={ref} className="w-full space-y-4 2xl:space-y-5">
+    <div ref={ref} className="relative w-full space-y-4 2xl:space-y-5">
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-3 bottom-3 top-3 hidden w-px bg-gradient-to-b from-transparent via-primary/30 to-transparent sm:block"
+      />
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-3 bottom-3 top-3 hidden w-px bg-gradient-to-b from-transparent via-secondary/25 to-transparent sm:block"
+      />
+
       {contractTerms.map((t, i) => (
         <div key={t.k}>
           <div className="flex items-baseline justify-between gap-4">
