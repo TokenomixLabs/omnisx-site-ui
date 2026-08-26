@@ -1,65 +1,66 @@
-# OmnisX — Production Readiness Census (read-only findings + smallest safe fix set)
+# OmnisX — Live Production Host Verification (read-only findings)
 
-No code was edited. Hero, header, logo, doctrine, visuals and copy untouched.
+No code was changed.
 
-## Census
+## Verdict
 
-| Item | State | Evidence |
+**LIVE PARITY = GREEN, with one canonical/host-binding conflict to resolve.**
+Deploy is current, both hosts resolve, TLS valid, all discovery files serve. The single real defect is that every canonical signal points at `www`, but `www` 301-redirects to the apex — so the declared canonical URL is not the served URL.
+
+## Host and transport
+
+| Item | Result |
+| --- | --- |
+| DNS `omnisx.ai` | 63.176.8.218 / 35.157.26.135 (Netlify) |
+| DNS `www.omnisx.ai` | same two A records |
+| `https://www.omnisx.ai/` | 301 → `https://omnisx.ai/` |
+| `https://omnisx.ai/` | 200, `server: Netlify` |
+| Primary host actually served | **apex `omnisx.ai`** |
+| TLS | valid on both hosts (verify result 0), HTTP/2, no mixed-content errors |
+| Redirect chain | single hop, no loops |
+
+## Deployed head parity (fetched from live apex)
+
+| Tag | Live value | Matches source |
 | --- | --- | --- |
-| `<title>` | READY | index.html:6 — "OmnisX.ai - The Intelligence Layer for Autonomous Agents" (66 chars, slightly over 60) |
-| Meta description | WRONG (overclaiming) | index.html:7 — "The world's first AI agent ecosystem powering autonomous intelligence at scale." Conflicts with the no-operational-claims doctrine used across the body copy |
-| Canonical | WRONG vs stated target | index.html:18 — `https://omnisx.ai/` (apex), target is `https://www.omnisx.ai/` |
-| og:title / og:description | WRONG (overclaiming) | index.html:9-10 — same "world's first…at scale" wording |
-| og:url | WRONG vs target | index.html:12 — apex, not www |
-| og:type | READY | index.html:13 — `website` |
-| og:image | WRONG (asset unsuitable) | index.html:11 points at `/lovable-uploads/5ea8ea83….png`, which is 1920x522 (a wordmark strip, ~3.7:1). Social crawlers crop/letterbox this badly. A correct 1200x629 `public/og-image.png` already exists and is unreferenced |
-| twitter:card / title / description / image | card READY (index.html:14); title/description WRONG (overclaiming, :15-16); image WRONG (:17, same 1920x522 asset) | |
-| Favicon | READY | `public/favicon.ico` exists (15 KB), but no `<link rel="icon">` in index.html — browsers only pick it up by root convention |
-| apple-touch-icon | MISSING | no 180x180 PNG, no `<link rel="apple-touch-icon">` |
-| robots.txt | READY (incomplete) | public/robots.txt — allow-all, but no `Sitemap:` line |
-| sitemap.xml | WRONG vs target | public/sitemap.xml:4 — `https://omnisx.ai/` apex; no `<lastmod>` |
-| Web manifest | MISSING | no `site.webmanifest` / `manifest.json` |
-| theme-color | MISSING | not in index.html (brand value `#161537` is established) |
-| JSON-LD / schema | MISSING | no `application/ld+json` anywhere |
-| lovable.app / preview / localhost hardcodes | READY (none) | only omnisx.ai references in index.html and sitemap.xml |
-| Build config | READY | package.json `build: vite build`; netlify.toml publish `dist`, NODE_VERSION 18.19.0 |
-| SPA routing fallback | MISSING (deployment-dependent) | App.tsx uses BrowserRouter with a `*` NotFound route, but there is no `public/_redirects` and no `[[redirects]]` in netlify.toml. Any deep link other than `/` 404s on Netlify. Not an issue on Lovable hosting, which handles SPA fallback |
-| Vimeo hero embed | UNVERIFIED | index.html:25 loads player.js; HeroVideo.tsx embeds 1052026972. Sandbox returns a connection-verification interstitial — not evidence of breakage. Production concern: Vimeo privacy settings must whitelist the final production domain, or the iframe fails there too |
-| Deployed-domain parity (DNS, www vs apex redirect, HTTPS, live head tags) | UNVERIFIED | cannot be inferred from source; requires a live check |
+| `<title>` | OmnisX.ai - The Intelligence Layer for Autonomous Agents | YES |
+| description | The intelligence layer for persistent, governed, evolving agents. | YES |
+| canonical | https://www.omnisx.ai/ | YES (but see conflict) |
+| og:url | https://www.omnisx.ai/ | YES (same conflict) |
+| og:image | https://www.omnisx.ai/og-image.png | YES |
+| twitter:image / card | same image / summary_large_image | YES |
+| theme-color | #161537 | YES |
+| JSON-LD Organization | present, url + logo on www | YES |
+| favicon link | present | YES |
 
-## Code-fixable vs infrastructure
+Latest source fix pass **is deployed** — the live head is byte-equivalent to `index.html`.
 
-Code-fixable (all in `index.html`, `public/robots.txt`, `public/sitemap.xml`):
-canonical/og:url/sitemap host, og+twitter image target, overclaiming copy, favicon/apple-touch links, theme-color, manifest, JSON-LD, robots Sitemap line, `_redirects`.
+## Discovery, assets, routing
 
-Infrastructure / domain binding (not code):
-1. Decide www vs apex as the one canonical host and configure a 301 from the other.
-2. DNS + HTTPS certificate for the chosen host.
-3. Vimeo video privacy → domain whitelist for the production domain.
-4. Netlify vs Lovable hosting decision (netlify.toml is currently present and unused if publishing via Lovable).
+| Check | Result |
+| --- | --- |
+| `/robots.txt` | 200, allow-all, `Sitemap: https://www.omnisx.ai/sitemap.xml` |
+| `/sitemap.xml` | 200, `application/xml`, single `<loc>https://www.omnisx.ai/</loc>` |
+| `/og-image.png` | 200, image/png, 233 KB, **1200x629** |
+| `/favicon.ico` | 200 |
+| `/nonsense-path-zzz` | 200 HTML, identical 2353-byte shell — SPA fallback works |
+| lovable/preview/localhost leakage | none in live HTML |
 
-## Smallest safe fix set (on approval)
+## The one defect: canonical points at a redirecting host
 
-1. `index.html:11,12,17,18` — repoint canonical, og:url to the chosen canonical host; repoint og:image and twitter:image to `<host>/og-image.png` (the existing 1200x629 asset).
-2. `index.html:7,10,16` — replace "The world's first AI agent ecosystem powering autonomous intelligence at scale." with doctrine-safe wording, e.g. "The intelligence layer for persistent, governed, evolving agents." (matches the existing footer line, no new claims).
-3. `index.html:9,15` — leave og/twitter titles as-is apart from the description swap.
-4. `index.html` head — add `<link rel="icon" href="/favicon.ico" sizes="any">`, `<link rel="apple-touch-icon" href="/apple-touch-icon.png">` (generate a 180x180 from the existing mark), `<meta name="theme-color" content="#161537">`, `<link rel="manifest" href="/site.webmanifest">`.
-5. `index.html` head — add one Organization JSON-LD block (name, url, logo). No FAQ/Product schema.
-6. `public/robots.txt` — append `Sitemap: <host>/sitemap.xml`.
-7. `public/sitemap.xml:4` — update `<loc>` to the canonical host, add `<lastmod>`.
-8. New `public/site.webmanifest` (name, short_name, theme/background `#161537`, icons) and new `public/_redirects` containing `/*  /index.html  200` for the Netlify path.
+Canonical, og:url, JSON-LD `url`, og/twitter image host, and the sitemap `<loc>` all declare `https://www.omnisx.ai/`, but that host returns 301 to the apex. Consequences: crawlers follow a redirect for every declared URL, social scrapers fetch images through a redirect, and the sitemap lists a non-200 URL. Not fatal, but it splits the canonical signal.
 
-Nothing in `src/` needs to change. Hero, Navigation, and all section components stay frozen.
+Two mutually exclusive resolutions — pick one:
 
-## Production-domain smoke checks required after deploy
+- **A. Make www primary (matches current source).** Infrastructure change in Netlify/domain settings: set `www.omnisx.ai` as the primary domain so the apex 301s to www instead. No code change.
+- **B. Make apex canonical (matches current hosting).** Code change: rewrite canonical, og:url, og:image, twitter:image, JSON-LD url/logo, robots `Sitemap:` line, and sitemap `<loc>` from `https://www.omnisx.ai/` to `https://omnisx.ai/`. Files: `index.html`, `public/robots.txt`, `public/sitemap.xml`. Nothing in `src/`.
 
-- `https://www.omnisx.ai/` and `https://omnisx.ai/` both resolve, one 301s to the other, valid HTTPS.
-- View-source head on the live domain matches the source head (no host injection surprises).
-- Hero Vimeo iframe actually plays on the live domain; mute/unmute toggle works.
-- Social debugger scrape (LinkedIn/X/Facebook) renders the 1200x629 image, not the wordmark strip.
-- `/sitemap.xml` and `/robots.txt` return 200; a deep link like `/anything` returns the SPA, not a host 404.
-- Fonts and `player.vimeo.com` load with no mixed-content or CSP errors in console.
+## Hero Vimeo on production — UNVERIFIED
 
-## Open question before implementing
+The live page renders the Vimeo iframe at the correct position (1280x720, top of page, mute control present). Inside the iframe the sandbox browser received a Cloudflare interstitial: "We couldn't verify the security of your connection." That is this environment's egress being challenged, not evidence of a broken embed or a missing domain whitelist. Playback on `omnisx.ai` remains **UNVERIFIED** and needs a check from a normal browser on a residential/office network. Console showed no app errors — only Vimeo permissions-policy warnings, which are cosmetic.
 
-Which host is canonical in production — `https://www.omnisx.ai/` or the apex `https://omnisx.ai/`? Every canonical/og:url/sitemap/robots edit above depends on that single answer. Default if unspecified: use `https://www.omnisx.ai/` as stated in the request.
+## Remaining live items not resolvable from here
+
+1. Decide www-vs-apex (above), then re-scrape LinkedIn/X/Facebook debuggers so cached previews refresh.
+2. Confirm hero video playback and mute toggle on the live domain from a real browser.
+3. Optional: `og-image.png` is 1200x629, one pixel under the conventional 630. Harmless.
