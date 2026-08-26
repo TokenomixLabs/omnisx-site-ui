@@ -43,7 +43,7 @@ const PersistentBeings = () => (
               Conventional automation
             </p>
             <h3 className="mt-3 font-grotesk text-lg font-semibold text-muted-foreground 2xl:text-xl">Run → result → gone</h3>
-            <ol className="mt-6 flex-1 space-y-5">
+            <ol className="mt-6 flex flex-1 flex-col justify-around gap-5 py-2">
               {["trigger", "execute", "return output", "discard state"].map((step, i) => (
                 <li key={step} className="flex items-center gap-4">
                   <span className="font-mono text-[0.6875rem] text-muted-foreground/90 2xl:text-xs">
