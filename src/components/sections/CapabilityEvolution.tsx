@@ -211,7 +211,7 @@ const CapabilityEvolution = () => (
                 <span className="h-[6px] rounded-full bg-gradient-to-r from-primary/70 to-primary/30" />
                 <span className="h-[6px] rounded-full bg-gradient-to-r from-secondary/60 to-secondary/20" />
               </div>
-              <p className="mt-3 font-mono text-[0.625rem] leading-relaxed text-muted-foreground/50">
+              <p className="mt-3 font-mono text-[0.6875rem] leading-relaxed text-muted-foreground/70">
                 Two separate records. Withdrawing authority does not delete the capability;
                 improving the capability does not widen the authority.
               </p>
