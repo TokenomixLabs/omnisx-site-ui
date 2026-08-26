@@ -64,7 +64,7 @@ const CategoryStatement = () => (
     <div className="pointer-events-none absolute inset-x-0 top-0 h-56 bg-grid bg-grid-fade opacity-[0.05]" />
 
     <div
-      className="pointer-events-none absolute left-1/2 top-0 h-32 w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-primary/60 to-transparent motion-safe:animate-pulse-subtle"
+      className="pointer-events-none absolute left-1/2 top-0 h-24 w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-primary/60 to-transparent motion-safe:animate-pulse-subtle"
       aria-hidden="true"
     />
     <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent" />
