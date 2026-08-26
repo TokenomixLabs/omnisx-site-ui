@@ -161,10 +161,10 @@ const GovernedAutonomy = () => (
         <Hairline className="mt-12" />
       </ScrollReveal>
 
-      <dl className="mt-2 xl:grid xl:grid-cols-2 xl:gap-x-14">
+      <dl className="mt-2 [&>*:last-child>div]:border-b-0 xl:grid xl:grid-cols-2 xl:gap-x-14 xl:[&>*:nth-last-child(-n+2)>div]:border-b-0">
         {guarantees.map((g, i) => (
           <ScrollReveal key={g.k} delay={i * 0.05}>
-            <div className="grid grid-cols-1 gap-1 border-b border-white/[0.05] py-5 transition-colors duration-300 hover:bg-white/[0.015] sm:grid-cols-[220px_minmax(0,1fr)] sm:gap-8">
+            <div className="grid grid-cols-1 gap-1 border-b border-white/[0.05] py-5 transition-colors duration-300 hover:bg-white/[0.015] sm:grid-cols-[220px_minmax(0,1fr)] sm:gap-8 [@media(min-width:1800px)]:grid-cols-[260px_minmax(0,1fr)]">
               <dt className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-primary/85 2xl:text-xs [@media(min-width:1800px)]:text-[0.8125rem]">
                 {g.k}
               </dt>

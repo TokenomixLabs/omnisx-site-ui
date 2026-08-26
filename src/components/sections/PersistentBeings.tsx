@@ -36,7 +36,7 @@ const PersistentBeings = () => (
 
       {/* Contrast */}
       <div className="mt-12 grid items-stretch gap-6 md:mt-16 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-8 2xl:gap-12">
-        <ScrollReveal>
+        <ScrollReveal className="h-full">
           <div className="flex h-full flex-col rounded-xl border border-white/[0.08] bg-background/40 p-6 md:p-7">
 
             <p className="font-mono text-[0.6875rem] uppercase tracking-[0.22em] text-muted-foreground/80 2xl:text-xs">
@@ -61,7 +61,7 @@ const PersistentBeings = () => (
         </ScrollReveal>
 
 
-        <ScrollReveal delay={0.1}>
+        <ScrollReveal delay={0.1} className="h-full">
           <div className="relative h-full overflow-hidden rounded-xl border border-primary/20 bg-card/60 p-6 md:p-8">
             <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-primary/[0.07] blur-3xl" />
             <p className="font-mono text-[0.625rem] uppercase tracking-[0.22em] text-primary/80">
