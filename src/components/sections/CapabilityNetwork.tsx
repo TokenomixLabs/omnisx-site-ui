@@ -51,7 +51,10 @@ const CapabilityNetwork = () => (
       </ScrollReveal>
 
       {/* Horizontal capability strip — scrolls on mobile, never five tall cards. */}
+      <div className="relative">
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-[hsl(228_18%_6%)] to-transparent lg:hidden" />
       <Accumulate className="mt-8 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:grid lg:grid-cols-5 lg:overflow-visible">
+
         {properties.map((p, i) => (
           <div
             key={p.id}
