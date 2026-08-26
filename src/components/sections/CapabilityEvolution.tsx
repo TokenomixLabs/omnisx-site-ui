@@ -62,17 +62,18 @@ const CapabilityEvolution = () => (
     <div className="pointer-events-none absolute left-1/2 top-[52%] h-[420px] w-[1200px] max-w-[150vw] -translate-x-1/2 rounded-full bg-secondary/[0.06] blur-[150px]" />
 
     <div className="container relative z-10 mx-auto px-4">
-      <div className="mx-auto max-w-3xl text-center xl:max-w-4xl 2xl:max-w-5xl">
+      <div className="mx-auto max-w-3xl text-center xl:max-w-4xl 2xl:max-w-5xl [@media(min-width:1800px)]:max-w-[64rem] [@media(min-width:2200px)]:max-w-[70rem]">
         <ScrollReveal>
           <Eyebrow tone="secondary">Signature capability</Eyebrow>
         </ScrollReveal>
         <ScrollReveal delay={0.08}>
-          <SectionTitle variant="display" className="mt-6">
+          <SectionTitle variant="display" className="mt-6 max-[420px]:text-[1.65rem]">
             Deployed with a baseline.
             <br />
             <span className="text-gradient">Never with a ceiling.</span>
           </SectionTitle>
         </ScrollReveal>
+
         <ScrollReveal delay={0.16}>
           <Lede className="mt-6">
             An OmnisX agent that meets a limit can author the missing capability, generate its own
