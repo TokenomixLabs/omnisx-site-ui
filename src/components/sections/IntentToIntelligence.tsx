@@ -117,24 +117,25 @@ const IntentToIntelligence = () => {
       <div className="pointer-events-none absolute inset-0 bg-grid bg-grid-fade opacity-[0.025]" />
 
       <div className="container relative z-10 mx-auto px-4">
-        <div className="max-w-2xl">
+        <div className="max-w-2xl xl:max-w-none">
           <ScrollReveal>
             <Eyebrow tone="secondary">From intent to intelligence</Eyebrow>
           </ScrollReveal>
           <ScrollReveal delay={0.08}>
-            <SectionTitle className="mt-5">
+            <SectionTitle className="mt-5 max-w-[46rem] xl:max-w-none">
               Describe the intelligence you need.
               <br />
               <span className="text-muted-foreground">The system works out the rest.</span>
             </SectionTitle>
           </ScrollReveal>
           <ScrollReveal delay={0.16}>
-            <Lede className="mt-6">
+            <Lede className="mt-6 max-w-3xl">
               A requirement enters as language. It leaves as a proven, permissioned, operating agent
               — with every step in between recorded.
             </Lede>
           </ScrollReveal>
         </div>
+
 
         {/* Stage rail */}
         <ScrollReveal delay={0.12}>
