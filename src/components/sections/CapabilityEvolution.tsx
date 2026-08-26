@@ -114,23 +114,24 @@ const CapabilityEvolution = () => (
               </span>
               <StateChip tone="neutral">Unauthorised</StateChip>
             </div>
-            <Accumulate className="mt-4 grid grid-cols-6 items-end gap-1.5" step={0.12}>
+            <Accumulate className="mt-4 grid grid-cols-6 items-end gap-2" step={0.12}>
               {isolatedNodes.map((n, i) => (
                 <div key={n.index}>
                   <span
                     className="block w-full rounded-full bg-gradient-to-r from-primary/70 to-secondary/50 shadow-[0_0_12px_-2px_hsl(var(--primary)/0.6)]"
-                    style={{ height: `${4 + i * 2}px` }}
+                    style={{ height: `${5 + i * 2}px` }}
                   />
-                  <span className="mt-2 block text-center font-mono text-[0.5rem] tracking-[0.14em] text-muted-foreground/45">
+                  <span className="mt-2 block text-center font-mono text-[0.6875rem] tracking-[0.12em] text-muted-foreground/75">
                     {n.index}
                   </span>
                 </div>
               ))}
             </Accumulate>
-            <p className="mt-3 font-mono text-[0.625rem] leading-relaxed text-muted-foreground/50">
+            <p className="mt-3 font-mono text-[0.6875rem] leading-relaxed text-muted-foreground/70">
               Nothing is discarded between stages — the same artefact carries everything it has
               gained forward.
             </p>
+
           </div>
 
           {/* version / provenance record */}
