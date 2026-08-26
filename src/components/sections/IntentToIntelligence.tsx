@@ -231,11 +231,11 @@ const IntentToIntelligence = () => {
                     <div className="flex flex-wrap items-center justify-between gap-3">
                       <span
                         key={stage.form}
-                        className="font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-primary motion-safe:animate-fade-in"
+                        className="font-mono text-xs uppercase tracking-[0.2em] text-primary motion-safe:animate-fade-in 2xl:text-sm"
                       >
                         {stage.form}
                       </span>
-                      <span className="font-mono text-[0.625rem] uppercase tracking-[0.16em] text-muted-foreground/60">
+                      <span className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-muted-foreground/75 2xl:text-xs">
                         + {stage.gains}
                       </span>
                     </div>
@@ -255,8 +255,8 @@ const IntentToIntelligence = () => {
                           />
                           <span
                             className={cn(
-                              "font-mono text-[0.5625rem] uppercase tracking-[0.14em] transition-colors duration-500",
-                              i <= active ? "text-muted-foreground/85" : "text-muted-foreground/55"
+                              "font-mono text-[0.6875rem] uppercase tracking-[0.14em] transition-colors duration-500 2xl:text-xs",
+                              i <= active ? "text-foreground/80" : "text-muted-foreground/70"
                             )}
                           >
 
@@ -266,7 +266,7 @@ const IntentToIntelligence = () => {
                       ))}
                     </div>
 
-                    <p className="mt-4 font-mono text-[0.625rem] leading-relaxed text-muted-foreground/50">
+                    <p className="mt-4 font-mono text-[0.6875rem] leading-relaxed text-muted-foreground/70 2xl:text-xs">
                       Nothing is discarded between stages — the same object carries everything it
                       has gained forward.
                     </p>
