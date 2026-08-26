@@ -246,16 +246,17 @@ const IntentToIntelligence = () => {
                               "h-[3px] rounded-full transition-all duration-700 ease-out",
                               i <= active
                                 ? "bg-gradient-to-r from-primary/80 to-secondary/50 shadow-[0_0_14px_-2px_hsl(var(--primary)/0.6)]"
-                                : "bg-white/[0.06]"
+                                : "bg-white/[0.16]"
                             )}
                             style={{ width: `${28 + i * 7}%` }}
                           />
                           <span
                             className={cn(
                               "font-mono text-[0.5625rem] uppercase tracking-[0.14em] transition-colors duration-500",
-                              i <= active ? "text-muted-foreground/75" : "text-muted-foreground/25"
+                              i <= active ? "text-muted-foreground/85" : "text-muted-foreground/55"
                             )}
                           >
+
                             {s.gains}
                           </span>
                         </div>
