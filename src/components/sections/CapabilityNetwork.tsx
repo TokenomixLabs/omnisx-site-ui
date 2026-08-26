@@ -69,8 +69,10 @@ const CapabilityNetwork = () => (
           </div>
         ))}
       </Accumulate>
+      </div>
     </div>
   </Section>
 );
+
 
 export default CapabilityNetwork;
