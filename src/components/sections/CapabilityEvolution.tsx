@@ -83,7 +83,7 @@ const CapabilityEvolution = () => (
       </div>
 
       {/* ================= TWO-PLANE SYSTEM ================= */}
-      <div className="relative mx-auto mt-14 max-w-5xl md:mt-20 2xl:max-w-6xl">
+      <div className="relative mx-auto mt-14 max-w-5xl md:mt-20 2xl:max-w-6xl [@media(min-width:1800px)]:max-w-[82rem] [@media(min-width:2200px)]:max-w-[90rem]">
         {/* ---------- UPPER PLANE: ISOLATED CREATION ---------- */}
         <div className="relative rounded-2xl border border-dashed border-primary/30 bg-primary/[0.02] p-5 md:p-8">
           <div className="pointer-events-none absolute inset-0 rounded-2xl bg-grid opacity-[0.05]" />
