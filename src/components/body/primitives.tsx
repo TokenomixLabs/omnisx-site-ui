@@ -12,11 +12,12 @@ import { cn } from "@/lib/utils";
 export type SectionTier = "showpiece" | "argument" | "exhibit" | "plain";
 
 const tierPadding: Record<SectionTier, string> = {
-  showpiece: "py-20 md:py-28",
+  showpiece: "pt-20 pb-14 md:pt-28 md:pb-16",
   argument: "py-20 md:py-28",
-  exhibit: "py-14 md:py-16",
+  exhibit: "py-14 md:py-16 2xl:py-20",
   plain: "",
 };
+
 
 
 export const Section = ({
