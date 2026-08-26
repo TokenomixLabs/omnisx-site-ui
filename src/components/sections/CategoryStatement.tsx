@@ -58,12 +58,13 @@ const PersistenceTrail = () => (
 );
 
 const CategoryStatement = () => (
-  <Section id="category" tone="deep" className="pb-20 pt-28 md:pb-28 md:pt-36">
+  <Section id="category" tone="deep" className="pb-20 pt-14 md:pb-28 md:pt-20">
     {/* Hero descent: the video dissolves into the network below it */}
-    <div className="pointer-events-none absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-black via-black/60 to-transparent" />
-    <div className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-grid bg-grid-fade opacity-[0.05]" />
+    <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black via-black/60 to-transparent" />
+    <div className="pointer-events-none absolute inset-x-0 top-0 h-56 bg-grid bg-grid-fade opacity-[0.05]" />
+
     <div
-      className="pointer-events-none absolute left-1/2 top-0 h-32 w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-primary/60 to-transparent motion-safe:animate-pulse-subtle"
+      className="pointer-events-none absolute left-1/2 top-0 h-24 w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-primary/60 to-transparent motion-safe:animate-pulse-subtle"
       aria-hidden="true"
     />
     <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent" />

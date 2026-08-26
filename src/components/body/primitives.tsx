@@ -12,11 +12,12 @@ import { cn } from "@/lib/utils";
 export type SectionTier = "showpiece" | "argument" | "exhibit" | "plain";
 
 const tierPadding: Record<SectionTier, string> = {
-  showpiece: "py-28 md:py-44",
+  showpiece: "py-20 md:py-28",
   argument: "py-20 md:py-28",
   exhibit: "py-14 md:py-16",
   plain: "",
 };
+
 
 export const Section = ({
   id,
@@ -56,7 +57,7 @@ export const BreathBand = ({
 }) => (
   <div
     className={cn(
-      "relative h-20 w-full overflow-hidden bg-[hsl(228_22%_4%)] md:h-28",
+      "relative h-12 w-full overflow-hidden bg-[hsl(228_22%_4%)] md:h-16",
       className
     )}
     aria-hidden={label ? undefined : "true"}

@@ -114,15 +114,10 @@ const Workforces = () => (
   <Section id="workforces" tone="raised" tier="argument">
     <div className="container relative z-10 mx-auto px-4">
       <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
-        <ScrollReveal>
-          <div className="rounded-2xl border border-white/[0.06] bg-background/40 p-6 md:p-8">
-            <WorkforceFormation />
-          </div>
-        </ScrollReveal>
-
-        <div className="lg:order-first">
+        <div>
           <ScrollReveal>
             <Eyebrow tone="secondary">Workforces</Eyebrow>
+
           </ScrollReveal>
           <ScrollReveal delay={0.08}>
             <SectionTitle className="mt-5">
@@ -159,6 +154,13 @@ const Workforces = () => (
             </ul>
           </ScrollReveal>
         </div>
+
+        <ScrollReveal>
+          <div className="rounded-2xl border border-white/[0.06] bg-background/40 p-6 md:p-8">
+            <WorkforceFormation />
+          </div>
+        </ScrollReveal>
+
       </div>
     </div>
   </Section>
