@@ -57,7 +57,7 @@ export const BreathBand = ({
 }) => (
   <div
     className={cn(
-      "relative h-20 w-full overflow-hidden bg-[hsl(228_22%_4%)] md:h-28",
+      "relative h-12 w-full overflow-hidden bg-[hsl(228_22%_4%)] md:h-16",
       className
     )}
     aria-hidden={label ? undefined : "true"}
