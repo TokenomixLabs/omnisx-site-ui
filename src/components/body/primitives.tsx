@@ -118,14 +118,15 @@ export const SectionTitle = ({
     className={cn(
       "text-foreground text-balance-hard",
       variant === "display" &&
-        "font-orbitron font-bold text-[clamp(2rem,4.6vw,3.9rem)] leading-[1.06] tracking-tight",
+        "font-orbitron font-bold text-[clamp(2rem,4.6vw,3.9rem)] leading-[1.06] tracking-tight [@media(min-width:1800px)]:text-[4.4rem]",
       variant === "argument" &&
-        "font-orbitron font-bold text-[clamp(1.6rem,3.4vw,3rem)] leading-[1.12] tracking-tight",
+        "font-orbitron font-bold text-[clamp(1.6rem,3.4vw,3rem)] leading-[1.12] tracking-tight [@media(min-width:1800px)]:text-[3.35rem] [@media(min-width:2200px)]:text-[3.7rem]",
       variant === "exhibit" &&
-        "font-grotesk font-semibold text-[clamp(1.35rem,2.4vw,2.15rem)] leading-[1.18] tracking-[-0.015em]",
+        "font-grotesk font-semibold text-[clamp(1.35rem,2.4vw,2.15rem)] leading-[1.18] tracking-[-0.015em] [@media(min-width:1800px)]:text-[2.45rem] [@media(min-width:2200px)]:text-[2.7rem]",
       className
     )}
   >
+
     {children}
   </Tag>
 );

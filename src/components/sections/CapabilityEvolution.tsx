@@ -62,17 +62,18 @@ const CapabilityEvolution = () => (
     <div className="pointer-events-none absolute left-1/2 top-[52%] h-[420px] w-[1200px] max-w-[150vw] -translate-x-1/2 rounded-full bg-secondary/[0.06] blur-[150px]" />
 
     <div className="container relative z-10 mx-auto px-4">
-      <div className="mx-auto max-w-3xl text-center xl:max-w-4xl 2xl:max-w-5xl">
+      <div className="mx-auto max-w-3xl text-center xl:max-w-4xl 2xl:max-w-5xl [@media(min-width:1800px)]:max-w-[64rem] [@media(min-width:2200px)]:max-w-[70rem]">
         <ScrollReveal>
           <Eyebrow tone="secondary">Signature capability</Eyebrow>
         </ScrollReveal>
         <ScrollReveal delay={0.08}>
-          <SectionTitle variant="display" className="mt-6">
+          <SectionTitle variant="display" className="mt-6 max-[420px]:text-[1.65rem]">
             Deployed with a baseline.
             <br />
             <span className="text-gradient">Never with a ceiling.</span>
           </SectionTitle>
         </ScrollReveal>
+
         <ScrollReveal delay={0.16}>
           <Lede className="mt-6">
             An OmnisX agent that meets a limit can author the missing capability, generate its own
@@ -82,7 +83,7 @@ const CapabilityEvolution = () => (
       </div>
 
       {/* ================= TWO-PLANE SYSTEM ================= */}
-      <div className="relative mx-auto mt-14 max-w-5xl md:mt-20 2xl:max-w-6xl">
+      <div className="relative mx-auto mt-14 max-w-5xl md:mt-20 2xl:max-w-6xl [@media(min-width:1800px)]:max-w-[82rem] [@media(min-width:2200px)]:max-w-[90rem]">
         {/* ---------- UPPER PLANE: ISOLATED CREATION ---------- */}
         <div className="relative rounded-2xl border border-dashed border-primary/30 bg-primary/[0.02] p-5 md:p-8">
           <div className="pointer-events-none absolute inset-0 rounded-2xl bg-grid opacity-[0.05]" />
@@ -113,23 +114,24 @@ const CapabilityEvolution = () => (
               </span>
               <StateChip tone="neutral">Unauthorised</StateChip>
             </div>
-            <Accumulate className="mt-4 grid grid-cols-6 items-end gap-1.5" step={0.12}>
+            <Accumulate className="mt-4 grid grid-cols-6 items-end gap-2" step={0.12}>
               {isolatedNodes.map((n, i) => (
                 <div key={n.index}>
                   <span
                     className="block w-full rounded-full bg-gradient-to-r from-primary/70 to-secondary/50 shadow-[0_0_12px_-2px_hsl(var(--primary)/0.6)]"
-                    style={{ height: `${4 + i * 2}px` }}
+                    style={{ height: `${5 + i * 2}px` }}
                   />
-                  <span className="mt-2 block text-center font-mono text-[0.5rem] tracking-[0.14em] text-muted-foreground/45">
+                  <span className="mt-2 block text-center font-mono text-[0.6875rem] tracking-[0.12em] text-muted-foreground/75">
                     {n.index}
                   </span>
                 </div>
               ))}
             </Accumulate>
-            <p className="mt-3 font-mono text-[0.625rem] leading-relaxed text-muted-foreground/50">
+            <p className="mt-3 font-mono text-[0.6875rem] leading-relaxed text-muted-foreground/70">
               Nothing is discarded between stages — the same artefact carries everything it has
               gained forward.
             </p>
+
           </div>
 
           {/* version / provenance record */}
@@ -209,7 +211,7 @@ const CapabilityEvolution = () => (
                 <span className="h-[6px] rounded-full bg-gradient-to-r from-primary/70 to-primary/30" />
                 <span className="h-[6px] rounded-full bg-gradient-to-r from-secondary/60 to-secondary/20" />
               </div>
-              <p className="mt-3 font-mono text-[0.625rem] leading-relaxed text-muted-foreground/50">
+              <p className="mt-3 font-mono text-[0.6875rem] leading-relaxed text-muted-foreground/70">
                 Two separate records. Withdrawing authority does not delete the capability;
                 improving the capability does not widen the authority.
               </p>

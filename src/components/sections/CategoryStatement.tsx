@@ -13,9 +13,10 @@ const missions = [
 const PersistenceTrail = () => (
   <div className="relative">
     {/* Being */}
-    <div className="relative mx-auto mb-10 w-fit">
+    <div className="relative mx-auto mb-7 w-fit md:mb-8">
       <div className="absolute -inset-6 rounded-full bg-primary/[0.07] blur-2xl motion-safe:animate-pulse-subtle" />
-      <div className="relative flex h-24 w-24 items-center justify-center rounded-full border border-primary/30 bg-card/80 backdrop-blur-sm">
+      <div className="relative flex h-20 w-20 items-center justify-center rounded-full border border-primary/30 bg-card/80 backdrop-blur-sm md:h-24 md:w-24">
+
         <div className="absolute inset-2 rounded-full border border-primary/15" />
         <div className="absolute inset-5 rounded-full border border-secondary/20" />
         <span className="font-mono text-[0.625rem] uppercase tracking-[0.2em] text-primary">
@@ -31,7 +32,7 @@ const PersistenceTrail = () => (
         {missions.map((m, i) => (
           <li key={m.id} className="relative flex items-start gap-3 md:block">
             <div className="relative z-10 mt-1 h-[7px] w-[7px] shrink-0 rounded-full bg-primary shadow-[0_0_12px_hsl(var(--primary)/0.7)] md:mx-auto md:mt-0 md:translate-y-[10px]" />
-            <div className="md:mt-8 md:text-center">
+            <div className="md:mt-6 md:text-center">
               <p className="font-mono text-[0.625rem] uppercase tracking-[0.18em] text-muted-foreground/70">
                 {m.label}
               </p>
@@ -79,12 +80,13 @@ const CategoryStatement = () => (
           </ScrollReveal>
 
           <ScrollReveal delay={0.08}>
-            <SectionTitle as="h1" className="mt-5">
+            <SectionTitle as="h1" className="mt-5 lg:max-w-[13.6em] [@media(min-width:1800px)]:text-[3rem] [@media(min-width:2200px)]:text-[3rem]">
               Not another agent builder.
               <br />
               <span className="text-gradient">A living system for creating, operating and evolving intelligence.</span>
             </SectionTitle>
           </ScrollReveal>
+
 
           <ScrollReveal delay={0.16}>
             <Lede className="mt-6 max-w-xl">
@@ -104,7 +106,7 @@ const CategoryStatement = () => (
         </div>
 
         <ScrollReveal delay={0.12}>
-          <div className="rounded-2xl border border-white/[0.06] bg-card/40 p-6 backdrop-blur-sm md:p-10">
+          <div className="rounded-2xl border border-white/[0.06] bg-card/40 p-6 backdrop-blur-sm md:p-8">
             <PersistenceTrail />
           </div>
         </ScrollReveal>
