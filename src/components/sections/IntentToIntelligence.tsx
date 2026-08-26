@@ -159,7 +159,7 @@ const IntentToIntelligence = () => {
                       onMouseEnter={() => setActive(i)}
                       onFocus={() => setActive(i)}
                       className={cn(
-                        "group relative min-h-[64px] w-[132px] rounded-lg border px-3 py-3 text-left transition-all duration-300 md:w-auto",
+                        "group relative min-h-[64px] w-[132px] rounded-lg border px-3 py-3 text-left transition-all duration-300 md:w-auto 2xl:min-h-[80px] 2xl:px-4 2xl:py-4",
                         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                         isActive
                           ? "border-primary/40 bg-primary/[0.06] shadow-[0_0_30px_-14px_hsl(var(--primary)/0.8)]"
@@ -168,20 +168,21 @@ const IntentToIntelligence = () => {
                     >
                       <span
                         className={cn(
-                          "font-mono text-[0.625rem] tracking-[0.18em]",
-                          isActive ? "text-primary" : "text-muted-foreground/60"
+                          "font-mono text-[0.6875rem] tracking-[0.18em] 2xl:text-[0.8125rem]",
+                          isActive ? "text-primary" : "text-muted-foreground/80"
                         )}
                       >
                         {s.index}
                       </span>
                       <span
                         className={cn(
-                          "mt-1 block text-xs font-medium leading-snug transition-colors",
+                          "mt-1 block text-[0.8125rem] font-medium leading-snug transition-colors 2xl:mt-1.5 2xl:text-[0.9375rem]",
                           isActive ? "text-foreground" : "text-muted-foreground"
                         )}
                       >
                         {s.title}
                       </span>
+
                       <span
                         className={cn(
                           "absolute inset-x-3 bottom-0 h-px transition-all duration-500",
@@ -211,19 +212,20 @@ const IntentToIntelligence = () => {
             >
               <div className="flex flex-col gap-8 md:flex-row md:items-start md:gap-12">
                 <div className="md:w-1/3">
-                  <p className="font-mono text-[0.625rem] uppercase tracking-[0.22em] text-primary/80">
+                  <p className="font-mono text-[0.6875rem] uppercase tracking-[0.22em] text-primary/80 2xl:text-xs">
                     Stage {stage.index}
                   </p>
-                  <h3 className="mt-3 font-grotesk text-xl font-semibold text-foreground">
+                  <h3 className="mt-3 font-grotesk text-xl font-semibold text-foreground 2xl:text-2xl">
                     {stage.title}
                   </h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{stage.summary}</p>
+                  <p className="mt-2 text-sm text-muted-foreground 2xl:text-base">{stage.summary}</p>
                 </div>
                 <div className="md:w-2/3">
-                  <p className="text-base leading-relaxed text-foreground/80">{stage.detail}</p>
+                  <p className="text-base leading-relaxed text-foreground/80 2xl:text-lg">{stage.detail}</p>
 
                 </div>
               </div>
+
                   {/* One evolving intelligence object */}
                   <div className="mt-8 rounded-lg border border-white/[0.06] bg-background/40 p-5">
                     <div className="flex flex-wrap items-center justify-between gap-3">
