@@ -32,7 +32,7 @@ const PersistenceTrail = () => (
         {missions.map((m, i) => (
           <li key={m.id} className="relative flex items-start gap-3 md:block">
             <div className="relative z-10 mt-1 h-[7px] w-[7px] shrink-0 rounded-full bg-primary shadow-[0_0_12px_hsl(var(--primary)/0.7)] md:mx-auto md:mt-0 md:translate-y-[10px]" />
-            <div className="md:mt-8 md:text-center">
+            <div className="md:mt-6 md:text-center">
               <p className="font-mono text-[0.625rem] uppercase tracking-[0.18em] text-muted-foreground/70">
                 {m.label}
               </p>
