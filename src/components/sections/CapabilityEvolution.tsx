@@ -62,7 +62,7 @@ const CapabilityEvolution = () => (
     <div className="pointer-events-none absolute left-1/2 top-[52%] h-[420px] w-[1200px] max-w-[150vw] -translate-x-1/2 rounded-full bg-secondary/[0.06] blur-[150px]" />
 
     <div className="container relative z-10 mx-auto px-4">
-      <div className="mx-auto max-w-3xl text-center">
+      <div className="mx-auto max-w-3xl text-center xl:max-w-4xl 2xl:max-w-5xl">
         <ScrollReveal>
           <Eyebrow tone="secondary">Signature capability</Eyebrow>
         </ScrollReveal>
@@ -82,7 +82,7 @@ const CapabilityEvolution = () => (
       </div>
 
       {/* ================= TWO-PLANE SYSTEM ================= */}
-      <div className="relative mx-auto mt-14 max-w-5xl md:mt-20">
+      <div className="relative mx-auto mt-14 max-w-5xl md:mt-20 2xl:max-w-6xl">
         {/* ---------- UPPER PLANE: ISOLATED CREATION ---------- */}
         <div className="relative rounded-2xl border border-dashed border-primary/30 bg-primary/[0.02] p-5 md:p-8">
           <div className="pointer-events-none absolute inset-0 rounded-2xl bg-grid opacity-[0.05]" />
@@ -235,16 +235,16 @@ const CapabilityEvolution = () => (
       </div>
 
       <ScrollReveal delay={0.1}>
-        <div className="mx-auto mt-14 max-w-2xl text-center">
-          <Doctrine className="text-[clamp(1.1rem,2.2vw,1.5rem)]">
+        <div className="mx-auto mt-12 max-w-3xl text-center">
+          <Doctrine className="text-[clamp(1.15rem,2vw,1.75rem)]">
             Self-extension is real. Self-authorisation is not.
           </Doctrine>
-          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+          <p className="mt-4 text-[0.9375rem] leading-relaxed text-muted-foreground 2xl:text-base">
             The boundary OmnisX enforces is between what an agent can construct and what it is
             permitted to run. Authority is granted by lifecycle and permission rules — scaled to
             consequence — never assumed by the agent that built the capability.
           </p>
-          <div className="mt-6">
+          <div className="mt-5">
             <DirectionNote>
               Described as designed system behaviour and product direction. Capability state and
               enforcement detail are not fully public.

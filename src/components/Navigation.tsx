@@ -19,7 +19,7 @@ const Navigation = () => {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <nav className="fixed w-full z-50 glass-morphism">
+    <nav className="fixed inset-x-0 top-0 z-50 glass-morphism">
       <div className="container mx-auto px-4 py-3 md:py-4 flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center">
