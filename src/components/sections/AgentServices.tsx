@@ -65,24 +65,26 @@ const ContractWires = () => {
 
   return (
     <div ref={ref} className="relative w-full px-0 sm:px-7 2xl:px-9">
-      {/* spines: vertical bus at each side, stubs reach out to the glyph centres */}
+      {/* spines: vertical bus at each contract edge, stubs reach out to the glyph centres */}
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 left-7 hidden w-px bg-gradient-to-b from-primary/45 via-primary/25 to-primary/45 sm:block 2xl:left-9"
+        className="pointer-events-none absolute inset-y-0 left-0 hidden w-px bg-gradient-to-b from-primary/50 via-primary/30 to-primary/50 sm:block"
       />
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 right-7 hidden w-px bg-gradient-to-b from-secondary/40 via-secondary/20 to-secondary/40 sm:block 2xl:right-9"
+        className="pointer-events-none absolute inset-y-0 right-0 hidden w-px bg-gradient-to-b from-secondary/45 via-secondary/25 to-secondary/45 sm:block"
       />
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute left-0 top-1/2 hidden h-px w-7 bg-primary/45 sm:block 2xl:w-9"
-        style={{ left: 0 }}
+        className="pointer-events-none absolute top-1/2 hidden h-px w-7 bg-primary/50 sm:block 2xl:w-9"
+        style={{ left: "-1.75rem" }}
       />
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute right-0 top-1/2 hidden h-px w-7 bg-secondary/40 sm:block 2xl:w-9"
+        className="pointer-events-none absolute top-1/2 hidden h-px w-7 bg-secondary/45 sm:block 2xl:w-9"
+        style={{ right: "-1.75rem" }}
       />
+
 
       <div className="space-y-4 2xl:space-y-5">
         {contractTerms.map((t, i) => (
