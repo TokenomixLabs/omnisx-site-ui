@@ -133,8 +133,9 @@ const HiringLoop = () => (
         </div>
       </ScrollReveal>
 
-      <div className="mt-8 grid gap-10 xl:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] xl:items-start xl:gap-16">
-        <div className="relative max-w-3xl">
+      <div className="mt-8 grid gap-10 xl:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] xl:items-stretch xl:gap-16">
+        <div className="relative flex max-w-3xl flex-col justify-between">
+
           <span
             className="pointer-events-none absolute bottom-3 left-[4px] top-3 w-px bg-gradient-to-b from-primary/50 via-border to-secondary/40"
             aria-hidden="true"
