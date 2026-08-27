@@ -43,9 +43,9 @@ const PersistentBeings = () => (
               Conventional automation
             </p>
             <h3 className="mt-3 font-grotesk text-lg font-semibold text-muted-foreground 2xl:text-xl">Run → result → gone</h3>
-            <ol className="mt-6 flex flex-1 flex-col justify-around gap-5 py-2">
+            <ol className="mt-6 flex flex-1 flex-col justify-between gap-4 border-y border-white/[0.05] py-5">
               {["trigger", "execute", "return output", "discard state"].map((step, i) => (
-                <li key={step} className="flex items-center gap-4">
+                <li key={step} className="flex items-center gap-4 rounded-md bg-white/[0.015] px-3 py-3">
                   <span className="font-mono text-[0.6875rem] text-muted-foreground/90 2xl:text-xs">
                     {String(i + 1).padStart(2, "0")}
                   </span>
@@ -54,9 +54,10 @@ const PersistentBeings = () => (
                 </li>
               ))}
             </ol>
-            <p className="mt-6 border-t border-white/[0.07] pt-4 text-sm leading-relaxed text-muted-foreground 2xl:text-base">
+            <p className="mt-5 text-sm leading-relaxed text-muted-foreground 2xl:text-base">
               Every improvement has to be made by a human editing the workflow.
             </p>
+
           </div>
         </ScrollReveal>
 
