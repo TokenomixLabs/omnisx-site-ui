@@ -140,7 +140,7 @@ const HiringLoop = () => (
             className="pointer-events-none absolute bottom-3 left-[4px] top-3 w-px bg-gradient-to-b from-primary/50 via-border to-secondary/40"
             aria-hidden="true"
           />
-          <Accumulate step={0.07}>
+          <Accumulate step={0.07} className="xl:flex xl:flex-1 xl:flex-col xl:justify-between">
             {loop.map((s, i) => (
               <div key={s.id} className="relative pb-6 pl-7 text-left last:pb-0">
                 <span
