@@ -52,66 +52,92 @@ const AgentGlyph = ({
   </div>
 );
 
-/** Contract rows drawn as the wire between the two agents. */
+/**
+ * The contract itself is the wire: every term runs from the requesting spine
+ * to the offering spine. AUTHORITY and ESCALATION terminate at a capped
+ * boundary before reaching the offering side.
+ */
 const ContractWires = () => {
-  const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.2 });
+  const { ref, inView } = useInView<HTMLDivElement>({
+    threshold: 0,
+    rootMargin: "0px 0px -8% 0px",
+  });
 
   return (
-    <div ref={ref} className="relative w-full space-y-4 2xl:space-y-5">
+    <div ref={ref} className="relative w-full px-0 sm:px-7 2xl:px-9">
+      {/* spines: vertical bus at each side, stubs reach out to the glyph centres */}
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute -left-3 bottom-3 top-3 hidden w-px bg-gradient-to-b from-transparent via-primary/30 to-transparent sm:block"
+        className="pointer-events-none absolute inset-y-0 left-7 hidden w-px bg-gradient-to-b from-primary/45 via-primary/25 to-primary/45 sm:block 2xl:left-9"
       />
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute -right-3 bottom-3 top-3 hidden w-px bg-gradient-to-b from-transparent via-secondary/25 to-transparent sm:block"
+        className="pointer-events-none absolute inset-y-0 right-7 hidden w-px bg-gradient-to-b from-secondary/40 via-secondary/20 to-secondary/40 sm:block 2xl:right-9"
+      />
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute left-0 top-1/2 hidden h-px w-7 bg-primary/45 sm:block 2xl:w-9"
+        style={{ left: 0 }}
+      />
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute right-0 top-1/2 hidden h-px w-7 bg-secondary/40 sm:block 2xl:w-9"
       />
 
-      {contractTerms.map((t, i) => (
-        <div key={t.k}>
-          <div className="flex items-baseline justify-between gap-4">
-            <span className="font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-foreground/70 2xl:text-xs">
-              {t.k}
-            </span>
-            {t.capped && (
-              <span className="font-mono text-[0.625rem] uppercase tracking-[0.16em] text-secondary/80 2xl:text-[0.6875rem]">
-                stops at the boundary
+      <div className="space-y-4 2xl:space-y-5">
+        {contractTerms.map((t, i) => (
+          <div key={t.k}>
+            <div className="flex items-baseline justify-between gap-4">
+              <span className="font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-foreground/70 2xl:text-xs">
+                {t.k}
               </span>
-            )}
-          </div>
-
-          <div className="relative mt-2 h-px w-full bg-white/[0.07]">
-            <span
-              aria-hidden="true"
-              className={cn(
-                "absolute inset-y-0 left-0 rounded-full transition-[width] duration-[900ms] ease-out",
-                t.capped
-                  ? "bg-gradient-to-r from-primary/70 to-secondary"
-                  : "bg-gradient-to-r from-primary/70 to-secondary/60"
+              {t.capped && (
+                <span className="font-mono text-[0.625rem] uppercase tracking-[0.16em] text-secondary/80 2xl:text-[0.6875rem]">
+                  stops at the boundary
+                </span>
               )}
-              style={{
-                width: inView ? (t.capped ? "68%" : "100%") : "0%",
-                transitionDelay: `${i * 0.12}s`,
-              }}
-            />
-            {t.capped && (
+            </div>
+
+            {/* the wire — spans spine to spine, so the contract literally connects the two agents */}
+            <div className="relative mt-2 h-px w-full bg-white/[0.07] sm:-mx-7 sm:w-[calc(100%+3.5rem)] 2xl:-mx-9 2xl:w-[calc(100%+4.5rem)]">
               <span
                 aria-hidden="true"
-                className="absolute top-1/2 h-3.5 w-[2px] -translate-y-1/2 rounded-full bg-secondary transition-opacity duration-500"
+                className={cn(
+                  "absolute inset-y-0 left-0 rounded-full transition-[width] duration-[900ms] ease-out motion-reduce:transition-none",
+                  t.capped
+                    ? "bg-gradient-to-r from-primary/70 to-secondary"
+                    : "bg-gradient-to-r from-primary/70 to-secondary/60"
+                )}
                 style={{
-                  left: "68%",
-                  opacity: inView ? 1 : 0,
-                  transitionDelay: `${i * 0.12 + 0.7}s`,
+                  width: inView ? (t.capped ? "68%" : "100%") : "0%",
+                  transitionDelay: `${i * 0.1}s`,
                 }}
               />
-            )}
-          </div>
+              {t.capped && (
+                <span
+                  aria-hidden="true"
+                  className="absolute top-1/2 h-4 w-[2px] -translate-y-1/2 rounded-full bg-secondary shadow-[0_0_10px_hsl(var(--secondary)/0.8)] transition-opacity duration-500 motion-reduce:transition-none"
+                  style={{
+                    left: "68%",
+                    opacity: inView ? 1 : 0,
+                    transitionDelay: `${i * 0.1 + 0.55}s`,
+                  }}
+                />
+              )}
+              {t.capped && (
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-y-0 right-0 w-[32%] border-t border-dashed border-secondary/25"
+                />
+              )}
+            </div>
 
-          <p className="mt-2 text-sm leading-relaxed text-foreground/80 2xl:text-[0.9375rem]">
-            {t.v}
-          </p>
-        </div>
-      ))}
+            <p className="mt-2 text-sm leading-relaxed text-foreground/80 2xl:text-[0.9375rem]">
+              {t.v}
+            </p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
@@ -121,8 +147,8 @@ const AgentServices = () => (
     <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
     <div className="container relative z-10 mx-auto px-4">
-      <div className="grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-center lg:gap-14 2xl:gap-20">
-        <div>
+      <div className="grid items-stretch gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-14 2xl:gap-20">
+        <div className="flex flex-col justify-between">
           <ScrollReveal>
             <Eyebrow>Exhibit · Agent services</Eyebrow>
             <SectionTitle variant="exhibit" className="mt-3">
@@ -138,10 +164,23 @@ const AgentServices = () => (
               agent may do.
             </p>
           </ScrollReveal>
+
+          <ScrollReveal delay={0.16}>
+            <div className="mt-8 border-t border-white/[0.06] pt-5 lg:mt-10">
+              <div className="flex flex-wrap gap-2">
+                <StateChip tone="active">Discoverable</StateChip>
+                <StateChip tone="gate">Authority capped</StateChip>
+              </div>
+              <p className="mt-4 font-mono text-[0.6875rem] leading-relaxed text-muted-foreground/70 2xl:text-xs">
+                Every engagement is attributable: which agent asked, under what mission, and what
+                was returned.
+              </p>
+            </div>
+          </ScrollReveal>
         </div>
 
-        <ScrollReveal delay={0.1}>
-          <div className="relative overflow-hidden rounded-2xl border border-white/[0.07] bg-card/60 p-5 md:p-7 2xl:p-9">
+        <ScrollReveal delay={0.1} className="h-full">
+          <div className="relative h-full overflow-hidden rounded-2xl border border-white/[0.07] bg-card/60 p-5 md:p-7 2xl:p-9">
             <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.04]" />
 
             <div className="relative flex items-center justify-between gap-4">
@@ -151,8 +190,8 @@ const AgentServices = () => (
               <StateChip tone="active">Illustrative</StateChip>
             </div>
 
-            {/* Handshake: two persistent agents, contract rows as the wire between them */}
-            <div className="relative mt-7 grid items-center gap-6 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:gap-6 2xl:gap-10">
+            {/* Handshake: two persistent agents, the contract terms are the wire between them */}
+            <div className="relative mt-7 grid items-center gap-6 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:gap-0">
               <div className="hidden sm:block">
                 <AgentGlyph role="Requesting agent" side="left" />
               </div>
@@ -168,11 +207,6 @@ const AgentServices = () => (
                 <AgentGlyph role="Offering agent" side="right" />
               </div>
             </div>
-
-            <p className="relative mt-7 border-t border-white/[0.06] pt-4 font-mono text-[0.6875rem] leading-relaxed text-muted-foreground/70 2xl:text-xs">
-              Every engagement is attributable: which agent asked, under what mission, and what was
-              returned.
-            </p>
           </div>
         </ScrollReveal>
       </div>
@@ -181,3 +215,4 @@ const AgentServices = () => (
 );
 
 export default AgentServices;
+
