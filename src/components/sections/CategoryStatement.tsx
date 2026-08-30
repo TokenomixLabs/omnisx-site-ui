@@ -25,36 +25,32 @@ const PersistenceTrail = () => (
       </div>
     </div>
 
-    {/* Accumulation rail */}
+    {/* Accumulation rail — 2-up grid: the side panel is never wide enough for a clean 4-up */}
     <div className="relative">
-      <div className="absolute left-0 right-0 top-[13px] hidden h-px bg-gradient-to-r from-primary/40 via-border to-secondary/30 md:block" />
-      <ol className="grid grid-cols-1 gap-6 md:grid-cols-4 md:gap-4">
-        {missions.map((m, i) => (
-          <li key={m.id} className="relative flex items-start gap-3 md:block">
-            <div className="relative z-10 mt-1 h-[7px] w-[7px] shrink-0 rounded-full bg-primary shadow-[0_0_12px_hsl(var(--primary)/0.7)] md:mx-auto md:mt-0 md:translate-y-[10px]" />
-            <div className="md:mt-6 md:text-center">
-              <p className="font-mono text-[0.625rem] uppercase tracking-[0.18em] text-muted-foreground/70">
+      <ol className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-x-8">
+        {missions.map((m) => (
+          <li key={m.id} className="relative flex items-start gap-3">
+            <div className="relative z-10 mt-[7px] h-[7px] w-[7px] shrink-0 rounded-full bg-primary shadow-[0_0_12px_hsl(var(--primary)/0.7)]" />
+            <div className="min-w-0">
+              <p className="whitespace-nowrap font-mono text-[0.625rem] uppercase tracking-[0.18em] text-muted-foreground/70">
                 {m.label}
               </p>
-              <p className="mt-2 text-sm text-foreground/85">
+              <p className="mt-2 whitespace-nowrap text-sm text-foreground/85">
                 + {m.gained}
               </p>
-              <p className="mt-1 font-mono text-[0.625rem] text-muted-foreground/50">
+              <p className="mt-1 whitespace-nowrap font-mono text-[0.625rem] text-muted-foreground/50">
                 state carried forward
               </p>
             </div>
             <span className="sr-only">
               After {m.label} the agent retains {m.gained}.
             </span>
-            {/* stacking depth indicator */}
-            <div
-              className="absolute -bottom-2 left-1/2 hidden h-px -translate-x-1/2 bg-primary/25 md:block"
-              style={{ width: `${28 + i * 18}px` }}
-            />
           </li>
         ))}
       </ol>
+
     </div>
+
   </div>
 );
 
