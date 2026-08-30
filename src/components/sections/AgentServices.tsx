@@ -60,7 +60,7 @@ const AgentGlyph = ({
 const ContractWires = () => {
   const { ref, inView } = useInView<HTMLDivElement>({
     threshold: 0,
-    rootMargin: "0px 0px -8% 0px",
+    rootMargin: "300px 0px 300px 0px",
   });
 
   return (
