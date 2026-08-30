@@ -273,8 +273,19 @@
 
 /* ---- Category primary claim: must outrank every following headline ---- */
 h1.h1-category { font-size: clamp(2.6rem, 6.2vw, 3.4rem); }
+/* Controlled type measure so `evolving intelligence.` never orphans. */
+@media (max-width: 479px) {
+  h1.h1-category {
+    font-size: 1.875rem;
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+  }
+}
 @media (min-width: 1280px) {
   h1.h1-category { font-size: 4.2rem; }
+}
+@media (min-width: 1280px) and (max-width: 1535px) {
+  h1.h1-category { font-size: 4.1rem; }
 }
 @media (min-width: 1800px) {
   h1.h1-category { font-size: 5.1rem; }
