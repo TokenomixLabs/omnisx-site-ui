@@ -73,7 +73,7 @@ const CategoryStatement = () => (
 
     <div className="container relative z-10 mx-auto px-4">
 
-      <div className="grid gap-14 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] 2xl:grid-cols-[minmax(0,1.55fr)_minmax(0,0.65fr)] lg:items-center lg:gap-16 2xl:gap-20">
+      <div className="grid gap-14 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] 2xl:grid-cols-[minmax(0,1.5fr)_minmax(0,0.72fr)] lg:items-center lg:gap-16 2xl:gap-20">
         <div>
           <ScrollReveal>
             <Eyebrow>Agent Superintelligence</Eyebrow>
