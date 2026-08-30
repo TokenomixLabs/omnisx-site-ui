@@ -1,6 +1,7 @@
 import React from "react";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { Section, Eyebrow, SectionTitle, Lede, StateChip } from "@/components/body/primitives";
+import { cn } from "@/lib/utils";
 
 const persistentLayer = [
   { label: "Identity", note: "who it is" },
@@ -27,7 +28,7 @@ const PersistentBeings = () => (
           </SectionTitle>
         </ScrollReveal>
         <ScrollReveal delay={0.16}>
-          <Lede className="mt-6 max-w-3xl">
+          <Lede className="mt-6 max-w-3xl 2xl:max-w-4xl">
             Conventional automation is amnesiac by design: it triggers, produces a result and
             forgets. Nothing about the tenth execution is wiser than the first.
           </Lede>
