@@ -78,10 +78,13 @@ const PersistentBeings = () => (
                 Persists
               </p>
               <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
-                {persistentLayer.map((p) => (
+                {persistentLayer.map((p, i) => (
                   <div
                     key={p.label}
-                    className="flex items-baseline justify-between gap-3 rounded-md border border-white/[0.05] bg-background/40 px-3 py-2"
+                    className={cn(
+                      "flex items-baseline justify-between gap-3 rounded-md border border-white/[0.05] bg-background/40 px-3 py-2",
+                      i === persistentLayer.length - 1 && "sm:col-span-2"
+                    )}
                   >
                     <span className="text-sm text-foreground/90">{p.label}</span>
                     <span className="font-mono text-[0.625rem] text-muted-foreground/60">
