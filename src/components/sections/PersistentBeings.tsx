@@ -1,6 +1,7 @@
 import React from "react";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { Section, Eyebrow, SectionTitle, Lede, StateChip } from "@/components/body/primitives";
+import { cn } from "@/lib/utils";
 
 const persistentLayer = [
   { label: "Identity", note: "who it is" },
@@ -27,7 +28,7 @@ const PersistentBeings = () => (
           </SectionTitle>
         </ScrollReveal>
         <ScrollReveal delay={0.16}>
-          <Lede className="mt-6 max-w-3xl">
+          <Lede className="mt-6 max-w-3xl 2xl:max-w-4xl">
             Conventional automation is amnesiac by design: it triggers, produces a result and
             forgets. Nothing about the tenth execution is wiser than the first.
           </Lede>
@@ -78,10 +79,13 @@ const PersistentBeings = () => (
                 Persists
               </p>
               <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
-                {persistentLayer.map((p) => (
+                {persistentLayer.map((p, i) => (
                   <div
                     key={p.label}
-                    className="flex items-baseline justify-between gap-3 rounded-md border border-white/[0.05] bg-background/40 px-3 py-2"
+                    className={cn(
+                      "flex items-baseline justify-between gap-3 rounded-md border border-white/[0.05] bg-background/40 px-3 py-2",
+                      i === persistentLayer.length - 1 && "sm:col-span-2"
+                    )}
                   >
                     <span className="text-sm text-foreground/90">{p.label}</span>
                     <span className="font-mono text-[0.625rem] text-muted-foreground/60">

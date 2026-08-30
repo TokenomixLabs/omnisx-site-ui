@@ -60,7 +60,7 @@ const AgentGlyph = ({
 const ContractWires = () => {
   const { ref, inView } = useInView<HTMLDivElement>({
     threshold: 0,
-    rootMargin: "0px 0px -8% 0px",
+    rootMargin: "300px 0px 300px 0px",
   });
 
   return (
@@ -150,7 +150,7 @@ const AgentServices = () => (
 
     <div className="container relative z-10 mx-auto px-4">
       <div className="grid items-stretch gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-14 2xl:gap-20">
-        <div className="flex flex-col justify-center gap-8 lg:gap-10">
+        <div className="flex flex-col justify-center gap-8 lg:gap-10 2xl:justify-between 2xl:gap-12">
           <ScrollReveal>
             <Eyebrow>Exhibit · Agent services</Eyebrow>
             <SectionTitle variant="exhibit" className="mt-3">

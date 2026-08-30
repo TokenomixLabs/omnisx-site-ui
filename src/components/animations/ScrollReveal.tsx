@@ -18,7 +18,7 @@ export const useInView = <T extends HTMLElement = HTMLDivElement>(
           observer.disconnect();
         }
       },
-      { threshold: 0.1, rootMargin: "-50px", ...options }
+      { threshold: 0.05, rootMargin: "0px 0px -20px 0px", ...options }
     );
     observer.observe(el);
     return () => observer.disconnect();
