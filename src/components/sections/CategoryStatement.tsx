@@ -73,7 +73,7 @@ const CategoryStatement = () => (
 
     <div className="container relative z-10 mx-auto px-4">
 
-      <div className="grid gap-14 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] 2xl:grid-cols-[minmax(0,1.55fr)_minmax(0,0.65fr)] lg:items-center lg:gap-16 2xl:gap-20">
+      <div className="grid gap-14 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,0.65fr)] xl:grid-cols-[minmax(0,1.4fr)_minmax(0,0.6fr)] 2xl:grid-cols-[minmax(0,1.55fr)_minmax(0,0.65fr)] lg:items-center lg:gap-16 2xl:gap-20">
         <div>
           <ScrollReveal>
             <Eyebrow>Agent Superintelligence</Eyebrow>
@@ -83,7 +83,12 @@ const CategoryStatement = () => (
             <SectionTitle as="h1" variant="display" className="h1-category mt-5 max-w-[19em] lg:max-w-[15.5em] 2xl:max-w-[17em]">
               Not another agent builder.
               <br />
-              <span className="text-gradient">A living system for creating, operating and evolving intelligence.</span>
+              <span className="text-gradient">
+                A living system
+                <br className="hidden max-[479px]:block" /> for creating,
+                <br className="hidden max-[479px]:block" /> operating and{" "}
+                <span className="whitespace-nowrap">evolving intelligence.</span>
+              </span>
             </SectionTitle>
           </ScrollReveal>
 
