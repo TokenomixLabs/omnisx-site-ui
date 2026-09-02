@@ -27,7 +27,7 @@ const Navigation = () => {
             <img
               src="/omnisx-logo.png"
               alt="OmnisX.ai Logo"
-              className="h-9 md:h-10 lg:h-11 w-auto"
+              className="h-10 md:h-11 lg:h-12 w-auto"
             />
           </a>
         </div>
