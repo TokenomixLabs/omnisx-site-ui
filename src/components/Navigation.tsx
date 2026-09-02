@@ -25,9 +25,9 @@ const Navigation = () => {
         <div className="flex items-center">
           <a href="#category" aria-label="OmnisX.ai — back to top of page">
             <img
-              src="/lovable-uploads/bb7e3b6e-d831-4a9a-998c-c74c5ddcb00b.png"
+              src="/omnisx-logo.png"
               alt="OmnisX.ai Logo"
-              className="h-8 md:h-10 lg:h-11"
+              className="h-8 md:h-9 lg:h-10 w-auto"
             />
           </a>
         </div>
