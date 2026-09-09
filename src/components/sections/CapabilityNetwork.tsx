@@ -11,7 +11,7 @@ const properties = [
   {
     id: "shared",
     title: "Shared across the network",
-    body: "What one agent gains can be made available to others, so intelligence compounds instead of being rebuilt.",
+    body: "Proven capability can be made available to other intelligence instead of being rebuilt.",
   },
   {
     id: "provenance",
@@ -25,8 +25,8 @@ const properties = [
   },
   {
     id: "compounding",
-    title: "Compounding by design",
-    body: "Each mission leaves the network measurably more capable than it found it.",
+    title: "Shared by design",
+    body: "Proven capability can be reused across the network.",
   },
 ];
 
@@ -75,11 +75,19 @@ const CapabilityNetwork = () => (
     <div className="container relative z-10 mx-auto px-4">
       <ScrollReveal>
         <div className="flex flex-col gap-2 md:flex-row md:items-baseline md:gap-5">
-          <Eyebrow className="shrink-0">Exhibit · Capability network</Eyebrow>
+          <Eyebrow className="shrink-0">Capability network</Eyebrow>
           <SectionTitle variant="exhibit" className="max-w-[46rem] lg:max-w-none">
-            Intelligence built once, available everywhere after.
+            Capability built once. Available across the network.
           </SectionTitle>
         </div>
+      </ScrollReveal>
+
+      <ScrollReveal delay={0.08}>
+        <p className="mt-5 max-w-4xl text-[0.9375rem] leading-relaxed text-muted-foreground 2xl:text-base">
+          The value is not one brilliant agent. It is the capability estate the network can draw
+          from. Reusable capability turns isolated advances into shared productive intelligence
+          without rebuilding the same answer for every mission.
+        </p>
       </ScrollReveal>
 
       {/* ============ NETWORK SYSTEM (lg+) ============ */}

@@ -137,17 +137,16 @@ const GovernedAutonomy = () => (
           </ScrollReveal>
           <ScrollReveal delay={0.08}>
             <SectionTitle className="mt-5 max-w-[40rem] xl:max-w-none">
-              Autonomy is only useful if it is accountable.
+              Power without governance is a liability.
             </SectionTitle>
           </ScrollReveal>
         </div>
         <div className="xl:col-span-5">
           <ScrollReveal delay={0.16}>
             <Lede className="max-w-3xl">
-              Self-extending agents are the point — and unbounded authority is the liability. OmnisX
-              separates the two: agents extend themselves freely inside isolation, and every step
-              toward live execution passes through governance. It is not a settings page; it is where
-              the architecture starts.
+              What intelligence can do and what intelligence is allowed to do are two different
+              questions. OmnisX treats authority as architecture, not a checkbox. Capability and
+              permission remain separate, scoped, attributable and reversible.
             </Lede>
           </ScrollReveal>
         </div>
@@ -155,6 +154,12 @@ const GovernedAutonomy = () => (
 
       <ScrollReveal delay={0.2}>
         <AuthorityTopology />
+      </ScrollReveal>
+
+      <ScrollReveal delay={0.2}>
+        <p className="mt-8 text-center font-orbitron text-[clamp(1rem,2vw,1.4rem)] font-semibold uppercase text-foreground/90">
+          What it can do is not the same as what it may do.
+        </p>
       </ScrollReveal>
 
       <ScrollReveal delay={0.22}>

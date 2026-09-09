@@ -16,26 +16,26 @@ type Node = { index: string; title: string; line: string };
 
 /** Upper plane — isolated creation. Nothing here reaches live systems. */
 const isolatedNodes: Node[] = [
-  { index: "01", title: "Limit", line: "Real work meets something current capability cannot do." },
-  { index: "02", title: "Requirement", line: "The shortfall becomes inputs, results and a measure of success." },
-  { index: "03", title: "Search & reuse", line: "The network is checked first; proven capability beats a new one." },
-  { index: "04", title: "Author & build", line: "When nothing fits, the agent authors it inside an isolated environment." },
-  { index: "05", title: "Generate checks", line: "Checks are derived from the requirement that caused the work." },
-  { index: "06", title: "Isolated proof", line: "It demonstrates the behaviour — or fails harmlessly, contained." },
+  { index: "01", title: "Reach a limit", line: "The mission demands capability that does not yet exist." },
+  { index: "02", title: "Define the need", line: "The missing capability becomes a clear, testable requirement." },
+  { index: "03", title: "Search & reuse", line: "Existing proven capability is considered before new capacity is created." },
+  { index: "04", title: "Create", line: "When nothing fits, new capability is formed in isolation." },
+  { index: "05", title: "Evaluate", line: "The capability is tested against the mission requirement." },
+  { index: "06", title: "Prove in isolation", line: "Evidence is established without access to live operations." },
 ];
 
 /** Lower plane — operational life, after governed promotion. */
 const operationalNodes: Node[] = [
-  { index: "09", title: "Operational use", line: "Available to the agent and the network within the authorised scope — nothing wider." },
-  { index: "10", title: "Monitored in service", line: "Live behaviour is measured against the claim it was promoted on." },
-  { index: "11", title: "Repair, replace, roll back", line: "Versions are revised, superseded or withdrawn without rebuilding the agent." },
+  { index: "09", title: "Scoped use", line: "Available only within separately granted authority." },
+  { index: "10", title: "Observed in service", line: "Operational behavior remains attributable and reviewable." },
+  { index: "11", title: "Repair or withdraw", line: "Capability can be revised, replaced or removed without widening authority." },
 ];
 
 const provenance = [
-  { k: "Version", v: "immutable revision" },
-  { k: "Origin", v: "the requirement that caused it" },
-  { k: "Claim", v: "what it asserts it can do" },
-  { k: "Evidence", v: "the proof behind the claim" },
+  { k: "Identity", v: "a distinct capability" },
+  { k: "Origin", v: "the need that caused it" },
+  { k: "Claim", v: "what it is designed to do" },
+  { k: "Evidence", v: "the proof behind it" },
 ];
 
 const NodeCell = ({ n, tone }: { n: Node; tone: "isolated" | "operational" }) => (
@@ -68,16 +68,17 @@ const CapabilityEvolution = () => (
         </ScrollReveal>
         <ScrollReveal delay={0.08}>
           <SectionTitle variant="display" className="mt-6 max-[420px]:text-[1.65rem]">
-            Deployed with a baseline.
+            Baseline.
             <br />
-            <span className="text-gradient">Never with a ceiling.</span>
+            <span className="text-gradient">Not ceiling.</span>
           </SectionTitle>
         </ScrollReveal>
 
         <ScrollReveal delay={0.16}>
           <Lede className="mt-6">
-            An OmnisX agent that meets a limit can author the missing capability, generate its own
-            checks and prove it — in isolation. What it cannot do is hand itself the right to run it.
+            Most agent platforms are limited to the capabilities their developers gave them
+            yesterday. OmnisX was designed around a different assumption: tomorrow's missions will
+            demand capabilities we cannot predict today.
           </Lede>
         </ScrollReveal>
       </div>
@@ -91,10 +92,10 @@ const CapabilityEvolution = () => (
           <div className="relative flex flex-wrap items-center justify-between gap-3">
             <div>
               <p className="font-mono text-[0.625rem] uppercase tracking-[0.24em] text-primary/80">
-                Plane 01 · Isolated creation
+                Plane 01 · Capability creation
               </p>
               <PanelTitle className="mt-2 text-base md:text-lg">
-                New capability is built and proven here — with no reach into live systems.
+                 Missing capability can be created and proven here — away from live operations.
               </PanelTitle>
             </div>
             <StateChip tone="active">Contained</StateChip>
@@ -110,7 +111,7 @@ const CapabilityEvolution = () => (
           <div className="relative mt-7 rounded-xl border border-white/[0.06] bg-background/50 p-5">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <span className="font-mono text-[0.625rem] uppercase tracking-[0.2em] text-muted-foreground/60">
-                One artefact · forming
+                 Capability · forming
               </span>
               <StateChip tone="neutral">Unauthorised</StateChip>
             </div>
@@ -128,8 +129,8 @@ const CapabilityEvolution = () => (
               ))}
             </Accumulate>
             <p className="mt-3 font-mono text-[0.6875rem] leading-relaxed text-muted-foreground/70">
-              Nothing is discarded between stages — the same artefact carries everything it has
-              gained forward.
+               The same capability advances from requirement to proof without gaining operational
+               authority.
             </p>
 
           </div>
@@ -138,7 +139,7 @@ const CapabilityEvolution = () => (
           <div className="relative mt-4 rounded-xl border border-primary/20 bg-card/50 p-5">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <span className="font-mono text-[0.625rem] uppercase tracking-[0.2em] text-primary/80">
-                Version &amp; provenance record
+                 Capability record
               </span>
               <StateChip tone="evolved">Proven · not promoted</StateChip>
             </div>
@@ -166,16 +167,14 @@ const CapabilityEvolution = () => (
             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-transparent via-secondary/50 to-transparent" />
 
             <p className="font-mono text-[0.625rem] uppercase tracking-[0.24em] text-secondary">
-              Authority seam · lifecycle &amp; permission gate
+               Authority boundary
             </p>
             <Doctrine className="mx-auto mt-4 max-w-2xl text-[clamp(1.4rem,3.4vw,2.25rem)]">
               Creation is not permission.
             </Doctrine>
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-              Execution authority is granted separately. Low-consequence promotions may be
-              policy-governed or delegated; consequential ones require explicit human approval. A
-              capability may exist, be versioned and be fully proven before it is ever authorised
-              to run.
+               Capability can expand. Authority never expands by itself. New capability may exist
+               and be proven before it is ever authorised to run.
             </p>
           </div>
         </div>
@@ -186,10 +185,10 @@ const CapabilityEvolution = () => (
             <div className="relative flex flex-wrap items-center justify-between gap-3">
               <div>
                 <p className="font-mono text-[0.625rem] uppercase tracking-[0.24em] text-foreground/70">
-                  Plane 02 · Operational life
+                   Plane 02 · Governed operation
                 </p>
                 <PanelTitle className="mt-2 text-base md:text-lg">
-                  The same artefact, now running under an authority granted to it.
+                   The same capability, now operating under separately granted authority.
                 </PanelTitle>
               </div>
               <div className="flex flex-wrap gap-2">
@@ -242,9 +241,8 @@ const CapabilityEvolution = () => (
             Self-extension is real. Self-authorisation is not.
           </Doctrine>
           <p className="mt-4 text-[0.9375rem] leading-relaxed text-muted-foreground 2xl:text-base">
-            The boundary OmnisX enforces is between what an agent can construct and what it is
-            permitted to run. Authority is granted by lifecycle and permission rules — scaled to
-            consequence — never assumed by the agent that built the capability.
+             Capability may expand when the mission demands it. Permission remains separate,
+             explicit and reversible.
           </p>
           <div className="mt-5">
             <DirectionNote>

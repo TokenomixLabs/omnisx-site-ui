@@ -121,29 +121,30 @@ const Workforces = () => (
           </ScrollReveal>
           <ScrollReveal delay={0.08}>
             <SectionTitle className="mt-5">
-              Single agents solve tasks. Coordinated workforces run operations.
+              One agent can do a job. A workforce can run a mission.
             </SectionTitle>
           </ScrollReveal>
           <ScrollReveal delay={0.16}>
             <Lede className="mt-6">
-              Real work rarely fits one specialist. OmnisX forms teams of persistent agents around a
-              mission, each with a defined role, each accountable for its part.
+              Real operations rarely fit one generalist. OmnisX forms coordinated teams of
+              persistent intelligences around an outcome — each specialized, each accountable, each
+              carrying its own role and state.
             </Lede>
           </ScrollReveal>
           <ScrollReveal delay={0.24}>
             <ul className="mt-8 space-y-5">
               {[
                 {
-                  t: "Roles, not runners",
-                  d: "Every member holds a named responsibility within the mission rather than an anonymous slot in a queue.",
+                   t: "Specialization with purpose",
+                   d: "Every member holds a defined responsibility within the mission.",
                 },
                 {
-                  t: "Delegation with boundaries",
-                  d: "Agents engage each other's declared services — inside the authority each was granted, never beyond it.",
+                   t: "Bounded delegation",
+                   d: "Each intelligence acts inside the authority it was granted — never beyond it.",
                 },
                 {
-                  t: "Identity survives the team",
-                  d: "Members can be replaced, upgraded or added, and each one leaves with the memory, reputation and relationships the mission gave it.",
+                   t: "Identity persists",
+                   d: "The workforce can change while each member retains its own role, context and operating history.",
                 },
               ].map((item) => (
                 <li key={item.t} className="border-l border-secondary/25 pl-5">

@@ -19,10 +19,10 @@ const stages: Stage[] = [
   {
     key: "intent",
     index: "01",
-    title: "Human intent",
-    summary: "A requirement stated in ordinary language.",
+    title: "State the mission",
+    summary: "The outcome begins in ordinary language.",
     detail:
-      "Work starts the way people actually describe it — an outcome, a constraint, a deadline — not a flowchart of nodes someone has to draw first.",
+      "Describe the outcome, constraints and boundaries. The mission begins with intent, not an engineering diagram.",
       gains: "stated outcome",
     form: "REQUIREMENT",
   },
@@ -30,9 +30,9 @@ const stages: Stage[] = [
     key: "clarify",
     index: "02",
     title: "Clarify",
-    summary: "Ambiguity is resolved before anything is built.",
+    summary: "The requirement is made clear.",
     detail:
-      "Missing inputs, authority boundaries, success conditions and edge cases are surfaced as questions instead of being silently assumed.",
+      "Missing inputs, boundaries and success conditions are surfaced rather than silently assumed.",
       gains: "resolved ambiguity",
     form: "REQUIREMENT+",
   },
@@ -40,29 +40,29 @@ const stages: Stage[] = [
     key: "specify",
     index: "03",
     title: "Specify",
-    summary: "Intent becomes a formal agent specification.",
+    summary: "Intent becomes an actionable brief.",
     detail:
-      "Mission, scope, expected inputs and results, required knowledge and the limits of independent action are written down precisely enough to build and evaluate against.",
-      gains: "formal specification",
-    form: "SPECIFICATION",
+      "Mission, scope, expected results and limits of independent action become clear enough to act on and evaluate.",
+      gains: "mission brief",
+    form: "MISSION BRIEF",
   },
   {
     key: "match",
     index: "04",
-    title: "Match or architect",
+    title: "Match or design",
     summary: "Reuse existing intelligence, or design new intelligence.",
     detail:
-      "If an agent already exists that can carry the mission, it is proposed. If not, a new one is architected for it — rather than duplicating near-identical automation forever.",
+      "If the right intelligence already exists, it can be matched. If not, new intelligence can be designed for the mission.",
       gains: "identity decision",
     form: "CANDIDATE",
   },
   {
     key: "plan",
     index: "05",
-    title: "Plan capabilities",
-    summary: "Capabilities, cognition and tools are planned.",
+    title: "Shape capability",
+    summary: "The required capability is assembled.",
     detail:
-      "The specification determines what the agent must be able to do, what reasoning it needs, what tools and data access it requires, and what is missing today.",
+      "The mission determines what the intelligence must be able to do, what it may use and what is missing today.",
       gains: "capability plan",
     form: "ARCHITECTURE",
   },
@@ -70,41 +70,41 @@ const stages: Stage[] = [
     key: "build",
     index: "06",
     title: "Build",
-    summary: "The agent and any missing capabilities are constructed.",
+    summary: "The required intelligence is formed.",
     detail:
-      "Construction produces a versioned agent and versioned capabilities with recorded provenance — not an opaque bundle that no one can inspect later.",
-      gains: "versioned artefacts",
-    form: "BUILD v0.1",
+      "The agent and any missing capability are created as attributable, inspectable parts of the mission system.",
+      gains: "formed intelligence",
+    form: "BUILT",
   },
   {
     key: "prove",
     index: "07",
     title: "Prove",
-    summary: "Isolated testing before anything is trusted.",
+    summary: "Proof comes before trust.",
     detail:
-      "New work is exercised in isolation against generated checks. Passing proof is what earns promotion; nothing is promoted because it merely exists.",
-      gains: "evidence of correctness",
-    form: "PROVEN v1.0",
+      "New capability is exercised in isolation. Evidence can establish readiness; existence alone never grants permission.",
+      gains: "evidence",
+    form: "PROVEN",
   },
   {
     key: "deploy",
     index: "08",
     title: "Deploy",
-    summary: "Permissions granted, the being goes into service.",
+    summary: "Authority is granted separately.",
     detail:
-      "Deployment attaches explicit authority. What an agent may do on its own — and where a human decision is required — is set here, not improvised at runtime.",
+      "What the intelligence may do, and where a human decision is required, is made explicit before operation.",
       gains: "scoped authority",
     form: "COMMISSIONED",
   },
   {
     key: "operate",
     index: "09",
-    title: "Operate & evolve",
-    summary: "Work, memory, monitoring, repair, improvement.",
+    title: "Operate & continue",
+    summary: "Work, retain context and carry capability forward.",
     detail:
-      "Operation is the beginning of the agent's life, not the end of the project. Experience accumulates, performance is observed, and capabilities can be repaired or replaced under governance.",
-      gains: "memory, history, reputation",
-    form: "LIVING AGENT",
+      "Operation is not a disposable run. Context and history persist, while capability can be repaired, replaced or expanded under governance.",
+      gains: "context and history",
+    form: "OPERATING INTELLIGENCE",
   },
 ];
 
@@ -123,15 +123,17 @@ const IntentToIntelligence = () => {
           </ScrollReveal>
           <ScrollReveal delay={0.08}>
             <SectionTitle className="mt-5 max-w-[46rem] xl:max-w-none">
-              Describe the intelligence you need.
+              Describe the outcome.
               <br />
-              <span className="text-muted-foreground">The system works out the rest.</span>
+              <span className="text-gradient">OmnisX builds the intelligence.</span>
             </SectionTitle>
           </ScrollReveal>
           <ScrollReveal delay={0.16}>
             <Lede className="mt-6 max-w-3xl">
-              A requirement enters as language. It leaves as a proven, permissioned, operating agent
-              — with every step in between recorded.
+              You should not need to become an agent engineer to command intelligent labor. State
+              the mission. OmnisX turns human intent into the intelligence required to pursue it —
+              clarifying the requirement, matching or designing the right agents, proving what is
+              built, and deploying it under explicit authority.
             </Lede>
           </ScrollReveal>
         </div>
@@ -267,8 +269,8 @@ const IntentToIntelligence = () => {
                     </div>
 
                     <p className="mt-4 font-mono text-[0.6875rem] leading-relaxed text-muted-foreground/70 2xl:text-xs">
-                      Nothing is discarded between stages — the same object carries everything it
-                      has gained forward.
+                       One intelligence takes shape across the mission path, carrying its defined
+                       context and authority forward.
                     </p>
               </div>
             </div>

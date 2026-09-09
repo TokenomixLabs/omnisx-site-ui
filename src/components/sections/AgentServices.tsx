@@ -152,18 +152,18 @@ const AgentServices = () => (
       <div className="grid items-stretch gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-14 2xl:gap-20">
         <div className="flex flex-col justify-center gap-8 lg:gap-10 2xl:gap-14">
           <ScrollReveal>
-            <Eyebrow>Exhibit · Agent services</Eyebrow>
+            <Eyebrow>Intelligence to intelligence</Eyebrow>
             <SectionTitle variant="exhibit" className="mt-3">
-              Agents don't publish endpoints. They offer services.
+              Intelligence can call on intelligence.
             </SectionTitle>
             <p className="mt-5 text-[0.9375rem] leading-relaxed text-muted-foreground 2xl:text-base">
-              A service is a commitment in business terms: what the work is, what it requires, what
-              it returns, and where authority stops. Other agents can discover it, judge the fit and
-              engage it — without a human wiring the two together first.
+              An OmnisX intelligence does not need to be everything. It can discover specialized
+              intelligence, judge fit, and engage it around the mission. Delegation stays scoped.
+              Every engagement stays attributable.
             </p>
             <p className="mt-4 text-[0.9375rem] leading-relaxed text-muted-foreground/80 2xl:text-base">
-              Because authority is part of the contract, delegation never quietly widens what an
-              agent may do.
+              Agents do not just expose endpoints. They offer defined services with clear outcomes
+              and clear boundaries.
             </p>
           </ScrollReveal>
 
