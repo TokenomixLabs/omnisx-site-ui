@@ -133,6 +133,14 @@ const HiringLoop = () => (
         </div>
       </ScrollReveal>
 
+      <ScrollReveal delay={0.08}>
+        <p className="mt-5 max-w-4xl text-[0.9375rem] leading-relaxed text-muted-foreground 2xl:text-base">
+          When an operating intelligence reaches beyond its current reach, OmnisX can search the
+          network for a specialist. If the right intelligence exists, engage it. If it does not,
+          the need can become the basis for creating new capacity.
+        </p>
+      </ScrollReveal>
+
       <div className="mt-8 grid gap-10 xl:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] xl:items-stretch xl:gap-16">
         <div className="relative flex max-w-3xl flex-col justify-between">
 
@@ -178,14 +186,6 @@ const HiringLoop = () => (
 
         <ScrollReveal delay={0.12} className="hidden xl:block">
           <CommissioningMap />
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.08}>
-          <p className="mt-5 max-w-4xl text-[0.9375rem] leading-relaxed text-muted-foreground 2xl:text-base">
-            When an operating intelligence reaches beyond its current reach, OmnisX can search the
-            network for a specialist. If the right intelligence exists, engage it. If it does not,
-            the need can become the basis for creating new capacity.
-          </p>
         </ScrollReveal>
       </div>
     </div>
