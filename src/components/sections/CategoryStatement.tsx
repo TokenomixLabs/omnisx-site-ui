@@ -77,32 +77,34 @@ const CategoryStatement = () => (
 
           <ScrollReveal delay={0.08}>
             <SectionTitle as="h1" variant="display" className="h1-category mt-5 max-w-[19em] lg:max-w-[15.5em] 2xl:max-w-[17em]">
-              Not another agent builder.
+              AI agents were just the beginning.
               <br />
               <span className="text-gradient">
-                A living system
-                <br className="hidden max-[479px]:block" /> for creating,
-                <br className="hidden max-[479px]:block" /> operating and{" "}
-                <span className="whitespace-nowrap">evolving intelligence.</span>
+                This is Agent Superintelligence.
               </span>
             </SectionTitle>
           </ScrollReveal>
 
-
-
+          <ScrollReveal delay={0.12}>
+            <p className="mt-7 max-w-2xl font-orbitron text-[clamp(1.05rem,2vw,1.5rem)] font-semibold uppercase leading-[1.3] text-foreground/90">
+              Superintelligence isn't one giant brain.
+              <br />
+              <span className="text-gradient">It's intelligence that knows how to organize intelligence.</span>
+            </p>
+          </ScrollReveal>
           <ScrollReveal delay={0.16}>
             <Lede className="mt-6 max-w-xl">
-              Most tooling treats an agent as a prompt that runs once and disappears. OmnisX treats
-              it as a persistent operational entity — with identity, memory, capabilities,
-              permissions and an operating history that keeps compounding.
+              Most platforms help you build agents. OmnisX is designed to organize persistent
+              intelligences around real missions — forming specialized workforces, coordinating
+              intelligence, and carrying useful capability forward.
             </Lede>
           </ScrollReveal>
 
           <ScrollReveal delay={0.24}>
             <div className="mt-8 flex flex-wrap gap-2">
-              <StateChip tone="active">Persistent, not disposable</StateChip>
-              <StateChip tone="gate">Governed, not unchecked</StateChip>
-              <StateChip>Baseline, not ceiling</StateChip>
+              <StateChip tone="active">Persistent intelligence</StateChip>
+              <StateChip tone="gate">Mission-formed workforces</StateChip>
+              <StateChip>Governed autonomy</StateChip>
             </div>
           </ScrollReveal>
         </div>

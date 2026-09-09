@@ -5,28 +5,28 @@ import { Section, Eyebrow, SectionTitle, DirectionNote, PanelTitle, StateChip } 
 const loop = [
   {
     id: "need",
-    title: "A need appears mid-mission",
-    body: "An operating agent identifies work it cannot complete alone.",
+    title: "The mission reaches beyond current capacity",
+    body: "An operating intelligence encounters a need outside its present reach.",
   },
   {
     id: "search",
     title: "Search the network",
-    body: "Declared services are searched against the need, its inputs and its required standard.",
+    body: "Available specialist intelligence is considered against the mission need.",
   },
   {
     id: "engage",
-    title: "Engage an existing agent",
-    body: "Where a match exists it is engaged under its published contract — nothing is duplicated.",
+    title: "Engage existing intelligence",
+    body: "Where a fit exists, the specialist is engaged under a bounded agreement.",
   },
   {
     id: "commission",
-    title: "Or commission a new one",
-    body: "When nothing fits, the need becomes a specification routed back into the same creation pipeline — built and proven in isolation before any authority is granted.",
+    title: "Or commission new intelligence",
+    body: "When nothing fits, the need can become the basis for new capacity — proven before authority is granted.",
   },
   {
     id: "grow",
-    title: "The network grows from real demand",
-    body: "Commissioned agents stay, so the next mission with the same need starts with an answer in place.",
+    title: "New capacity joins the network",
+    body: "Proven capability can remain available for future missions instead of being rebuilt.",
   },
 ];
 
@@ -41,7 +41,7 @@ const CommissioningMap = () => (
       <span className="font-mono text-[0.6875rem] uppercase tracking-[0.22em] text-muted-foreground/80 2xl:text-xs">
         Commissioning path
       </span>
-      <StateChip tone="active">Live network</StateChip>
+      <StateChip tone="active">Product direction</StateChip>
     </div>
 
     {/* 01 — need */}
@@ -126,9 +126,9 @@ const HiringLoop = () => (
     <div className="container relative z-10 mx-auto px-4">
       <ScrollReveal>
         <div className="flex flex-col gap-2 md:flex-row md:items-baseline md:gap-5">
-          <Eyebrow className="shrink-0">Exhibit · Commissioning</Eyebrow>
+          <Eyebrow className="shrink-0">Commissioning</Eyebrow>
           <SectionTitle variant="exhibit">
-            Agents hire agents — and commission the ones that don't exist yet.
+            Agents hire agents. And commission the intelligence that doesn't exist yet.
           </SectionTitle>
         </div>
       </ScrollReveal>
@@ -169,8 +169,8 @@ const HiringLoop = () => (
             </div>
             <div className="mt-5">
               <DirectionNote>
-                Commissioning follows the same authority boundary as every other capability created
-                in the system.
+                 Commissioning is product direction and follows the same authority boundary as every
+                 other capability created in the system.
               </DirectionNote>
             </div>
           </ScrollReveal>
@@ -178,6 +178,14 @@ const HiringLoop = () => (
 
         <ScrollReveal delay={0.12} className="hidden xl:block">
           <CommissioningMap />
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.08}>
+          <p className="mt-5 max-w-4xl text-[0.9375rem] leading-relaxed text-muted-foreground 2xl:text-base">
+            When an operating intelligence reaches beyond its current reach, OmnisX can search the
+            network for a specialist. If the right intelligence exists, engage it. If it does not,
+            the need can become the basis for creating new capacity.
+          </p>
         </ScrollReveal>
       </div>
     </div>

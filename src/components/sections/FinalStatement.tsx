@@ -12,21 +12,27 @@ const FinalStatement = () => (
     <div className="container relative z-10 mx-auto px-4">
       <div className="mx-auto max-w-3xl text-center">
         <ScrollReveal>
-          <Eyebrow>Early access</Eyebrow>
+          <Eyebrow>Agent Superintelligence</Eyebrow>
         </ScrollReveal>
 
         <ScrollReveal delay={0.08}>
           <h2 className="mt-6 font-orbitron text-[clamp(1.85rem,5vw,3.25rem)] font-bold leading-[1.08] tracking-tight text-foreground">
-            Persistent. Self-extending.
+            AI agents were the beginning.
             <br />
-            <span className="text-gradient">Never self-authorising.</span>
+            <span className="text-gradient">OmnisX is what comes next.</span>
           </h2>
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.12}>
+          <p className="mt-6 font-orbitron text-base font-semibold uppercase text-foreground/90 md:text-lg">
+            Welcome to Agent Superintelligence.
+          </p>
         </ScrollReveal>
 
         <ScrollReveal delay={0.16}>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            OmnisX is building the intelligence layer for persistent, governed, evolving agents.
-            If that is the kind of system you need, we would like to hear what you are building.
+            Persistent intelligence. Mission-formed workforces. Expanding capability. Governed
+            autonomy.
           </p>
         </ScrollReveal>
 

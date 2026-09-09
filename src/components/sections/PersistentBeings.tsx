@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 const persistentLayer = [
   { label: "Identity", note: "who it is" },
   { label: "Mission", note: "what it is for" },
-  { label: "Memory", note: "what it has learned" },
+  { label: "Retained context", note: "what it retains" },
   { label: "Permissions", note: "what it may do" },
   { label: "History", note: "what it has done" },
 ];
@@ -24,13 +24,14 @@ const PersistentBeings = () => (
         </ScrollReveal>
         <ScrollReveal delay={0.08}>
           <SectionTitle className="mt-5 max-w-[42rem] xl:max-w-none">
-            A run ends. <span className="text-gradient">A being continues.</span>
+            A run ends. <span className="text-gradient">An intelligence continues.</span>
           </SectionTitle>
         </ScrollReveal>
         <ScrollReveal delay={0.16}>
           <Lede className="mt-6 max-w-3xl 2xl:max-w-4xl">
-            Conventional automation is amnesiac by design: it triggers, produces a result and
-            forgets. Nothing about the tenth execution is wiser than the first.
+            Conventional automation executes and disappears. OmnisX agents persist with identity,
+            mission, retained context, permissions, operating history and capability. The tenth
+            mission does not have to begin from the same blank state as the first.
           </Lede>
         </ScrollReveal>
       </div>
@@ -70,7 +71,7 @@ const PersistentBeings = () => (
               The OmnisX model
             </p>
             <h3 className="mt-4 font-grotesk text-lg font-semibold text-foreground">
-              Exist → work → remember → become more capable
+              Exist → work → retain → continue
             </h3>
 
             {/* Persistent layer above replaceable cognition */}
@@ -116,8 +117,8 @@ const PersistentBeings = () => (
             </div>
 
             <p className="mt-6 text-sm leading-relaxed text-foreground/75">
-              Cognition can be swapped, upgraded or rolled back. The being that holds the mission,
-              the memory, the authority and the record does not have to be rebuilt to benefit.
+              Cognition can be swapped, upgraded or rolled back. The intelligence holding the
+              mission, retained context, authority and record can continue without being rebuilt.
             </p>
           </div>
         </ScrollReveal>
