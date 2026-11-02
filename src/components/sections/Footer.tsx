@@ -14,9 +14,11 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             {/* Logo & Brand */}
             <div className="flex flex-col items-center md:items-start gap-2">
-              <div className="font-orbitron text-lg md:text-xl font-semibold text-foreground tracking-tight">
-                OmnisX<span className="text-primary">.ai</span>
-              </div>
+              <img
+                src="/omnisx-logo.png"
+                alt="OmnisX.ai"
+                className="h-[26px] md:h-[30px] w-auto"
+              />
               <p className="text-sm text-muted-foreground/70 max-w-xs text-center md:text-left">
                 The intelligence layer for persistent, governed, evolving agents.
               </p>
