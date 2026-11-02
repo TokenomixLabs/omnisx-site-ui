@@ -24,36 +24,28 @@ const Navigation = () => {
         {/* Logo */}
         <div className="flex items-center">
           <a href="#category" aria-label="OmnisX.ai — back to top of page">
-            <span className="flex items-center gap-1 lg:gap-1.5">
-              <img
-                src="/omnisx-logo-icon.png"
-                alt="OmnisX.ai Logo"
-                className="h-[43.6px] md:h-[48px] lg:h-[52.3px] w-auto"
-              />
-              <img
-                src="/omnisx-logo-wordmark.png"
-                alt=""
-                aria-hidden="true"
-                className="h-[18.9px] md:h-[20.8px] lg:h-[22.7px] w-auto"
-              />
-            </span>
+            <img
+              src="/omnisx-logo.png"
+              alt="OmnisX.ai"
+              className="h-[38px] md:h-[28px] lg:h-[52px] w-auto"
+            />
           </a>
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-2">
+        <div className="hidden md:flex items-center gap-1 lg:gap-2">
           {NAV_LINKS.map((link) => (
             <PremiumButton
               key={link.href}
               asChild
               variant="ghost"
-              className="text-muted-foreground"
+              className="text-muted-foreground md:px-3 lg:px-5"
             >
               <a href={link.href}>{link.label}</a>
             </PremiumButton>
           ))}
-          <div className="w-px h-6 bg-border mx-2" />
-          <PremiumButton asChild variant="primary" size="default">
+          <div className="w-px h-6 bg-border mx-1 lg:mx-2" />
+          <PremiumButton asChild variant="primary" size="default" className="md:px-4 lg:px-5">
             <a href="#access">Request Access</a>
           </PremiumButton>
         </div>
