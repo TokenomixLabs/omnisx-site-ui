@@ -33,7 +33,7 @@ const Navigation = () => {
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-2 lg:gap-2">
+        <div className="hidden md:flex items-center gap-1 lg:gap-2">
           {NAV_LINKS.map((link) => (
             <PremiumButton
               key={link.href}
