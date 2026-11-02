@@ -261,6 +261,13 @@
   100% { transform: translateX(100%); }
 }
 
+/* ~620ms sweep (13% of 4.8s), then completely still until the next pass. */
+@keyframes btnShimmer {
+  0% { transform: translateX(-170%) skewX(-20deg); }
+  13% { transform: translateX(330%) skewX(-20deg); }
+  100% { transform: translateX(330%) skewX(-20deg); }
+}
+
 @keyframes flow {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(400%); }
@@ -332,6 +339,12 @@ h1.h1-category { font-size: clamp(2.6rem, 6.2vw, 3.4rem); }
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
+  }
+
+  /* No automatic light-sweep for reduced-motion users. */
+  .btn-shimmer::after {
+    content: none;
+    animation: none;
   }
 }
 
