@@ -199,6 +199,31 @@
   }
   .btn-glow:hover::before { opacity: 0.4; }
 
+  /* Premium light-sweep on primary conversion CTAs only.
+     A narrow feathered specular highlight crosses left→right in ~620ms,
+     then rests until the next 4.8s cycle. Clipped by the button's
+     overflow-hidden + rounded corners. */
+  .btn-shimmer::after {
+    content: '';
+    position: absolute;
+    top: -25%;
+    bottom: -25%;
+    left: 0;
+    width: 45%;
+    background: linear-gradient(
+      100deg,
+      transparent 0%,
+      hsl(0 0% 100% / 0.05) 30%,
+      hsl(0 0% 100% / 0.22) 50%,
+      hsl(0 0% 100% / 0.05) 70%,
+      transparent 100%
+    );
+    transform: translateX(-170%) skewX(-20deg);
+    animation: btnShimmer 4.8s ease-in-out infinite;
+    pointer-events: none;
+    will-change: transform;
+  }
+
   /* PROMOTE — one-time governed transition from unauthorised to operational.
      Dim and inert until observed, then permanently live. Never loops. */
   .promote-target {
@@ -234,6 +259,13 @@
 @keyframes dataFlow {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
+}
+
+/* ~620ms sweep (13% of 4.8s), then completely still until the next pass. */
+@keyframes btnShimmer {
+  0% { transform: translateX(-170%) skewX(-20deg); }
+  13% { transform: translateX(330%) skewX(-20deg); }
+  100% { transform: translateX(330%) skewX(-20deg); }
 }
 
 @keyframes flow {
@@ -307,6 +339,12 @@ h1.h1-category { font-size: clamp(2.6rem, 6.2vw, 3.4rem); }
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
+  }
+
+  /* No automatic light-sweep for reduced-motion users. */
+  .btn-shimmer::after {
+    content: none;
+    animation: none;
   }
 }
 
