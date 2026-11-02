@@ -16,6 +16,7 @@ const premiumButtonVariants = cva(
     variants: {
       variant: {
         primary: cn(
+          "btn-shimmer",
           "bg-gradient-to-r from-primary via-primary to-secondary",
           "text-primary-foreground font-semibold",
           "shadow-[0_0_20px_-5px_hsl(var(--primary)/0.4)]",
