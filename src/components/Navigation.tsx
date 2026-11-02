@@ -27,25 +27,25 @@ const Navigation = () => {
             <img
               src="/omnisx-logo.png"
               alt="OmnisX.ai"
-              className="h-[32px] md:h-[26px] lg:h-[42px] xl:h-[46px] 2xl:h-[50px] w-auto"
+              className="h-[38px] md:h-[28px] lg:h-[52px] w-auto"
             />
           </a>
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-2">
+        <div className="hidden md:flex items-center gap-2 lg:gap-2">
           {NAV_LINKS.map((link) => (
             <PremiumButton
               key={link.href}
               asChild
               variant="ghost"
-              className="text-muted-foreground"
+              className="text-muted-foreground md:px-3 lg:px-5"
             >
               <a href={link.href}>{link.label}</a>
             </PremiumButton>
           ))}
-          <div className="w-px h-6 bg-border mx-2" />
-          <PremiumButton asChild variant="primary" size="default">
+          <div className="w-px h-6 bg-border mx-1 lg:mx-2" />
+          <PremiumButton asChild variant="primary" size="default" className="md:px-4 lg:px-5">
             <a href="#access">Request Access</a>
           </PremiumButton>
         </div>
